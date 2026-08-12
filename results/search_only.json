@@ -1,0 +1,1156 @@
+{
+  "basic": {
+    "k": 5,
+    "hits": 8,
+    "answers": 6,
+    "total": 8,
+    "per_question": [
+      {
+        "qid": "Q1",
+        "question": "How much heavy cream does the paneer butter masala need?",
+        "type": "table",
+        "gold_recipes": [
+          "R001"
+        ],
+        "gold_section": "Ingredients",
+        "expected_answer": "60 ml, stirred in off the heat",
+        "first_hit_rank": 2,
+        "first_answer_rank": 3,
+        "hit": true,
+        "answer_present": true,
+        "results": [
+          {
+            "rank": 1,
+            "chunk_id": "R001-A04",
+            "recipe_id": "R001",
+            "section": "Method",
+            "score": 0.5537,
+            "distance": 0.4463,
+            "correct": false,
+            "has_answer": false,
+            "snippet": "pass it through a sieve back into the pan. 6. Add the water and simmer uncovered for 20 minutes, stirring every few minutes, until the gravy coats the"
+          },
+          {
+            "rank": 2,
+            "chunk_id": "R001-A00",
+            "recipe_id": "R001",
+            "section": "Overview",
+            "score": 0.5357,
+            "distance": 0.4643,
+            "correct": true,
+            "has_answer": false,
+            "snippet": "# Paneer Butter Masala ## Overview A rich North Indian curry of pan-seared paneer cubes simmered in a velvety tomato, butter and cashew gravy. Mildly "
+          },
+          {
+            "rank": 3,
+            "chunk_id": "R001-A01",
+            "recipe_id": "R001",
+            "section": "Ingredients",
+            "score": 0.5015,
+            "distance": 0.4985,
+            "correct": true,
+            "has_answer": true,
+            "snippet": "| | Paneer | 400 | g | cut into 2 cm cubes | | Ripe tomatoes | 600 | g | roughly chopped | | Raw cashews | 20 | g | soaked in hot water 15 minutes | |"
+          },
+          {
+            "rank": 4,
+            "chunk_id": "R001-A05",
+            "recipe_id": "R001",
+            "section": "Notes",
+            "score": 0.4919,
+            "distance": 0.5081,
+            "correct": false,
+            "has_answer": false,
+            "snippet": "or it will split. ## Notes & Substitutions To make this dish vegan, replace the paneer with the same weight of extra-firm tofu pressed for 30 minutes,"
+          },
+          {
+            "rank": 5,
+            "chunk_id": "R001-A02",
+            "recipe_id": "R001",
+            "section": "Ingredients",
+            "score": 0.472,
+            "distance": 0.528,
+            "correct": true,
+            "has_answer": false,
+            "snippet": "5 | tsp | for colour, not heat | | Garam masala | 1 | tsp | added late | | Dried fenugreek leaves | 1 | tsp | crushed between the palms | | Granulated"
+          }
+        ]
+      },
+      {
+        "qid": "Q2",
+        "question": "How many grams of green curry paste are in the vegan green curry?",
+        "type": "table",
+        "gold_recipes": [
+          "R005"
+        ],
+        "gold_section": "Ingredients",
+        "expected_answer": "50 g",
+        "first_hit_rank": 2,
+        "first_answer_rank": null,
+        "hit": true,
+        "answer_present": false,
+        "results": [
+          {
+            "rank": 1,
+            "chunk_id": "R004-A00",
+            "recipe_id": "R004",
+            "section": "Overview",
+            "score": 0.6128,
+            "distance": 0.3872,
+            "correct": false,
+            "has_answer": false,
+            "snippet": "# Thai Green Curry with Chicken ## Overview A fast weeknight curry: the coconut cream is split first to release its oil, the paste is fried in that oi"
+          },
+          {
+            "rank": 2,
+            "chunk_id": "R005-A00",
+            "recipe_id": "R005",
+            "section": "Overview",
+            "score": 0.5882,
+            "distance": 0.4118,
+            "correct": true,
+            "has_answer": false,
+            "snippet": "# Vegan Thai Green Curry with Tofu ## Overview The plant-based version of the classic green curry. Pressed tofu is seared before it goes into the sauc"
+          },
+          {
+            "rank": 3,
+            "chunk_id": "R005-A04",
+            "recipe_id": "R005",
+            "section": "Method",
+            "score": 0.583,
+            "distance": 0.417,
+            "correct": false,
+            "has_answer": false,
+            "snippet": "nd lime leaves. 6. Simmer for 10 minutes, then return the seared tofu and simmer for 5 minutes more so it absorbs the sauce without falling apart. 7. "
+          },
+          {
+            "rank": 4,
+            "chunk_id": "R004-A05",
+            "recipe_id": "R004",
+            "section": "Notes",
+            "score": 0.5474,
+            "distance": 0.4526,
+            "correct": false,
+            "has_answer": false,
+            "snippet": "if you are using an unfamiliar paste and add more after tasting at step 6. This dish contains fish sauce and is therefore not suitable for vegetarians"
+          },
+          {
+            "rank": 5,
+            "chunk_id": "R004-A01",
+            "recipe_id": "R004",
+            "section": "Ingredients",
+            "score": 0.5115,
+            "distance": 0.4885,
+            "correct": false,
+            "has_answer": false,
+            "snippet": "| | Green curry paste | 45 | g | about 3 tablespoons | | Coconut milk | 400 | ml | full fat, do not shake the tin | | Coconut cream | 100 | ml | skimm"
+          }
+        ]
+      },
+      {
+        "qid": "Q3",
+        "question": "How many grams of dried chickpeas does chana masala use?",
+        "type": "table",
+        "gold_recipes": [
+          "R002"
+        ],
+        "gold_section": "Ingredients",
+        "expected_answer": "200 g, soaked 8 hours or overnight",
+        "first_hit_rank": 1,
+        "first_answer_rank": 1,
+        "hit": true,
+        "answer_present": true,
+        "results": [
+          {
+            "rank": 1,
+            "chunk_id": "R002-A00",
+            "recipe_id": "R002",
+            "section": "Overview",
+            "score": 0.6,
+            "distance": 0.4,
+            "correct": true,
+            "has_answer": true,
+            "snippet": "# Chana Masala ## Overview A tangy, entirely plant-based chickpea curry built on a base of onion, tomato and toasted whole spices. Cooking dried chick"
+          },
+          {
+            "rank": 2,
+            "chunk_id": "R002-A05",
+            "recipe_id": "R002",
+            "section": "Notes",
+            "score": 0.5289,
+            "distance": 0.4711,
+            "correct": false,
+            "has_answer": false,
+            "snippet": "archy cooking water, so mash a few more chickpeas to compensate. If you have no amchur, one tablespoon of lemon juice added off the heat gives a compa"
+          },
+          {
+            "rank": 3,
+            "chunk_id": "R005-A01",
+            "recipe_id": "R005",
+            "section": "Ingredients",
+            "score": 0.4742,
+            "distance": 0.5258,
+            "correct": false,
+            "has_answer": false,
+            "snippet": "tra-firm tofu | 400 | g | pressed 30 minutes, cubed | | Green curry paste | 50 | g | check the label, many brands contain shrimp | | Coconut milk | 40"
+          },
+          {
+            "rank": 4,
+            "chunk_id": "R002-A04",
+            "recipe_id": "R002",
+            "section": "Notes",
+            "score": 0.4656,
+            "distance": 0.5344,
+            "correct": false,
+            "has_answer": false,
+            "snippet": "rained chickpeas with the reserved cooking liquid and simmer uncovered for 15 minutes, mashing a spoonful of chickpeas against the side of the pan to "
+          },
+          {
+            "rank": 5,
+            "chunk_id": "R004-A01",
+            "recipe_id": "R004",
+            "section": "Ingredients",
+            "score": 0.4354,
+            "distance": 0.5646,
+            "correct": false,
+            "has_answer": false,
+            "snippet": "| | Green curry paste | 45 | g | about 3 tablespoons | | Coconut milk | 400 | ml | full fat, do not shake the tin | | Coconut cream | 100 | ml | skimm"
+          }
+        ]
+      },
+      {
+        "qid": "Q4",
+        "question": "How many calories per serving does the margherita pizza have?",
+        "type": "table",
+        "gold_recipes": [
+          "R003"
+        ],
+        "gold_section": "Nutrition",
+        "expected_answer": "892 kcal per serving",
+        "first_hit_rank": 2,
+        "first_answer_rank": 2,
+        "hit": true,
+        "answer_present": true,
+        "results": [
+          {
+            "rank": 1,
+            "chunk_id": "R003-A00",
+            "recipe_id": "R003",
+            "section": "Ingredients",
+            "score": 0.696,
+            "distance": 0.304,
+            "correct": false,
+            "has_answer": false,
+            "snippet": "# Classic Margherita Pizza ## Overview Two 30 cm pizzas with a slow-fermented dough, uncooked San Marzano tomato sauce, fresh mozzarella and basil. Th"
+          },
+          {
+            "rank": 2,
+            "chunk_id": "R003-A05",
+            "recipe_id": "R003",
+            "section": "Notes",
+            "score": 0.5106,
+            "distance": 0.4894,
+            "correct": true,
+            "has_answer": true,
+            "snippet": "e mozzarella can be used and actually browns more predictably, but the result is no longer a true margherita. This recipe contains gluten and dairy an"
+          },
+          {
+            "rank": 3,
+            "chunk_id": "R003-A01",
+            "recipe_id": "R003",
+            "section": "Ingredients",
+            "score": 0.5054,
+            "distance": 0.4946,
+            "correct": false,
+            "has_answer": false,
+            "snippet": "C, for a 65 percent hydration dough | | Fine sea salt | 12 | g | added after the first mix | | Fresh yeast | 3 | g | or 1 g instant dried yeast | | Sa"
+          },
+          {
+            "rank": 4,
+            "chunk_id": "R003-A02",
+            "recipe_id": "R003",
+            "section": "Method",
+            "score": 0.4408,
+            "distance": 0.5592,
+            "correct": false,
+            "has_answer": false,
+            "snippet": "| tbsp | for launching the pizza | ## Method 1. Mix the flour, water and yeast until no dry flour remains, then rest for 20 minutes. Add the salt and "
+          },
+          {
+            "rank": 5,
+            "chunk_id": "R003-A04",
+            "recipe_id": "R003",
+            "section": "Notes",
+            "score": 0.4126,
+            "distance": 0.5874,
+            "correct": false,
+            "has_answer": false,
+            "snippet": "half the mozzarella. 7. Bake for 6 to 8 minutes until the crust is blistered and the cheese has just melted. 8. Finish with basil leaves and a drizzle"
+          }
+        ]
+      },
+      {
+        "qid": "Q5",
+        "question": "What temperature should the oven and stone be preheated to for the pizza?",
+        "type": "prose",
+        "gold_recipes": [
+          "R003"
+        ],
+        "gold_section": "Method",
+        "expected_answer": "250 C (480 F), held for 45 minutes after the oven reaches temperature",
+        "first_hit_rank": 1,
+        "first_answer_rank": 1,
+        "hit": true,
+        "answer_present": true,
+        "results": [
+          {
+            "rank": 1,
+            "chunk_id": "R003-A03",
+            "recipe_id": "R003",
+            "section": "Method",
+            "score": 0.6619,
+            "distance": 0.3381,
+            "correct": true,
+            "has_answer": true,
+            "snippet": "stone or steel on the top shelf to 250 C, which is 480 F, and leave it for a full 45 minutes after the oven reaches temperature. The stone must be sat"
+          },
+          {
+            "rank": 2,
+            "chunk_id": "R003-A02",
+            "recipe_id": "R003",
+            "section": "Method",
+            "score": 0.6551,
+            "distance": 0.3449,
+            "correct": true,
+            "has_answer": true,
+            "snippet": "| tbsp | for launching the pizza | ## Method 1. Mix the flour, water and yeast until no dry flour remains, then rest for 20 minutes. Add the salt and "
+          },
+          {
+            "rank": 3,
+            "chunk_id": "R003-A04",
+            "recipe_id": "R003",
+            "section": "Notes",
+            "score": 0.5737,
+            "distance": 0.4263,
+            "correct": true,
+            "has_answer": false,
+            "snippet": "half the mozzarella. 7. Bake for 6 to 8 minutes until the crust is blistered and the cheese has just melted. 8. Finish with basil leaves and a drizzle"
+          },
+          {
+            "rank": 4,
+            "chunk_id": "R003-A01",
+            "recipe_id": "R003",
+            "section": "Ingredients",
+            "score": 0.4984,
+            "distance": 0.5016,
+            "correct": true,
+            "has_answer": false,
+            "snippet": "C, for a 65 percent hydration dough | | Fine sea salt | 12 | g | added after the first mix | | Fresh yeast | 3 | g | or 1 g instant dried yeast | | Sa"
+          },
+          {
+            "rank": 5,
+            "chunk_id": "R003-A00",
+            "recipe_id": "R003",
+            "section": "Ingredients",
+            "score": 0.4612,
+            "distance": 0.5388,
+            "correct": false,
+            "has_answer": false,
+            "snippet": "# Classic Margherita Pizza ## Overview Two 30 cm pizzas with a slow-fermented dough, uncooked San Marzano tomato sauce, fresh mozzarella and basil. Th"
+          }
+        ]
+      },
+      {
+        "qid": "Q6",
+        "question": "What can I use instead of paneer to make the butter masala vegan?",
+        "type": "prose",
+        "gold_recipes": [
+          "R001"
+        ],
+        "gold_section": "Notes",
+        "expected_answer": "extra-firm tofu, pressed 30 minutes, with coconut cream for the dairy cream",
+        "first_hit_rank": 1,
+        "first_answer_rank": 2,
+        "hit": true,
+        "answer_present": true,
+        "results": [
+          {
+            "rank": 1,
+            "chunk_id": "R001-A04",
+            "recipe_id": "R001",
+            "section": "Method",
+            "score": 0.6737,
+            "distance": 0.3263,
+            "correct": true,
+            "has_answer": false,
+            "snippet": "pass it through a sieve back into the pan. 6. Add the water and simmer uncovered for 20 minutes, stirring every few minutes, until the gravy coats the"
+          },
+          {
+            "rank": 2,
+            "chunk_id": "R001-A05",
+            "recipe_id": "R001",
+            "section": "Notes",
+            "score": 0.6576,
+            "distance": 0.3424,
+            "correct": true,
+            "has_answer": true,
+            "snippet": "or it will split. ## Notes & Substitutions To make this dish vegan, replace the paneer with the same weight of extra-firm tofu pressed for 30 minutes,"
+          },
+          {
+            "rank": 3,
+            "chunk_id": "R001-A00",
+            "recipe_id": "R001",
+            "section": "Overview",
+            "score": 0.6337,
+            "distance": 0.3663,
+            "correct": false,
+            "has_answer": false,
+            "snippet": "# Paneer Butter Masala ## Overview A rich North Indian curry of pan-seared paneer cubes simmered in a velvety tomato, butter and cashew gravy. Mildly "
+          },
+          {
+            "rank": 4,
+            "chunk_id": "R001-A02",
+            "recipe_id": "R001",
+            "section": "Ingredients",
+            "score": 0.5578,
+            "distance": 0.4422,
+            "correct": false,
+            "has_answer": false,
+            "snippet": "5 | tsp | for colour, not heat | | Garam masala | 1 | tsp | added late | | Dried fenugreek leaves | 1 | tsp | crushed between the palms | | Granulated"
+          },
+          {
+            "rank": 5,
+            "chunk_id": "R001-A01",
+            "recipe_id": "R001",
+            "section": "Ingredients",
+            "score": 0.5426,
+            "distance": 0.4574,
+            "correct": false,
+            "has_answer": false,
+            "snippet": "| | Paneer | 400 | g | cut into 2 cm cubes | | Ripe tomatoes | 600 | g | roughly chopped | | Raw cashews | 20 | g | soaked in hot water 15 minutes | |"
+          }
+        ]
+      },
+      {
+        "qid": "Q7",
+        "question": "How long does the shakshuka sauce simmer before the eggs go in?",
+        "type": "prose",
+        "gold_recipes": [
+          "R006"
+        ],
+        "gold_section": "Method",
+        "expected_answer": "15 minutes, uncovered, until thick enough to hold a channel",
+        "first_hit_rank": 2,
+        "first_answer_rank": null,
+        "hit": true,
+        "answer_present": false,
+        "results": [
+          {
+            "rank": 1,
+            "chunk_id": "R006-A00",
+            "recipe_id": "R006",
+            "section": "Ingredients",
+            "score": 0.586,
+            "distance": 0.414,
+            "correct": false,
+            "has_answer": false,
+            "snippet": "# Shakshuka ## Overview Eggs poached directly in a spiced pepper and tomato sauce, cooked and served in the same pan. A one-pan brunch dish that takes"
+          },
+          {
+            "rank": 2,
+            "chunk_id": "R006-A03",
+            "recipe_id": "R006",
+            "section": "Method",
+            "score": 0.5335,
+            "distance": 0.4665,
+            "correct": true,
+            "has_answer": false,
+            "snippet": "ou drag a spoon through it. This reduction must happen before the eggs go in; a loose sauce will not support them. 4. Make six wells in the sauce with"
+          },
+          {
+            "rank": 3,
+            "chunk_id": "R005-A03",
+            "recipe_id": "R005",
+            "section": "Method",
+            "score": 0.4825,
+            "distance": 0.5175,
+            "correct": false,
+            "has_answer": false,
+            "snippet": "til golden on at least three sides, then lift it out and reserve. 3. Boil the thick coconut cream hard in the same pan for 3 to 4 minutes until it spl"
+          },
+          {
+            "rank": 4,
+            "chunk_id": "R004-A03",
+            "recipe_id": "R004",
+            "section": "Method",
+            "score": 0.4455,
+            "distance": 0.5545,
+            "correct": false,
+            "has_answer": false,
+            "snippet": ". Add the chicken and turn it in the paste for 2 minutes to coat every piece. 4. Pour in the remaining coconut milk and the stock, bring to a bare sim"
+          },
+          {
+            "rank": 5,
+            "chunk_id": "R002-A02",
+            "recipe_id": "R002",
+            "section": "Method",
+            "score": 0.445,
+            "distance": 0.555,
+            "correct": false,
+            "has_answer": false,
+            "snippet": "tirred in at the end | | Turmeric | 0.5 | tsp | | | Garam masala | 1 | tsp | | | Neutral oil | 3 | tbsp | | | Salt | 2 | tsp | to taste | | Fresh cori"
+          }
+        ]
+      },
+      {
+        "qid": "Q8",
+        "question": "How much curry paste do I need?",
+        "type": "ambiguous",
+        "gold_recipes": [
+          "R004",
+          "R005"
+        ],
+        "gold_section": "Ingredients",
+        "expected_answer": "ambiguous: 45 g in the chicken curry (R004), 50 g in the vegan curry (R005)",
+        "first_hit_rank": 1,
+        "first_answer_rank": 1,
+        "hit": true,
+        "answer_present": true,
+        "results": [
+          {
+            "rank": 1,
+            "chunk_id": "R004-A00",
+            "recipe_id": "R004",
+            "section": "Overview",
+            "score": 0.5584,
+            "distance": 0.4416,
+            "correct": true,
+            "has_answer": true,
+            "snippet": "# Thai Green Curry with Chicken ## Overview A fast weeknight curry: the coconut cream is split first to release its oil, the paste is fried in that oi"
+          },
+          {
+            "rank": 2,
+            "chunk_id": "R005-A04",
+            "recipe_id": "R005",
+            "section": "Method",
+            "score": 0.5263,
+            "distance": 0.4737,
+            "correct": false,
+            "has_answer": false,
+            "snippet": "nd lime leaves. 6. Simmer for 10 minutes, then return the seared tofu and simmer for 5 minutes more so it absorbs the sauce without falling apart. 7. "
+          },
+          {
+            "rank": 3,
+            "chunk_id": "R004-A01",
+            "recipe_id": "R004",
+            "section": "Ingredients",
+            "score": 0.5167,
+            "distance": 0.4833,
+            "correct": true,
+            "has_answer": true,
+            "snippet": "| | Green curry paste | 45 | g | about 3 tablespoons | | Coconut milk | 400 | ml | full fat, do not shake the tin | | Coconut cream | 100 | ml | skimm"
+          },
+          {
+            "rank": 4,
+            "chunk_id": "R001-A04",
+            "recipe_id": "R001",
+            "section": "Method",
+            "score": 0.5154,
+            "distance": 0.4846,
+            "correct": false,
+            "has_answer": false,
+            "snippet": "pass it through a sieve back into the pan. 6. Add the water and simmer uncovered for 20 minutes, stirring every few minutes, until the gravy coats the"
+          },
+          {
+            "rank": 5,
+            "chunk_id": "R004-A04",
+            "recipe_id": "R004",
+            "section": "Notes",
+            "score": 0.502,
+            "distance": 0.498,
+            "correct": false,
+            "has_answer": false,
+            "snippet": "be salty first, sweet second, hot third. 7. Take off the heat, stir through the Thai basil and scatter over the sliced chilli. ## Notes & Substitution"
+          }
+        ]
+      }
+    ]
+  },
+  "structured": {
+    "k": 5,
+    "hits": 7,
+    "answers": 7,
+    "total": 8,
+    "per_question": [
+      {
+        "qid": "Q1",
+        "question": "How much heavy cream does the paneer butter masala need?",
+        "type": "table",
+        "gold_recipes": [
+          "R001"
+        ],
+        "gold_section": "Ingredients",
+        "expected_answer": "60 ml, stirred in off the heat",
+        "first_hit_rank": 4,
+        "first_answer_rank": 4,
+        "hit": true,
+        "answer_present": true,
+        "results": [
+          {
+            "rank": 1,
+            "chunk_id": "R001-B04",
+            "recipe_id": "R001",
+            "section": "Method",
+            "score": 0.6441,
+            "distance": 0.3559,
+            "correct": false,
+            "has_answer": false,
+            "snippet": "Recipe: Paneer Butter Masala (R001) | Cuisine: Indian | Dietary: vegetarian, contains-dairy, contains-nuts, gluten-free | Section: Method ## Method 6."
+          },
+          {
+            "rank": 2,
+            "chunk_id": "R001-B05",
+            "recipe_id": "R001",
+            "section": "Notes",
+            "score": 0.6413,
+            "distance": 0.3587,
+            "correct": false,
+            "has_answer": false,
+            "snippet": "Recipe: Paneer Butter Masala (R001) | Cuisine: Indian | Dietary: vegetarian, contains-dairy, contains-nuts, gluten-free | Section: Notes & Substitutio"
+          },
+          {
+            "rank": 3,
+            "chunk_id": "R001-B06",
+            "recipe_id": "R001",
+            "section": "Nutrition",
+            "score": 0.6165,
+            "distance": 0.3835,
+            "correct": false,
+            "has_answer": false,
+            "snippet": "Recipe: Paneer Butter Masala (R001) | Cuisine: Indian | Dietary: vegetarian, contains-dairy, contains-nuts, gluten-free | Section: Nutrition (per serv"
+          },
+          {
+            "rank": 4,
+            "chunk_id": "R001-B01",
+            "recipe_id": "R001",
+            "section": "Ingredients",
+            "score": 0.5884,
+            "distance": 0.4116,
+            "correct": true,
+            "has_answer": true,
+            "snippet": "Recipe: Paneer Butter Masala (R001) | Cuisine: Indian | Dietary: vegetarian, contains-dairy, contains-nuts, gluten-free | Section: Ingredients ## Ingr"
+          },
+          {
+            "rank": 5,
+            "chunk_id": "R001-B03",
+            "recipe_id": "R001",
+            "section": "Method",
+            "score": 0.5766,
+            "distance": 0.4234,
+            "correct": false,
+            "has_answer": false,
+            "snippet": "Recipe: Paneer Butter Masala (R001) | Cuisine: Indian | Dietary: vegetarian, contains-dairy, contains-nuts, gluten-free | Section: Method ## Method 1."
+          }
+        ]
+      },
+      {
+        "qid": "Q2",
+        "question": "How many grams of green curry paste are in the vegan green curry?",
+        "type": "table",
+        "gold_recipes": [
+          "R005"
+        ],
+        "gold_section": "Ingredients",
+        "expected_answer": "50 g",
+        "first_hit_rank": 3,
+        "first_answer_rank": 3,
+        "hit": true,
+        "answer_present": true,
+        "results": [
+          {
+            "rank": 1,
+            "chunk_id": "R005-B05",
+            "recipe_id": "R005",
+            "section": "Notes",
+            "score": 0.6227,
+            "distance": 0.3773,
+            "correct": false,
+            "has_answer": false,
+            "snippet": "Recipe: Vegan Thai Green Curry with Tofu (R005) | Cuisine: Thai | Dietary: vegan, gluten-free, dairy-free, nut-free | Section: Notes & Substitutions #"
+          },
+          {
+            "rank": 2,
+            "chunk_id": "R005-B06",
+            "recipe_id": "R005",
+            "section": "Nutrition",
+            "score": 0.6204,
+            "distance": 0.3796,
+            "correct": false,
+            "has_answer": false,
+            "snippet": "Recipe: Vegan Thai Green Curry with Tofu (R005) | Cuisine: Thai | Dietary: vegan, gluten-free, dairy-free, nut-free | Section: Nutrition (per serving)"
+          },
+          {
+            "rank": 3,
+            "chunk_id": "R005-B01",
+            "recipe_id": "R005",
+            "section": "Ingredients",
+            "score": 0.6068,
+            "distance": 0.3932,
+            "correct": true,
+            "has_answer": true,
+            "snippet": "Recipe: Vegan Thai Green Curry with Tofu (R005) | Cuisine: Thai | Dietary: vegan, gluten-free, dairy-free, nut-free | Section: Ingredients ## Ingredie"
+          },
+          {
+            "rank": 4,
+            "chunk_id": "R004-B06",
+            "recipe_id": "R004",
+            "section": "Nutrition",
+            "score": 0.5812,
+            "distance": 0.4188,
+            "correct": false,
+            "has_answer": false,
+            "snippet": "Recipe: Thai Green Curry with Chicken (R004) | Cuisine: Thai | Dietary: contains-fish, gluten-free, dairy-free | Section: Nutrition (per serving) ## N"
+          },
+          {
+            "rank": 5,
+            "chunk_id": "R005-B00",
+            "recipe_id": "R005",
+            "section": "Overview",
+            "score": 0.5785,
+            "distance": 0.4215,
+            "correct": false,
+            "has_answer": false,
+            "snippet": "Recipe: Vegan Thai Green Curry with Tofu (R005) | Cuisine: Thai | Dietary: vegan, gluten-free, dairy-free, nut-free | Section: Overview ## Overview Th"
+          }
+        ]
+      },
+      {
+        "qid": "Q3",
+        "question": "How many grams of dried chickpeas does chana masala use?",
+        "type": "table",
+        "gold_recipes": [
+          "R002"
+        ],
+        "gold_section": "Ingredients",
+        "expected_answer": "200 g, soaked 8 hours or overnight",
+        "first_hit_rank": null,
+        "first_answer_rank": null,
+        "hit": false,
+        "answer_present": false,
+        "results": [
+          {
+            "rank": 1,
+            "chunk_id": "R002-B05",
+            "recipe_id": "R002",
+            "section": "Notes",
+            "score": 0.7063,
+            "distance": 0.2937,
+            "correct": false,
+            "has_answer": false,
+            "snippet": "Recipe: Chana Masala (R002) | Cuisine: Indian | Dietary: vegan, gluten-free, nut-free | Section: Notes & Substitutions ## Notes & Substitutions Tinned"
+          },
+          {
+            "rank": 2,
+            "chunk_id": "R002-B03",
+            "recipe_id": "R002",
+            "section": "Method",
+            "score": 0.6706,
+            "distance": 0.3294,
+            "correct": false,
+            "has_answer": false,
+            "snippet": "Recipe: Chana Masala (R002) | Cuisine: Indian | Dietary: vegan, gluten-free, nut-free | Section: Method ## Method 1. Drain the soaked chickpeas, cover"
+          },
+          {
+            "rank": 3,
+            "chunk_id": "R002-B04",
+            "recipe_id": "R002",
+            "section": "Method",
+            "score": 0.6697,
+            "distance": 0.3303,
+            "correct": false,
+            "has_answer": false,
+            "snippet": "Recipe: Chana Masala (R002) | Cuisine: Indian | Dietary: vegan, gluten-free, nut-free | Section: Method ## Method 6. Add the drained chickpeas with th"
+          },
+          {
+            "rank": 4,
+            "chunk_id": "R002-B06",
+            "recipe_id": "R002",
+            "section": "Nutrition",
+            "score": 0.6462,
+            "distance": 0.3538,
+            "correct": false,
+            "has_answer": false,
+            "snippet": "Recipe: Chana Masala (R002) | Cuisine: Indian | Dietary: vegan, gluten-free, nut-free | Section: Nutrition (per serving) ## Nutrition (per serving) | "
+          },
+          {
+            "rank": 5,
+            "chunk_id": "R002-B00",
+            "recipe_id": "R002",
+            "section": "Overview",
+            "score": 0.6128,
+            "distance": 0.3872,
+            "correct": false,
+            "has_answer": false,
+            "snippet": "Recipe: Chana Masala (R002) | Cuisine: Indian | Dietary: vegan, gluten-free, nut-free | Section: Overview ## Overview A tangy, entirely plant-based ch"
+          }
+        ]
+      },
+      {
+        "qid": "Q4",
+        "question": "How many calories per serving does the margherita pizza have?",
+        "type": "table",
+        "gold_recipes": [
+          "R003"
+        ],
+        "gold_section": "Nutrition",
+        "expected_answer": "892 kcal per serving",
+        "first_hit_rank": 1,
+        "first_answer_rank": 1,
+        "hit": true,
+        "answer_present": true,
+        "results": [
+          {
+            "rank": 1,
+            "chunk_id": "R003-B06",
+            "recipe_id": "R003",
+            "section": "Nutrition",
+            "score": 0.7359,
+            "distance": 0.2641,
+            "correct": true,
+            "has_answer": true,
+            "snippet": "Recipe: Classic Margherita Pizza (R003) | Cuisine: Italian | Dietary: vegetarian, contains-gluten, contains-dairy | Section: Nutrition (per serving) #"
+          },
+          {
+            "rank": 2,
+            "chunk_id": "R003-B04",
+            "recipe_id": "R003",
+            "section": "Method",
+            "score": 0.728,
+            "distance": 0.272,
+            "correct": false,
+            "has_answer": false,
+            "snippet": "Recipe: Classic Margherita Pizza (R003) | Cuisine: Italian | Dietary: vegetarian, contains-gluten, contains-dairy | Section: Method ## Method 6. Stret"
+          },
+          {
+            "rank": 3,
+            "chunk_id": "R003-B00",
+            "recipe_id": "R003",
+            "section": "Overview",
+            "score": 0.7165,
+            "distance": 0.2835,
+            "correct": false,
+            "has_answer": false,
+            "snippet": "Recipe: Classic Margherita Pizza (R003) | Cuisine: Italian | Dietary: vegetarian, contains-gluten, contains-dairy | Section: Overview ## Overview Two "
+          },
+          {
+            "rank": 4,
+            "chunk_id": "R003-B05",
+            "recipe_id": "R003",
+            "section": "Notes",
+            "score": 0.7096,
+            "distance": 0.2904,
+            "correct": false,
+            "has_answer": false,
+            "snippet": "Recipe: Classic Margherita Pizza (R003) | Cuisine: Italian | Dietary: vegetarian, contains-gluten, contains-dairy | Section: Notes & Substitutions ## "
+          },
+          {
+            "rank": 5,
+            "chunk_id": "R003-B02",
+            "recipe_id": "R003",
+            "section": "Ingredients",
+            "score": 0.6636,
+            "distance": 0.3364,
+            "correct": false,
+            "has_answer": false,
+            "snippet": "Recipe: Classic Margherita Pizza (R003) | Cuisine: Italian | Dietary: vegetarian, contains-gluten, contains-dairy | Section: Ingredients ## Ingredient"
+          }
+        ]
+      },
+      {
+        "qid": "Q5",
+        "question": "What temperature should the oven and stone be preheated to for the pizza?",
+        "type": "prose",
+        "gold_recipes": [
+          "R003"
+        ],
+        "gold_section": "Method",
+        "expected_answer": "250 C (480 F), held for 45 minutes after the oven reaches temperature",
+        "first_hit_rank": 1,
+        "first_answer_rank": 1,
+        "hit": true,
+        "answer_present": true,
+        "results": [
+          {
+            "rank": 1,
+            "chunk_id": "R003-B03",
+            "recipe_id": "R003",
+            "section": "Method",
+            "score": 0.6595,
+            "distance": 0.3405,
+            "correct": true,
+            "has_answer": true,
+            "snippet": "Recipe: Classic Margherita Pizza (R003) | Cuisine: Italian | Dietary: vegetarian, contains-gluten, contains-dairy | Section: Method ## Method 1. Mix t"
+          },
+          {
+            "rank": 2,
+            "chunk_id": "R003-B04",
+            "recipe_id": "R003",
+            "section": "Method",
+            "score": 0.4442,
+            "distance": 0.5558,
+            "correct": true,
+            "has_answer": false,
+            "snippet": "Recipe: Classic Margherita Pizza (R003) | Cuisine: Italian | Dietary: vegetarian, contains-gluten, contains-dairy | Section: Method ## Method 6. Stret"
+          },
+          {
+            "rank": 3,
+            "chunk_id": "R003-B05",
+            "recipe_id": "R003",
+            "section": "Notes",
+            "score": 0.4378,
+            "distance": 0.5622,
+            "correct": false,
+            "has_answer": false,
+            "snippet": "Recipe: Classic Margherita Pizza (R003) | Cuisine: Italian | Dietary: vegetarian, contains-gluten, contains-dairy | Section: Notes & Substitutions ## "
+          },
+          {
+            "rank": 4,
+            "chunk_id": "R003-B00",
+            "recipe_id": "R003",
+            "section": "Overview",
+            "score": 0.4127,
+            "distance": 0.5873,
+            "correct": false,
+            "has_answer": false,
+            "snippet": "Recipe: Classic Margherita Pizza (R003) | Cuisine: Italian | Dietary: vegetarian, contains-gluten, contains-dairy | Section: Overview ## Overview Two "
+          },
+          {
+            "rank": 5,
+            "chunk_id": "R003-B01",
+            "recipe_id": "R003",
+            "section": "Ingredients",
+            "score": 0.3788,
+            "distance": 0.6212,
+            "correct": false,
+            "has_answer": false,
+            "snippet": "Recipe: Classic Margherita Pizza (R003) | Cuisine: Italian | Dietary: vegetarian, contains-gluten, contains-dairy | Section: Ingredients ## Ingredient"
+          }
+        ]
+      },
+      {
+        "qid": "Q6",
+        "question": "What can I use instead of paneer to make the butter masala vegan?",
+        "type": "prose",
+        "gold_recipes": [
+          "R001"
+        ],
+        "gold_section": "Notes",
+        "expected_answer": "extra-firm tofu, pressed 30 minutes, with coconut cream for the dairy cream",
+        "first_hit_rank": 1,
+        "first_answer_rank": 1,
+        "hit": true,
+        "answer_present": true,
+        "results": [
+          {
+            "rank": 1,
+            "chunk_id": "R001-B05",
+            "recipe_id": "R001",
+            "section": "Notes",
+            "score": 0.7996,
+            "distance": 0.2004,
+            "correct": true,
+            "has_answer": true,
+            "snippet": "Recipe: Paneer Butter Masala (R001) | Cuisine: Indian | Dietary: vegetarian, contains-dairy, contains-nuts, gluten-free | Section: Notes & Substitutio"
+          },
+          {
+            "rank": 2,
+            "chunk_id": "R001-B04",
+            "recipe_id": "R001",
+            "section": "Method",
+            "score": 0.7753,
+            "distance": 0.2247,
+            "correct": false,
+            "has_answer": false,
+            "snippet": "Recipe: Paneer Butter Masala (R001) | Cuisine: Indian | Dietary: vegetarian, contains-dairy, contains-nuts, gluten-free | Section: Method ## Method 6."
+          },
+          {
+            "rank": 3,
+            "chunk_id": "R001-B03",
+            "recipe_id": "R001",
+            "section": "Method",
+            "score": 0.7606,
+            "distance": 0.2394,
+            "correct": false,
+            "has_answer": false,
+            "snippet": "Recipe: Paneer Butter Masala (R001) | Cuisine: Indian | Dietary: vegetarian, contains-dairy, contains-nuts, gluten-free | Section: Method ## Method 1."
+          },
+          {
+            "rank": 4,
+            "chunk_id": "R001-B06",
+            "recipe_id": "R001",
+            "section": "Nutrition",
+            "score": 0.757,
+            "distance": 0.243,
+            "correct": false,
+            "has_answer": false,
+            "snippet": "Recipe: Paneer Butter Masala (R001) | Cuisine: Indian | Dietary: vegetarian, contains-dairy, contains-nuts, gluten-free | Section: Nutrition (per serv"
+          },
+          {
+            "rank": 5,
+            "chunk_id": "R001-B00",
+            "recipe_id": "R001",
+            "section": "Overview",
+            "score": 0.7217,
+            "distance": 0.2783,
+            "correct": false,
+            "has_answer": false,
+            "snippet": "Recipe: Paneer Butter Masala (R001) | Cuisine: Indian | Dietary: vegetarian, contains-dairy, contains-nuts, gluten-free | Section: Overview ## Overvie"
+          }
+        ]
+      },
+      {
+        "qid": "Q7",
+        "question": "How long does the shakshuka sauce simmer before the eggs go in?",
+        "type": "prose",
+        "gold_recipes": [
+          "R006"
+        ],
+        "gold_section": "Method",
+        "expected_answer": "15 minutes, uncovered, until thick enough to hold a channel",
+        "first_hit_rank": 1,
+        "first_answer_rank": 1,
+        "hit": true,
+        "answer_present": true,
+        "results": [
+          {
+            "rank": 1,
+            "chunk_id": "R006-B03",
+            "recipe_id": "R006",
+            "section": "Method",
+            "score": 0.6509,
+            "distance": 0.3491,
+            "correct": true,
+            "has_answer": true,
+            "snippet": "Recipe: Shakshuka (R006) | Cuisine: Middle Eastern | Dietary: vegetarian, contains-egg, gluten-free | Section: Method ## Method 1. Heat the olive oil "
+          },
+          {
+            "rank": 2,
+            "chunk_id": "R006-B00",
+            "recipe_id": "R006",
+            "section": "Overview",
+            "score": 0.6026,
+            "distance": 0.3974,
+            "correct": false,
+            "has_answer": false,
+            "snippet": "Recipe: Shakshuka (R006) | Cuisine: Middle Eastern | Dietary: vegetarian, contains-egg, gluten-free | Section: Overview ## Overview Eggs poached direc"
+          },
+          {
+            "rank": 3,
+            "chunk_id": "R006-B05",
+            "recipe_id": "R006",
+            "section": "Notes",
+            "score": 0.5421,
+            "distance": 0.4579,
+            "correct": false,
+            "has_answer": false,
+            "snippet": "Recipe: Shakshuka (R006) | Cuisine: Middle Eastern | Dietary: vegetarian, contains-egg, gluten-free | Section: Notes & Substitutions ## Notes & Substi"
+          },
+          {
+            "rank": 4,
+            "chunk_id": "R002-B03",
+            "recipe_id": "R002",
+            "section": "Method",
+            "score": 0.468,
+            "distance": 0.532,
+            "correct": false,
+            "has_answer": false,
+            "snippet": "Recipe: Chana Masala (R002) | Cuisine: Indian | Dietary: vegan, gluten-free, nut-free | Section: Method ## Method 1. Drain the soaked chickpeas, cover"
+          },
+          {
+            "rank": 5,
+            "chunk_id": "R006-B01",
+            "recipe_id": "R006",
+            "section": "Ingredients",
+            "score": 0.4591,
+            "distance": 0.5409,
+            "correct": false,
+            "has_answer": false,
+            "snippet": "Recipe: Shakshuka (R006) | Cuisine: Middle Eastern | Dietary: vegetarian, contains-egg, gluten-free | Section: Ingredients ## Ingredients | Ingredient"
+          }
+        ]
+      },
+      {
+        "qid": "Q8",
+        "question": "How much curry paste do I need?",
+        "type": "ambiguous",
+        "gold_recipes": [
+          "R004",
+          "R005"
+        ],
+        "gold_section": "Ingredients",
+        "expected_answer": "ambiguous: 45 g in the chicken curry (R004), 50 g in the vegan curry (R005)",
+        "first_hit_rank": 2,
+        "first_answer_rank": 2,
+        "hit": true,
+        "answer_present": true,
+        "results": [
+          {
+            "rank": 1,
+            "chunk_id": "R005-B03",
+            "recipe_id": "R005",
+            "section": "Method",
+            "score": 0.5485,
+            "distance": 0.4515,
+            "correct": false,
+            "has_answer": false,
+            "snippet": "Recipe: Vegan Thai Green Curry with Tofu (R005) | Cuisine: Thai | Dietary: vegan, gluten-free, dairy-free, nut-free | Section: Method ## Method 1. Pre"
+          },
+          {
+            "rank": 2,
+            "chunk_id": "R005-B01",
+            "recipe_id": "R005",
+            "section": "Ingredients",
+            "score": 0.5111,
+            "distance": 0.4889,
+            "correct": true,
+            "has_answer": true,
+            "snippet": "Recipe: Vegan Thai Green Curry with Tofu (R005) | Cuisine: Thai | Dietary: vegan, gluten-free, dairy-free, nut-free | Section: Ingredients ## Ingredie"
+          },
+          {
+            "rank": 3,
+            "chunk_id": "R004-B03",
+            "recipe_id": "R004",
+            "section": "Method",
+            "score": 0.4998,
+            "distance": 0.5002,
+            "correct": false,
+            "has_answer": false,
+            "snippet": "Recipe: Thai Green Curry with Chicken (R004) | Cuisine: Thai | Dietary: contains-fish, gluten-free, dairy-free | Section: Method ## Method 1. Spoon th"
+          },
+          {
+            "rank": 4,
+            "chunk_id": "R004-B05",
+            "recipe_id": "R004",
+            "section": "Notes",
+            "score": 0.4994,
+            "distance": 0.5006,
+            "correct": false,
+            "has_answer": false,
+            "snippet": "Recipe: Thai Green Curry with Chicken (R004) | Cuisine: Thai | Dietary: contains-fish, gluten-free, dairy-free | Section: Notes & Substitutions ## Not"
+          },
+          {
+            "rank": 5,
+            "chunk_id": "R004-B01",
+            "recipe_id": "R004",
+            "section": "Ingredients",
+            "score": 0.4853,
+            "distance": 0.5147,
+            "correct": true,
+            "has_answer": true,
+            "snippet": "Recipe: Thai Green Curry with Chicken (R004) | Cuisine: Thai | Dietary: contains-fish, gluten-free, dairy-free | Section: Ingredients ## Ingredients |"
+          }
+        ]
+      }
+    ]
+  }
+}

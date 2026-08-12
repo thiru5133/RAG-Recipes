@@ -1,0 +1,145 @@
+[
+  {
+    "strategy": "basic",
+    "config": "size=300, overlap=0",
+    "chunks": 54,
+    "hit3": 5,
+    "hit5": 5,
+    "ans5": 4,
+    "table_hit5": 2,
+    "table_ans5": 1,
+    "other_hit5": 3
+  },
+  {
+    "strategy": "basic",
+    "config": "size=300, overlap=80",
+    "chunks": 71,
+    "hit3": 6,
+    "hit5": 6,
+    "ans5": 5,
+    "table_hit5": 2,
+    "table_ans5": 2,
+    "other_hit5": 4
+  },
+  {
+    "strategy": "basic",
+    "config": "size=300, overlap=150",
+    "chunks": 100,
+    "hit3": 6,
+    "hit5": 7,
+    "ans5": 6,
+    "table_hit5": 3,
+    "table_ans5": 2,
+    "other_hit5": 4
+  },
+  {
+    "strategy": "basic",
+    "config": "size=500, overlap=0",
+    "chunks": 35,
+    "hit3": 7,
+    "hit5": 8,
+    "ans5": 7,
+    "table_hit5": 4,
+    "table_ans5": 3,
+    "other_hit5": 4
+  },
+  {
+    "strategy": "basic",
+    "config": "size=500, overlap=80",
+    "chunks": 38,
+    "hit3": 8,
+    "hit5": 8,
+    "ans5": 6,
+    "table_hit5": 4,
+    "table_ans5": 3,
+    "other_hit5": 4
+  },
+  {
+    "strategy": "basic",
+    "config": "size=500, overlap=150",
+    "chunks": 43,
+    "hit3": 8,
+    "hit5": 8,
+    "ans5": 8,
+    "table_hit5": 4,
+    "table_ans5": 4,
+    "other_hit5": 4
+  },
+  {
+    "strategy": "basic",
+    "config": "size=800, overlap=0",
+    "chunks": 23,
+    "hit3": 8,
+    "hit5": 8,
+    "ans5": 7,
+    "table_hit5": 4,
+    "table_ans5": 3,
+    "other_hit5": 4
+  },
+  {
+    "strategy": "basic",
+    "config": "size=800, overlap=80",
+    "chunks": 23,
+    "hit3": 8,
+    "hit5": 8,
+    "ans5": 8,
+    "table_hit5": 4,
+    "table_ans5": 4,
+    "other_hit5": 4
+  },
+  {
+    "strategy": "basic",
+    "config": "size=800, overlap=150",
+    "chunks": 25,
+    "hit3": 7,
+    "hit5": 8,
+    "ans5": 7,
+    "table_hit5": 4,
+    "table_ans5": 4,
+    "other_hit5": 4
+  },
+  {
+    "strategy": "structured",
+    "config": "rows/chunk=4, max_chars=700",
+    "chunks": 61,
+    "hit3": 8,
+    "hit5": 8,
+    "ans5": 8,
+    "table_hit5": 4,
+    "table_ans5": 4,
+    "other_hit5": 4
+  },
+  {
+    "strategy": "structured",
+    "config": "rows/chunk=8, max_chars=700",
+    "chunks": 42,
+    "hit3": 6,
+    "hit5": 7,
+    "ans5": 7,
+    "table_hit5": 3,
+    "table_ans5": 3,
+    "other_hit5": 4
+  },
+  {
+    "strategy": "structured",
+    "config": "rows/chunk=16, max_chars=700",
+    "chunks": 36,
+    "hit3": 4,
+    "hit5": 5,
+    "ans5": 5,
+    "table_hit5": 2,
+    "table_ans5": 2,
+    "other_hit5": 3
+  },
+  {
+    "strategy": "structured",
+    "config": "rows/chunk=8, max_chars=400",
+    "chunks": 52,
+    "hit3": 6,
+    "hit5": 6,
+    "ans5": 6,
+    "table_hit5": 2,
+    "table_ans5": 2,
+    "other_hit5": 4
+  }
+]
