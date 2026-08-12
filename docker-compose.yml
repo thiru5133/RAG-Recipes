@@ -1,0 +1,26 @@
+services:
+  # One-shot: ingest both strategies, run the full evaluation, write results.md.
+  rag:
+    build: .
+    env_file:
+      - .env
+    volumes:
+      # Bind-mount the project so results.md and results/*.json land on the host.
+      - .:/app
+      - chroma:/app/.chroma
+    command: python scripts/run_all.py
+
+  # Interactive UI at http://localhost:8501
+  ui:
+    build: .
+    env_file:
+      - .env
+    ports:
+      - "8501:8501"
+    volumes:
+      - .:/app
+      - chroma:/app/.chroma
+    command: streamlit run app.py --server.address=0.0.0.0 --server.port=8501
+
+volumes:
+  chroma:

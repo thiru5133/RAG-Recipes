@@ -1,0 +1,98 @@
+"""Streamlit UI: ad-hoc retrieval with a dietary filter, and grounded answers."""
+import sys
+from pathlib import Path
+
+import streamlit as st
+
+ROOT = Path(__file__).resolve().parent
+sys.path.insert(0, str(ROOT / "src"))
+sys.path.insert(0, str(ROOT))
+
+from config import REFUSAL_THRESHOLD  # noqa: E402
+from guardrails import answer_question  # noqa: E402
+from loader import load_corpus  # noqa: E402
+from retrieve import dietary_filter, search  # noqa: E402
+
+st.set_page_config(page_title="Recipe RAG", layout="wide")
+st.title("Recipe RAG — retrieval and grounded answers")
+
+
+@st.cache_data
+def all_tags():
+    tags = set()
+    for r in load_corpus():
+        tags.update(r.dietary_tags)
+    return sorted(tags)
+
+
+with st.sidebar:
+    st.header("Retrieval settings")
+    strategy = st.radio("Chunking strategy", ["structured", "basic"], index=0)
+    k = st.slider("Top-K", 1, 10, 5)
+    tag = st.selectbox("Filter by dietary_tags", ["(none)"] + all_tags())
+    threshold = st.slider("Refusal threshold (cosine similarity)", 0.0, 1.0,
+                          REFUSAL_THRESHOLD, 0.01)
+    st.caption("The threshold gate refuses before spending an LLM call when the "
+               "best chunk is too far away.")
+
+question = st.text_input(
+    "Question",
+    value="How much green curry paste do I need?",
+    placeholder="Ask about the 6 indexed recipe cards",
+)
+
+if question:
+    where = None if tag == "(none)" else dietary_filter(tag)
+    try:
+        hits = search(question, strategy=strategy, k=k, where=where)
+    except Exception as exc:
+        st.error(f"Retrieval failed — has the index been built? `python scripts/ingest.py`\n\n{exc}")
+        st.stop()
+
+    st.subheader(f"Retrieved chunks ({len(hits)})")
+    if where:
+        st.caption(f"Chroma filter applied: `{where}`")
+    if not hits:
+        st.warning("Nothing matched that filter.")
+
+    st.dataframe(
+        [
+            {
+                "rank": h["rank"],
+                "chunk_id": h["chunk_id"],
+                "recipe_id": h["metadata"]["recipe_id"],
+                "recipe": h["metadata"]["recipe_title"],
+                "section": h["metadata"]["section"],
+                "cuisine": h["metadata"]["cuisine"],
+                "dietary_tags": h["metadata"]["dietary_tags"],
+                "score": h["score"],
+            }
+            for h in hits
+        ],
+        use_container_width=True,
+        hide_index=True,
+    )
+
+    for h in hits:
+        with st.expander(f"{h['rank']}. {h['chunk_id']} — score {h['score']:.4f}"):
+            st.code(h["text"])
+
+    if st.button("Generate grounded answer", type="primary"):
+        with st.spinner("Asking the model…"):
+            result = answer_question(question, hits, threshold=threshold)
+
+        if result["error"]:
+            st.error(result["error"])
+        elif result["refused"]:
+            st.warning(f"Refused (gate: {result['refused_by']})")
+            st.write(result["answer"])
+        else:
+            st.success("Answer")
+            st.write(result["answer"])
+            c = result["citations"]
+            if c:
+                st.caption(
+                    f"Citations {c['cited']} — valid: {c['valid']}; "
+                    f"unknown chunk_ids: {c['unknown_chunk_ids'] or 'none'}; "
+                    f"recipe_id mismatches: {c['recipe_id_mismatches'] or 'none'}"
+                )
