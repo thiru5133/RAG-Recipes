@@ -58,6 +58,18 @@ def add_chunks(collection, chunks: List[Chunk], batch: int = 100):
         )
 
 
+def upsert_chunks(collection, chunks: List[Chunk], batch: int = 100):
+    """Update or add chunks, removing any pre-existing chunks for the same recipe_ids first."""
+    recipe_ids = list({c.metadata.get("recipe_id") for c in chunks if c.metadata.get("recipe_id")})
+    for rid in recipe_ids:
+        try:
+            collection.delete(where={"recipe_id": rid})
+        except Exception:
+            pass
+    add_chunks(collection, chunks, batch=batch)
+
+
+
 def query(collection, question: str, k: int = 5, where: Optional[Dict] = None):
     """Return top-k hits as dicts with a cosine similarity score."""
     res = collection.query(

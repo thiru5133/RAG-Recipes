@@ -4,9 +4,10 @@ Every card is markdown with YAML-ish front matter, one H1 title and a fixed set 
 H2 sections. Sections are classified as table or prose so the chunkers can treat
 them differently.
 """
+import glob
 from dataclasses import dataclass, field
 from pathlib import Path
-from typing import List
+from typing import List, Union
 
 from config import RECIPE_DIR
 
@@ -103,7 +104,7 @@ def load_recipe(path: Path) -> Recipe:
     current = None
 
     for line in lines[start:]:
-        if line.startswith("# "):
+        if line.startswith("# ") and not title:
             title = line[2:].strip()
         elif line.startswith("## "):
             heading = line[3:].strip()
@@ -119,10 +120,12 @@ def load_recipe(path: Path) -> Recipe:
         s.kind = "table" if body and len(rows) >= max(3, 0.6 * len(body)) else "prose"
 
     tags = [t.strip() for t in meta.get("dietary_tags", "").split(",") if t.strip()]
+    if not title:
+        title = meta.get("title", path.stem.replace("-", " ").replace("_", " ").title())
     return Recipe(
         recipe_id=meta.get("recipe_id", path.stem),
         title=title,
-        cuisine=meta.get("cuisine", ""),
+        cuisine=meta.get("cuisine", "General"),
         dietary_tags=tags,
         servings=meta.get("servings", ""),
         source_file=path.name,
@@ -134,3 +137,35 @@ def load_corpus(directory: Path = RECIPE_DIR) -> List[Recipe]:
     """Load exactly the supplied recipe cards. Nothing else is ever indexed."""
     paths = sorted(directory.glob("*.md"))
     return [load_recipe(p) for p in paths]
+
+
+def load_corpus_from_sources(sources: List[Union[str, Path]]) -> List[Recipe]:
+    """Load recipe cards from a list of file paths, directory paths, or glob patterns."""
+    collected_paths: List[Path] = []
+
+    for src in sources:
+        p = Path(src)
+        if p.is_file():
+            collected_paths.append(p)
+        elif p.is_dir():
+            collected_paths.extend(sorted(p.glob("*.md")))
+        else:
+            # Try glob pattern expansion
+            str_src = str(src)
+            matched = [Path(f) for f in glob.glob(str_src, recursive=True) if Path(f).is_file()]
+            if matched:
+                collected_paths.extend(sorted(matched))
+            elif "*" not in str_src and "?" not in str_src:
+                print(f"Warning: source '{src}' is not a valid file or directory.")
+
+    # Deduplicate while preserving order
+    seen = set()
+    unique_paths = []
+    for path in collected_paths:
+        abs_p = path.resolve()
+        if abs_p not in seen and path.suffix.lower() == ".md":
+            seen.add(abs_p)
+            unique_paths.append(path)
+
+    return [load_recipe(p) for p in unique_paths]
+
