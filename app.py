@@ -8,10 +8,12 @@ ROOT = Path(__file__).resolve().parent
 sys.path.insert(0, str(ROOT / "src"))
 sys.path.insert(0, str(ROOT))
 
-from config import REFUSAL_THRESHOLD  # noqa: E402
+from chunking import chunk_basic, chunk_structured  # noqa: E402
+from config import COLLECTION_BASIC, COLLECTION_STRUCTURED, RECIPE_DIR, REFUSAL_THRESHOLD  # noqa: E402
 from guardrails import answer_question  # noqa: E402
-from loader import load_corpus  # noqa: E402
+from loader import load_corpus, load_recipe  # noqa: E402
 from retrieve import dietary_filter, search  # noqa: E402
+from store import get_collection, reset_collection, upsert_chunks  # noqa: E402
 
 st.set_page_config(page_title="Recipe RAG", layout="wide")
 st.title("Recipe RAG — retrieval and grounded answers")
@@ -26,6 +28,38 @@ def all_tags():
 
 
 with st.sidebar:
+    st.header("Upload Documents")
+    uploaded_files = st.file_uploader(
+        "Upload files (PDF, DOCX, TXT, MD, JSON, CSV, etc.)",
+        type=["pdf", "docx", "doc", "md", "txt", "json", "csv", "html"],
+        accept_multiple_files=True,
+        help="Upload document files to ingest dynamically into ChromaDB",
+    )
+    if uploaded_files:
+        if st.button("Ingest Uploaded Files", type="secondary"):
+            count = 0
+            RECIPE_DIR.mkdir(parents=True, exist_ok=True)
+            for file_obj in uploaded_files:
+                save_path = RECIPE_DIR / file_obj.name
+                save_path.write_bytes(file_obj.getvalue())
+                recipe = load_recipe(save_path)
+                basic_chunks = chunk_basic(recipe)
+                struct_chunks = chunk_structured(recipe)
+
+                for name, chunks in (
+                    (COLLECTION_BASIC, basic_chunks),
+                    (COLLECTION_STRUCTURED, struct_chunks),
+                ):
+                    try:
+                        coll = get_collection(name)
+                    except Exception:
+                        coll = reset_collection(name)
+                    upsert_chunks(coll, chunks)
+                count += 1
+            st.success(f"Successfully ingested {count} file(s) into ChromaDB!")
+            st.cache_data.clear()
+
+    st.divider()
     st.header("Retrieval settings")
     strategy = st.radio("Chunking strategy", ["structured", "basic"], index=0)
     k = st.slider("Top-K", 1, 10, 5)
@@ -34,6 +68,7 @@ with st.sidebar:
                           REFUSAL_THRESHOLD, 0.01)
     st.caption("The threshold gate refuses before spending an LLM call when the "
                "best chunk is too far away.")
+
 
 question = st.text_input(
     "Question",

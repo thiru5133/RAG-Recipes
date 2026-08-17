@@ -5,11 +5,14 @@ H2 sections. Sections are classified as table or prose so the chunkers can treat
 them differently.
 """
 import glob
+import re
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import List, Union
 
 from config import RECIPE_DIR
+
+SUPPORTED_EXTENSIONS = {".md", ".txt", ".pdf", ".docx", ".doc", ".json", ".csv", ".tsv", ".yaml", ".yml", ".html", ".xml"}
 
 # Canonical short names, so evaluation labels do not depend on exact headings.
 SECTION_ALIASES = {
@@ -82,6 +85,50 @@ class Recipe:
         return text, spans
 
 
+def extract_text_from_file(path: Path) -> str:
+    ext = path.suffix.lower()
+    if ext in [".md", ".txt", ".json", ".csv", ".tsv", ".yaml", ".yml", ".html", ".xml"]:
+        try:
+            return path.read_text(encoding="utf-8", errors="ignore")
+        except Exception:
+            return path.read_text(encoding="latin-1", errors="ignore")
+    elif ext == ".pdf":
+        text_parts = []
+        try:
+            import pypdf
+            with open(path, "rb") as f:
+                reader = pypdf.PdfReader(f)
+                for page in reader.pages:
+                    extracted = page.extract_text()
+                    if extracted:
+                        text_parts.append(extracted)
+        except Exception as exc:
+            print(f"pypdf extraction error: {exc}")
+
+        if not text_parts:
+            try:
+                import fitz  # PyMuPDF
+                doc = fitz.open(str(path))
+                for page in doc:
+                    text_parts.append(page.get_text())
+            except Exception:
+                pass
+
+        return "\n\n".join(text_parts).strip() if text_parts else f"# {path.stem}\n\n[PDF document text content]"
+    elif ext in [".docx", ".doc"]:
+        try:
+            import docx
+            doc = docx.Document(str(path))
+            return "\n\n".join([p.text for p in doc.paragraphs if p.text]).strip()
+        except Exception:
+            return f"# {path.stem}\n\n[Word document text content]"
+    else:
+        try:
+            return path.read_text(encoding="utf-8", errors="ignore")
+        except Exception:
+            return ""
+
+
 def _parse_front_matter(lines: List[str]):
     meta, body_start = {}, 0
     if lines and lines[0].strip() == "---":
@@ -96,7 +143,8 @@ def _parse_front_matter(lines: List[str]):
 
 
 def load_recipe(path: Path) -> Recipe:
-    lines = path.read_text(encoding="utf-8").splitlines()
+    raw_text = extract_text_from_file(path)
+    lines = raw_text.splitlines()
     meta, start = _parse_front_matter(lines)
 
     title = ""
@@ -112,9 +160,16 @@ def load_recipe(path: Path) -> Recipe:
             sections.append(current)
         elif current is not None:
             current.lines.append(line)
+        elif line.strip():
+            if not sections:
+                current = Section(heading="Overview", name="Overview", kind="prose")
+                sections.append(current)
+            current.lines.append(line)
+
+    if not sections:
+        sections = [Section(heading="Overview", name="Overview", kind="prose", lines=lines)]
 
     for s in sections:
-        # A section counts as a table if most of its non-blank lines are table rows.
         rows = [l for l in s.lines if l.strip().startswith("|")]
         body = [l for l in s.lines if l.strip()]
         s.kind = "table" if body and len(rows) >= max(3, 0.6 * len(body)) else "prose"
@@ -122,8 +177,10 @@ def load_recipe(path: Path) -> Recipe:
     tags = [t.strip() for t in meta.get("dietary_tags", "").split(",") if t.strip()]
     if not title:
         title = meta.get("title", path.stem.replace("-", " ").replace("_", " ").title())
+    recipe_id = meta.get("recipe_id", re.sub(r"[^A-Za-z0-9_-]", "_", path.stem))
+
     return Recipe(
-        recipe_id=meta.get("recipe_id", path.stem),
+        recipe_id=recipe_id,
         title=title,
         cuisine=meta.get("cuisine", "General"),
         dietary_tags=tags,
@@ -148,7 +205,8 @@ def load_corpus_from_sources(sources: List[Union[str, Path]]) -> List[Recipe]:
         if p.is_file():
             collected_paths.append(p)
         elif p.is_dir():
-            collected_paths.extend(sorted(p.glob("*.md")))
+            for ext in SUPPORTED_EXTENSIONS:
+                collected_paths.extend(sorted(p.glob(f"*{ext}")))
         else:
             # Try glob pattern expansion
             str_src = str(src)
@@ -163,9 +221,10 @@ def load_corpus_from_sources(sources: List[Union[str, Path]]) -> List[Recipe]:
     unique_paths = []
     for path in collected_paths:
         abs_p = path.resolve()
-        if abs_p not in seen and path.suffix.lower() == ".md":
+        if abs_p not in seen and path.suffix.lower() in SUPPORTED_EXTENSIONS:
             seen.add(abs_p)
             unique_paths.append(path)
 
     return [load_recipe(p) for p in unique_paths]
+
 

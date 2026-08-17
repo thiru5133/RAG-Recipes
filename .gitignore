@@ -1,0 +1,27 @@
+# Environment & Secret files
+.env
+.env.*
+!.env.example
+
+# Python virtual environments
+venv/
+env/
+.venv/
+ENV/
+
+# Python bytecode & cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+
+# Vector Database (ChromaDB persistent store)
+.chroma/
+*.sqlite3
+
+# Operating System & IDE files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
