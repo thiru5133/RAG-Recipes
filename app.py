@@ -1,4 +1,4 @@
-"""Streamlit UI: ad-hoc retrieval with a dietary filter, and grounded answers."""
+"""Streamlit UI: dynamic RAG retrieval and grounded answers for uploaded documents."""
 import sys
 from pathlib import Path
 
@@ -11,18 +11,19 @@ sys.path.insert(0, str(ROOT))
 from chunking import chunk_basic, chunk_structured  # noqa: E402
 from config import COLLECTION_BASIC, COLLECTION_STRUCTURED, RECIPE_DIR, REFUSAL_THRESHOLD  # noqa: E402
 from guardrails import answer_question  # noqa: E402
-from loader import load_corpus, load_recipe  # noqa: E402
+from loader import load_corpus_from_sources, load_recipe  # noqa: E402
 from retrieve import dietary_filter, search  # noqa: E402
 from store import get_collection, reset_collection, upsert_chunks  # noqa: E402
 
 st.set_page_config(page_title="Recipe RAG", layout="wide")
-st.title("Recipe RAG — retrieval and grounded answers")
+st.title("Recipe RAG — Dynamic Document Q&A")
 
 
 @st.cache_data
 def all_tags():
     tags = set()
-    for r in load_corpus():
+    recipes = load_corpus_from_sources([RECIPE_DIR])
+    for r in recipes:
         tags.update(r.dietary_tags)
     return sorted(tags)
 
@@ -36,7 +37,7 @@ with st.sidebar:
         help="Upload document files to ingest dynamically into ChromaDB",
     )
     if uploaded_files:
-        if st.button("Ingest Uploaded Files", type="secondary"):
+        if st.button("Ingest Uploaded Files", type="primary"):
             count = 0
             RECIPE_DIR.mkdir(parents=True, exist_ok=True)
             for file_obj in uploaded_files:
@@ -72,62 +73,66 @@ with st.sidebar:
 
 question = st.text_input(
     "Question",
-    value="How much green curry paste do I need?",
-    placeholder="Ask about the 6 indexed recipe cards",
+    value="",
+    placeholder="Ask a question about your uploaded documents...",
 )
 
 if question:
     where = None if tag == "(none)" else dietary_filter(tag)
     try:
         hits = search(question, strategy=strategy, k=k, where=where)
-    except Exception as exc:
-        st.error(f"Retrieval failed — has the index been built? `python scripts/ingest.py`\n\n{exc}")
-        st.stop()
+    except Exception:
+        hits = []
+        st.info("No indexed documents found yet. Please upload files (PDF, DOCX, MD, TXT) in the sidebar to start!")
 
-    st.subheader(f"Retrieved chunks ({len(hits)})")
-    if where:
-        st.caption(f"Chroma filter applied: `{where}`")
-    if not hits:
-        st.warning("Nothing matched that filter.")
+    if hits:
+        st.subheader(f"Retrieved chunks ({len(hits)})")
+        if where:
+            st.caption(f"Chroma filter applied: `{where}`")
 
-    st.dataframe(
-        [
-            {
-                "rank": h["rank"],
-                "chunk_id": h["chunk_id"],
-                "recipe_id": h["metadata"]["recipe_id"],
-                "recipe": h["metadata"]["recipe_title"],
-                "section": h["metadata"]["section"],
-                "cuisine": h["metadata"]["cuisine"],
-                "dietary_tags": h["metadata"]["dietary_tags"],
-                "score": h["score"],
-            }
-            for h in hits
-        ],
-        use_container_width=True,
-        hide_index=True,
-    )
+        st.dataframe(
+            [
+                {
+                    "rank": h["rank"],
+                    "chunk_id": h["chunk_id"],
+                    "recipe_id": h["metadata"].get("recipe_id", ""),
+                    "recipe": h["metadata"].get("recipe_title", ""),
+                    "section": h["metadata"].get("section", ""),
+                    "cuisine": h["metadata"].get("cuisine", ""),
+                    "dietary_tags": h["metadata"].get("dietary_tags", ""),
+                    "score": h["score"],
+                }
+                for h in hits
+            ],
+            use_container_width=True,
+            hide_index=True,
+        )
 
-    for h in hits:
-        with st.expander(f"{h['rank']}. {h['chunk_id']} — score {h['score']:.4f}"):
-            st.code(h["text"])
+        for h in hits:
+            with st.expander(f"{h['rank']}. {h['chunk_id']} — score {h['score']:.4f}"):
+                st.code(h["text"])
 
-    if st.button("Generate grounded answer", type="primary"):
-        with st.spinner("Asking the model…"):
-            result = answer_question(question, hits, threshold=threshold)
+        if st.button("Generate grounded answer", type="primary"):
+            with st.spinner("Asking the model…"):
+                result = answer_question(question, hits, threshold=threshold)
 
-        if result["error"]:
-            st.error(result["error"])
-        elif result["refused"]:
-            st.warning(f"Refused (gate: {result['refused_by']})")
-            st.write(result["answer"])
-        else:
-            st.success("Answer")
-            st.write(result["answer"])
-            c = result["citations"]
-            if c:
-                st.caption(
-                    f"Citations {c['cited']} — valid: {c['valid']}; "
-                    f"unknown chunk_ids: {c['unknown_chunk_ids'] or 'none'}; "
-                    f"recipe_id mismatches: {c['recipe_id_mismatches'] or 'none'}"
-                )
+            if result["error"]:
+                st.error(result["error"])
+            elif result["refused"]:
+                st.warning(f"Refused (gate: {result['refused_by']})")
+                st.write(result["answer"])
+            else:
+                st.success("Answer")
+                st.write(result["answer"])
+                c = result["citations"]
+                if c:
+                    st.caption(
+                        f"Citations {c['cited']} — valid: {c['valid']}; "
+                        f"unknown chunk_ids: {c['unknown_chunk_ids'] or 'none'}; "
+                        f"recipe_id mismatches: {c['recipe_id_mismatches'] or 'none'}"
+                    )
+    elif question and not hits:
+        st.warning("No matching content found for your query. Try uploading a relevant document or lowering the refusal threshold.")
+else:
+    st.info("👈 Upload your documents (PDF, DOCX, MD, TXT, etc.) in the sidebar and type a question above!")
+
