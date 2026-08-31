@@ -63,6 +63,9 @@ with st.sidebar:
     st.divider()
     st.header("Retrieval settings")
     strategy = st.radio("Chunking strategy", ["structured", "basic"], index=0)
+    mode = st.radio("Search mode", ["semantic", "bm25", "hybrid"], index=0,
+                    help="semantic = vector similarity · bm25 = keyword matching · "
+                         "hybrid = RRF fusion of both")
     k = st.slider("Top-K", 1, 10, 5)
     tag = st.selectbox("Filter by dietary_tags", ["(none)"] + all_tags())
     threshold = st.slider("Refusal threshold (cosine similarity)", 0.0, 1.0,
@@ -80,7 +83,7 @@ question = st.text_input(
 if question:
     where = None if tag == "(none)" else dietary_filter(tag)
     try:
-        hits = search(question, strategy=strategy, k=k, where=where)
+        hits = search(question, strategy=strategy, k=k, where=where, mode=mode)
     except Exception:
         hits = []
         st.info("No indexed documents found yet. Please upload files (PDF, DOCX, MD, TXT) in the sidebar to start!")
