@@ -95,3 +95,34 @@ def answers_at(per_question: List[Dict], k: int, qids: List[str] = None) -> int:
         if rank is not None and rank <= k:
             total += 1
     return total
+
+
+def hit_rate_at(per_question: List[Dict], k: int, qids: List[str] = None) -> float:
+    """Fraction of questions where the correct chunk appears in top-k."""
+    total_qs = [r for r in per_question if qids is None or r["qid"] in qids]
+    if not total_qs:
+        return 0.0
+    hits = sum(1 for r in total_qs
+               if r["first_hit_rank"] is not None and r["first_hit_rank"] <= k)
+    return round(hits / len(total_qs), 4)
+
+
+def mrr(per_question: List[Dict], qids: List[str] = None) -> float:
+    """Mean Reciprocal Rank: average of 1/rank of first correct hit.
+
+    Questions with no correct hit contribute 0.
+    """
+    total_qs = [r for r in per_question if qids is None or r["qid"] in qids]
+    if not total_qs:
+        return 0.0
+    reciprocals = []
+    for r in total_qs:
+        rank = r["first_hit_rank"]
+        reciprocals.append(1.0 / rank if rank else 0.0)
+    return round(sum(reciprocals) / len(reciprocals), 4)
+
+
+def recall_at(per_question: List[Dict], k: int, qids: List[str] = None) -> float:
+    """Alias for hit_rate_at — in a single-gold-doc setting they are identical."""
+    return hit_rate_at(per_question, k, qids)
+

@@ -25,6 +25,7 @@ STRATEGIES = {
 }
 
 TOP_K = 5
+RRF_K = 60  # Reciprocal Rank Fusion constant
 
 # Refusal gate: if the best chunk scores below this cosine similarity, refuse
 # before spending an LLM call. Calibrated in results.md from the observed score
