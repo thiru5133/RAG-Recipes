@@ -1,13 +1,17 @@
 """Retrieval front door: one function both the CLI and the UI call.
 
-Supports three modes:
-- "semantic": ChromaDB vector similarity (original behaviour)
+Supports three first-stage modes:
+- "semantic": ChromaDB vector similarity
 - "bm25": BM25 keyword search
 - "hybrid": RRF fusion of semantic + BM25
+
+Optional second stage: retrieve a wider pool, then rerank with BM25-over-pool,
+query-term coverage, and a section prior, fused back into the first-stage
+ranking (also RRF). Cosine is left unchanged for the refusal gate.
 """
 from typing import Dict, List, Optional
 
-from config import RRF_K, STRATEGIES, TOP_K
+from config import RERANK_CANDIDATES, RRF_K, STRATEGIES, TOP_K
 from store import get_collection, query
 
 _cache: Dict[str, object] = {}
@@ -26,29 +30,64 @@ def _rrf_fuse(
 ) -> List[Dict]:
     """Reciprocal Rank Fusion: merge two ranked lists into one.
 
-    RRF score for document d = sum over all lists L of  1 / (rrf_k + rank_in_L).
-    Documents not present in a list get no contribution from that list.
+    Rank by RRF. `score` is the chunk's cosine from the semantic list so the
+    refusal gate compares cosine to a cosine threshold, not an RRF figure.
     """
-    scores: Dict[str, float] = {}
-    doc_map: Dict[str, Dict] = {}  # chunk_id -> best hit dict
+    rrf_scores: Dict[str, float] = {}
+    doc_map: Dict[str, Dict] = {}
+    cosine_by_id = {h["chunk_id"]: float(h["score"]) for h in semantic_hits}
 
     for hits in (semantic_hits, bm25_hits):
         for h in hits:
             cid = h["chunk_id"]
-            scores[cid] = scores.get(cid, 0.0) + 1.0 / (rrf_k + h["rank"])
+            rrf_scores[cid] = rrf_scores.get(cid, 0.0) + 1.0 / (rrf_k + h["rank"])
             if cid not in doc_map:
                 doc_map[cid] = h
 
-    ranked = sorted(scores.items(), key=lambda x: x[1], reverse=True)[:k]
+    ranked = sorted(rrf_scores.items(), key=lambda x: x[1], reverse=True)[:k]
 
     fused = []
     for rank, (cid, rrf_score) in enumerate(ranked, start=1):
-        hit = dict(doc_map[cid])  # copy
+        hit = dict(doc_map[cid])
         hit["rank"] = rank
-        hit["score"] = round(rrf_score, 4)
-        hit["distance"] = 0.0  # RRF scores are not distances
+        hit["rrf_score"] = round(rrf_score, 4)
+        cosine = cosine_by_id.get(cid)
+        if cosine is None:
+            hit["gate_score"] = None
+            hit["score"] = 0.0
+            hit["distance"] = 1.0
+        else:
+            hit["gate_score"] = round(cosine, 4)
+            hit["score"] = hit["gate_score"]
+            hit["distance"] = round(1.0 - cosine, 4)
         fused.append(hit)
     return fused
+
+
+def _first_stage(
+    question: str,
+    strategy: str,
+    k: int,
+    where: Optional[Dict],
+    mode: str,
+) -> List[Dict]:
+    coll = collection_for(strategy)
+
+    if mode == "semantic":
+        return query(coll, question, k=k, where=where)
+
+    if mode == "bm25":
+        from bm25_search import get_bm25_index
+        return get_bm25_index(coll).search(question, k=k, where=where)
+
+    if mode == "hybrid":
+        from bm25_search import get_bm25_index
+        n_candidates = k * 2
+        semantic_hits = query(coll, question, k=n_candidates, where=where)
+        bm25_hits = get_bm25_index(coll).search(question, k=n_candidates, where=where)
+        return _rrf_fuse(semantic_hits, bm25_hits, k=k)
+
+    raise ValueError(f"unknown mode {mode!r}; expected 'semantic', 'bm25', or 'hybrid'")
 
 
 def search(
@@ -57,34 +96,26 @@ def search(
     k: int = TOP_K,
     where: Optional[Dict] = None,
     mode: str = "semantic",
+    rerank: bool = False,
+    rerank_n: Optional[int] = None,
 ) -> List[Dict]:
     """Retrieve top-k chunks.
 
     Parameters
     ----------
     mode : str
-        "semantic" (default, original behaviour), "bm25", or "hybrid" (RRF fusion).
+        "semantic" (default), "bm25", or "hybrid" (RRF fusion).
+    rerank : bool
+        If true, retrieve a wider pool then rerank (BM25 + coverage + section).
+    rerank_n : int, optional
+        Pool size when reranking. Defaults to RERANK_CANDIDATES.
     """
-    coll = collection_for(strategy)
-
-    if mode == "semantic":
-        return query(coll, question, k=k, where=where)
-
-    if mode == "bm25":
-        from bm25_search import get_bm25_index
-        idx = get_bm25_index(coll)
-        return idx.search(question, k=k, where=where)
-
-    if mode == "hybrid":
-        from bm25_search import get_bm25_index
-        # Fetch more candidates from each source, then fuse down to k
-        n_candidates = k * 2
-        semantic_hits = query(coll, question, k=n_candidates, where=where)
-        bm25_idx = get_bm25_index(coll)
-        bm25_hits = bm25_idx.search(question, k=n_candidates, where=where)
-        return _rrf_fuse(semantic_hits, bm25_hits, k=k)
-
-    raise ValueError(f"unknown mode {mode!r}; expected 'semantic', 'bm25', or 'hybrid'")
+    pool_k = max(k, rerank_n or RERANK_CANDIDATES) if rerank else k
+    hits = _first_stage(question, strategy, pool_k, where, mode)
+    if rerank:
+        from rerank import rerank as rerank_hits
+        hits = rerank_hits(question, hits, k=k)
+    return hits
 
 
 def dietary_filter(tag: str) -> Dict:

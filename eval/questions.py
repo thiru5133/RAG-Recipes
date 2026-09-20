@@ -1,4 +1,9 @@
-"""The 8 known-answer questions.
+"""The known-answer golden set.
+
+Q1–Q8 are the original review questions (kept stable so older write-ups and
+the demo sample in `scripts/sampling.py` still map). Q9 onwards cover the
+facts the original eight left out: every remaining recipe, and a mix of
+ingredient rows, method times, notes/substitutions, and nutrition.
 
 `gold_recipes` / `gold_section` are the labels used for Hit-in-Top-5. `markers`
 are exact substrings of the source card, used for a stricter secondary check:
@@ -78,6 +83,175 @@ QUESTIONS = [
         "answer": "ambiguous: 45 g in the chicken curry (R004), 50 g in the vegan curry (R005)",
         "markers": ["Green curry paste | 45 | g", "Green curry paste | 50 | g"],
     },
+    # ── R001 Paneer Butter Masala (extra) ───────────────────────────────────
+    {
+        "qid": "Q9",
+        "question": "How many grams of paneer do I need for butter masala?",
+        "gold_recipes": ["R001"],
+        "gold_section": "Ingredients",
+        "type": "table",
+        "answer": "400 g, cut into 2 cm cubes",
+        "markers": ["Paneer | 400 | g"],
+    },
+    {
+        "qid": "Q10",
+        "question": "How long do the cashews soak for the paneer butter masala?",
+        "gold_recipes": ["R001"],
+        "gold_section": "Method",
+        "type": "prose",
+        "answer": "15 minutes in hot water",
+        "markers": ["Soak the cashews in hot water for 15 minutes"],
+    },
+    {
+        "qid": "Q11",
+        "question": "How long do paneer butter masala leftovers keep?",
+        "gold_recipes": ["R001"],
+        "gold_section": "Notes",
+        "type": "prose",
+        "answer": "3 days refrigerated; the cream may separate on reheating",
+        "markers": ["3 days refrigerated"],
+    },
+    # ── R002 Chana Masala (extra) ───────────────────────────────────────────
+    {
+        "qid": "Q12",
+        "question": "How long do the dried chickpeas boil for the chana masala?",
+        "gold_recipes": ["R002"],
+        "gold_section": "Method",
+        "type": "prose",
+        "answer": "45 to 55 minutes, until they crush easily between two fingers",
+        "markers": ["boil for 45 to 55"],
+    },
+    {
+        "qid": "Q13",
+        "question": "How much chickpea cooking liquid should I reserve?",
+        "gold_recipes": ["R002"],
+        "gold_section": "Method",
+        "type": "prose",
+        "answer": "250 ml of the cooking liquid",
+        "markers": ["Reserve 250 ml of the"],
+    },
+    {
+        "qid": "Q14",
+        "question": "Can I use tinned chickpeas in the chana masala, and how much?",
+        "gold_recipes": ["R002"],
+        "gold_section": "Notes",
+        "type": "prose",
+        "answer": "two 400 g tins, drained; reduce the final simmer to 8 minutes",
+        "markers": ["two 400 g tins"],
+    },
+    # ── R003 Margherita Pizza (extra) ───────────────────────────────────────
+    {
+        "qid": "Q15",
+        "question": "How much fresh mozzarella is needed for the margherita pizza?",
+        "gold_recipes": ["R003"],
+        "gold_section": "Ingredients",
+        "type": "table",
+        "answer": "250 g, torn and drained 30 minutes",
+        "markers": ["Fresh mozzarella | 250 | g"],
+    },
+    {
+        "qid": "Q16",
+        "question": "How long is the pizza dough refrigerated for?",
+        "gold_recipes": ["R003"],
+        "gold_section": "Method",
+        "type": "prose",
+        "answer": "24 hours",
+        "markers": ["refrigerate for 24 hours"],
+    },
+    {
+        "qid": "Q17",
+        "question": "My oven only reaches 220 C, how long do I bake the pizza?",
+        "gold_recipes": ["R003"],
+        "gold_section": "Notes",
+        "type": "prose",
+        "answer": "10 to 12 minutes; switching on the grill for the final minute helps",
+        "markers": ["10 to 12 minutes"],
+    },
+    # ── R004 Thai Green Curry with Chicken ──────────────────────────────────
+    {
+        "qid": "Q18",
+        "question": "How much green curry paste is in the chicken green curry?",
+        "gold_recipes": ["R004"],
+        "gold_section": "Ingredients",
+        "type": "table",
+        "answer": "45 g, about 3 tablespoons",
+        "markers": ["Green curry paste | 45 | g"],
+    },
+    {
+        "qid": "Q19",
+        "question": "How long does the chicken curry simmer after the vegetables go in?",
+        "gold_recipes": ["R004"],
+        "gold_section": "Method",
+        "type": "prose",
+        "answer": "12 minutes at a gentle simmer",
+        "markers": ["Simmer gently for 12 minutes"],
+    },
+    {
+        "qid": "Q20",
+        "question": "If I use chicken breast instead of thigh, how long do I simmer it?",
+        "gold_recipes": ["R004"],
+        "gold_section": "Notes",
+        "type": "prose",
+        "answer": "reduce the simmer to 7 minutes",
+        "markers": ["reduce the simmer to 7 minutes"],
+    },
+    # ── R005 Vegan Thai Green Curry ─────────────────────────────────────────
+    {
+        "qid": "Q21",
+        "question": "How long is the tofu pressed for the vegan green curry?",
+        "gold_recipes": ["R005"],
+        "gold_section": "Method",
+        "type": "prose",
+        "answer": "30 minutes between two plates under a weight",
+        "markers": ["Press the tofu between two plates under a weight for 30 minutes"],
+    },
+    {
+        "qid": "Q22",
+        "question": "What replaces the fish sauce in the vegan green curry?",
+        "gold_recipes": ["R005"],
+        "gold_section": "Ingredients",
+        "type": "table",
+        "answer": "2 tbsp light soy sauce, plus 1 tsp white miso",
+        "markers": ["Light soy sauce | 2 | tbsp"],
+    },
+    {
+        "qid": "Q23",
+        "question": "How many calories per serving is the vegan green curry?",
+        "gold_recipes": ["R005"],
+        "gold_section": "Nutrition",
+        "type": "table",
+        "answer": "412 kcal per serving",
+        "markers": ["Energy | 412 | kcal"],
+    },
+    # ── R006 Shakshuka (extra) ──────────────────────────────────────────────
+    {
+        "qid": "Q24",
+        "question": "How many eggs does the shakshuka use?",
+        "gold_recipes": ["R006"],
+        "gold_section": "Ingredients",
+        "type": "table",
+        "answer": "6 large eggs at room temperature",
+        "markers": ["Large eggs | 6 | eggs"],
+    },
+    {
+        "qid": "Q25",
+        "question": "How much feta goes on the shakshuka?",
+        "gold_recipes": ["R006"],
+        "gold_section": "Ingredients",
+        "type": "table",
+        "answer": "100 g, crumbled over at the end",
+        "markers": ["Feta cheese | 100 | g"],
+    },
+    {
+        "qid": "Q26",
+        "question": "How do I make the shakshuka vegan?",
+        "gold_recipes": ["R006"],
+        "gold_section": "Notes",
+        "type": "prose",
+        "answer": "omit eggs and feta, add two 400 g tins of chickpeas at step 3, simmer 10 minutes",
+        "markers": ["omit the eggs and feta"],
+    },
 ]
 
 TABLE_QIDS = [q["qid"] for q in QUESTIONS if q["type"] == "table"]
+ORIGINAL_QIDS = [f"Q{i}" for i in range(1, 9)]

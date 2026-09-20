@@ -1,4 +1,4 @@
-"""Search-only evaluation: all 8 questions against both strategies, no LLM."""
+"""Search-only evaluation: the golden set against both strategies, no LLM."""
 import json
 import sys
 from pathlib import Path

@@ -11,8 +11,9 @@ know *which kind* of wrong you're looking at.
 from typing import Dict, List, Optional
 
 from config import REFUSAL_THRESHOLD
-from evaluate import evaluate_question
+from evaluate import evaluate_hits
 from guardrails import answer_question
+from retrieve import search
 from store import query
 
 
@@ -44,13 +45,23 @@ def label_one(
     k: int = 5,
     threshold: float = REFUSAL_THRESHOLD,
     run_generation: bool = True,
+    strategy: Optional[str] = None,
+    mode: str = "semantic",
+    rerank: bool = False,
 ) -> Dict:
     """Label a single question as retrieval_failure, generation_failure, or success.
 
     Returns a dict with the label and all the evidence needed to justify it.
+    When `strategy` is set, retrieval goes through `search()` so mode and
+    rerank match the inspection sidebar. Otherwise this is plain Chroma cosine.
     """
-    # Step 1: retrieval evaluation
-    retrieval = evaluate_question(collection, q, k=k)
+    if strategy:
+        hits = search(
+            q["question"], strategy=strategy, k=k, mode=mode, rerank=rerank
+        )
+    else:
+        hits = query(collection, q["question"], k=k)
+    retrieval = evaluate_hits(hits, q)
     hit = retrieval["hit"]  # correct chunk in top-k?
     answer_present = retrieval["answer_present"]  # answer text in a retrieved chunk?
 
@@ -96,8 +107,7 @@ def label_one(
         result["generation_correct"] = None
         return result
 
-    # Step 3: run generation
-    hits = query(collection, q["question"], k=k)
+    # Step 3: run generation on the same hits the label used
     gen_result = answer_question(q["question"], hits, threshold=threshold)
     generated = gen_result.get("answer")
     result["generated_answer"] = generated
@@ -145,11 +155,22 @@ def label_all(
     k: int = 5,
     threshold: float = REFUSAL_THRESHOLD,
     run_generation: bool = True,
+    strategy: Optional[str] = None,
+    mode: str = "semantic",
+    rerank: bool = False,
 ) -> Dict:
     """Label every question and return a summary."""
     labelled = [
-        label_one(collection, q, k=k, threshold=threshold,
-                  run_generation=run_generation)
+        label_one(
+            collection,
+            q,
+            k=k,
+            threshold=threshold,
+            run_generation=run_generation,
+            strategy=strategy,
+            mode=mode,
+            rerank=rerank,
+        )
         for q in questions
     ]
 

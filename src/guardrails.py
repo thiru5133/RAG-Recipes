@@ -1,13 +1,33 @@
 """Two independent gates against hallucination, plus citation verification."""
-from typing import Dict, List
+from typing import Dict, List, Optional
 
 from config import REFUSAL_THRESHOLD
 from generate import REFUSAL, extract_citations, generate
 
 
+def gate_value(hits: List[Dict]) -> Optional[float]:
+    """The number the 0.30 threshold is compared against.
+
+    Semantic and BM25 hits use `score` as before. Hybrid hits carry cosine in
+    `gate_score` (the RRF figure is only a ranker). If the RRF-top document was
+    BM25-only and has no cosine, the best cosine in the fused window is used so
+    the gate still sees the scale it was calibrated on.
+    """
+    if not hits:
+        return None
+    top = hits[0].get("gate_score")
+    if top is not None:
+        return float(top)
+    window = [float(h["gate_score"]) for h in hits if h.get("gate_score") is not None]
+    if window:
+        return max(window)
+    return float(hits[0]["score"])
+
+
 def below_threshold(hits: List[Dict], threshold: float = REFUSAL_THRESHOLD) -> bool:
     """Gate 1: nothing retrieved is close enough to be worth an LLM call."""
-    return not hits or hits[0]["score"] < threshold
+    value = gate_value(hits)
+    return value is None or value < threshold
 
 
 def validate_citations(answer: str, hits: List[Dict]) -> Dict:
@@ -27,7 +47,7 @@ def validate_citations(answer: str, hits: List[Dict]) -> Dict:
 
 def answer_question(question: str, hits: List[Dict], threshold: float = REFUSAL_THRESHOLD) -> Dict:
     """Full guarded path: threshold gate, then prompt gate, then verification."""
-    top_score = hits[0]["score"] if hits else None
+    top_score = gate_value(hits)
 
     if below_threshold(hits, threshold):
         return {
@@ -39,6 +59,7 @@ def answer_question(question: str, hits: List[Dict], threshold: float = REFUSAL_
             "threshold": threshold,
             "citations": None,
             "error": None,
+            "generation": None,
         }
 
     result = generate(question, hits)
@@ -52,6 +73,7 @@ def answer_question(question: str, hits: List[Dict], threshold: float = REFUSAL_
             "threshold": threshold,
             "citations": None,
             "error": result["error"],
+            "generation": result,
         }
 
     answer = result["answer"]
@@ -65,4 +87,5 @@ def answer_question(question: str, hits: List[Dict], threshold: float = REFUSAL_
         "threshold": threshold,
         "citations": None if refused else validate_citations(answer, hits),
         "error": None,
+        "generation": result,
     }

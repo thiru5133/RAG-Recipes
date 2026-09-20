@@ -27,6 +27,11 @@ STRATEGIES = {
 TOP_K = 5
 RRF_K = 60  # Reciprocal Rank Fusion constant
 
+# Second-stage rerank: retrieve this many candidates, then cut back to k.
+RERANK_CANDIDATES = 20
+# Tighter than first-stage RRF_K: the pool is small, so rank gaps must count.
+RERANK_RRF_K = 10
+
 # Refusal gate: if the best chunk scores below this cosine similarity, refuse
 # before spending an LLM call. Calibrated in results.md from the observed score
 # distribution over the 8 answerable questions.

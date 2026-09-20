@@ -14,6 +14,7 @@ from guardrails import answer_question  # noqa: E402
 from loader import load_corpus_from_sources, load_recipe  # noqa: E402
 from retrieve import dietary_filter, search  # noqa: E402
 from store import get_collection, reset_collection, upsert_chunks  # noqa: E402
+from tracing import append_trace, build_trace  # noqa: E402
 
 st.set_page_config(page_title="Recipe RAG", layout="wide")
 st.title("Recipe RAG — Dynamic Document Q&A")
@@ -67,6 +68,13 @@ with st.sidebar:
                     help="semantic = vector similarity · bm25 = keyword matching · "
                          "hybrid = RRF fusion of both")
     k = st.slider("Top-K", 1, 10, 5)
+    rerank = st.checkbox(
+        "Rerank",
+        value=True,
+        help="Retrieve a wider pool, then rescore with BM25 (unit synonyms), "
+             "query-term coverage, and a section prior (quantity→Ingredients, "
+             "time→Method, substitute→Notes). Cosine is unchanged for the gate.",
+    )
     tag = st.selectbox("Filter by dietary_tags", ["(none)"] + all_tags())
     threshold = st.slider("Refusal threshold (cosine similarity)", 0.0, 1.0,
                           REFUSAL_THRESHOLD, 0.01)
@@ -83,7 +91,7 @@ question = st.text_input(
 if question:
     where = None if tag == "(none)" else dietary_filter(tag)
     try:
-        hits = search(question, strategy=strategy, k=k, where=where, mode=mode)
+        hits = search(question, strategy=strategy, k=k, where=where, mode=mode, rerank=rerank)
     except Exception:
         hits = []
         st.info("No indexed documents found yet. Please upload files (PDF, DOCX, MD, TXT) in the sidebar to start!")
@@ -92,11 +100,15 @@ if question:
         st.subheader(f"Retrieved chunks ({len(hits)})")
         if where:
             st.caption(f"Chroma filter applied: `{where}`")
+        if rerank:
+            st.caption("Rerank on: first-stage pool fused with BM25, coverage, "
+                       "and section prior. `was` is the rank before rerank.")
 
         st.dataframe(
             [
                 {
                     "rank": h["rank"],
+                    "was": h.get("retrieve_rank", h["rank"]),
                     "chunk_id": h["chunk_id"],
                     "recipe_id": h["metadata"].get("recipe_id", ""),
                     "recipe": h["metadata"].get("recipe_title", ""),
@@ -104,6 +116,7 @@ if question:
                     "cuisine": h["metadata"].get("cuisine", ""),
                     "dietary_tags": h["metadata"].get("dietary_tags", ""),
                     "score": h["score"],
+                    "rerank": h.get("rerank_score"),
                 }
                 for h in hits
             ],
@@ -112,12 +125,29 @@ if question:
         )
 
         for h in hits:
-            with st.expander(f"{h['rank']}. {h['chunk_id']} — score {h['score']:.4f}"):
+            with st.expander(
+                f"{h['rank']}. {h['chunk_id']} — score {h['score']:.4f}"
+                + (f" (was #{h['retrieve_rank']})" if h.get("retrieve_rank") else "")
+            ):
                 st.code(h["text"])
 
         if st.button("Generate grounded answer", type="primary"):
             with st.spinner("Asking the model…"):
                 result = answer_question(question, hits, threshold=threshold)
+            append_trace(
+                build_trace(
+                    question,
+                    hits,
+                    result,
+                    strategy=strategy,
+                    mode=mode,
+                    k=k,
+                    threshold=threshold,
+                    where=where,
+                    rerank=rerank,
+                    question_meta={"source": "ui"},
+                )
+            )
 
             if result["error"]:
                 st.error(result["error"])

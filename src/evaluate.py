@@ -24,8 +24,8 @@ def judge(hit: Dict, q: Dict):
     return recipe_ok, section_ok, marker_ok
 
 
-def evaluate_question(collection, q: Dict, k: int = 5) -> Dict:
-    hits = query(collection, q["question"], k=k)
+def evaluate_hits(hits: List[Dict], q: Dict) -> Dict:
+    """Score an already-retrieved list against gold recipe/section/markers."""
     first_hit = None
     first_answer = None
     rows = []
@@ -42,7 +42,8 @@ def evaluate_question(collection, q: Dict, k: int = 5) -> Dict:
                 "recipe_id": (h["metadata"] or {}).get("recipe_id", ""),
                 "section": (h["metadata"] or {}).get("section", ""),
                 "score": h["score"],
-                "distance": h["distance"],
+                "distance": h.get("distance"),
+                "retrieve_rank": h.get("retrieve_rank"),
                 "correct": bool(recipe_ok and section_ok),
                 "has_answer": bool(recipe_ok and marker_ok),
                 "snippet": " ".join(h["text"].split())[:150],
@@ -61,6 +62,11 @@ def evaluate_question(collection, q: Dict, k: int = 5) -> Dict:
         "answer_present": first_answer is not None,
         "results": rows,
     }
+
+
+def evaluate_question(collection, q: Dict, k: int = 5) -> Dict:
+    hits = query(collection, q["question"], k=k)
+    return evaluate_hits(hits, q)
 
 
 def evaluate_strategy(collection, questions: List[Dict], k: int = 5) -> Dict:
