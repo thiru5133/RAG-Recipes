@@ -30,6 +30,7 @@ with st.sidebar:
     strategy = st.radio("Chunking strategy", list(STRATEGIES), index=1)
     mode = st.radio("Search mode", ["semantic", "bm25", "hybrid"], index=0)
     k = st.slider("Top-K", 1, 10, TOP_K)
+    rerank = st.checkbox("Rerank (BM25 + coverage + section prior)", value=True)
     run_gen = st.checkbox("Run generation (needs API key)", value=False)
 
 # ----- Run evaluation on all questions -----
@@ -40,9 +41,23 @@ except Exception:
     st.error(f"Collection '{collection_name}' not found. Run ingestion first!")
     st.stop()
 
+path = f"{strategy} / {mode}" + (" + rerank" if rerank else "")
+st.caption(f"Labelling with **{path}**, k={k}. Sidebar controls change this list.")
+
 # Label all questions
 with st.spinner("Evaluating all questions..."):
-    labels = [label_one(coll, q, k=k, run_generation=run_gen) for q in QUESTIONS]
+    labels = [
+        label_one(
+            coll,
+            q,
+            k=k,
+            run_generation=run_gen,
+            strategy=strategy,
+            mode=mode,
+            rerank=rerank,
+        )
+        for q in QUESTIONS
+    ]
 
 # ----- Summary metrics -----
 counts = {"retrieval_failure": 0, "generation_failure": 0, "success": 0}
@@ -81,10 +96,15 @@ for lbl in labels:
             for h in lbl["retrieved_chunks"]:
                 color = "🟢" if h["correct"] else "🔴"
                 ans_mark = " 📝" if h["has_answer"] else ""
+                was = (
+                    f" · was #{h['retrieve_rank']}"
+                    if h.get("retrieve_rank") and h["retrieve_rank"] != h["rank"]
+                    else ""
+                )
                 st.markdown(
                     f"{color} **Rank {h['rank']}** · `{h['chunk_id']}` · "
                     f"{h['recipe_id']} / {h['section']} · "
-                    f"score {h['score']:.4f}{ans_mark}"
+                    f"score {h['score']:.4f}{was}{ans_mark}"
                 )
                 st.caption(h["snippet"][:120] + "…" if len(h.get("snippet", "")) > 120 else h.get("snippet", ""))
 
@@ -108,7 +128,7 @@ if st.button("Run comparison", type="primary"):
     with st.spinner("Running semantic evaluation..."):
         sem_results = []
         for q in QUESTIONS:
-            hits = search(q["question"], strategy=strategy, k=k, mode="semantic")
+            hits = search(q["question"], strategy=strategy, k=k, mode="semantic", rerank=rerank)
             from evaluate import judge
             first_hit = None
             for h in hits:
@@ -120,7 +140,7 @@ if st.button("Run comparison", type="primary"):
     with st.spinner("Running hybrid evaluation..."):
         hyb_results = []
         for q in QUESTIONS:
-            hits = search(q["question"], strategy=strategy, k=k, mode="hybrid")
+            hits = search(q["question"], strategy=strategy, k=k, mode="hybrid", rerank=rerank)
             first_hit = None
             for h in hits:
                 recipe_ok, section_ok, _ = judge(h, q)

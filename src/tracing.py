@@ -35,6 +35,10 @@ def _chunk_record(hit: Dict) -> Dict:
         record["rrf_score"] = hit["rrf_score"]
     if "gate_score" in hit:
         record["gate_score"] = hit["gate_score"]
+    if "rerank_score" in hit:
+        record["rerank_score"] = hit["rerank_score"]
+        record["rerank_bm25"] = hit.get("rerank_bm25")
+        record["retrieve_rank"] = hit.get("retrieve_rank")
     return record
 
 
@@ -48,6 +52,7 @@ def build_trace(
     k: int,
     threshold: float,
     where: Optional[Dict] = None,
+    rerank: bool = False,
     question_meta: Optional[Dict] = None,
 ) -> Dict:
     gen = result.get("generation") or {}
@@ -66,6 +71,7 @@ def build_trace(
         "strategy": strategy,
         "mode": mode,
         "k": k,
+        "rerank": rerank,
         "threshold": threshold,
         "where": where,
         "retrieved_chunks": [_chunk_record(h) for h in hits],
@@ -107,13 +113,14 @@ def answer_and_trace(
     k: int = TOP_K,
     threshold: float = REFUSAL_THRESHOLD,
     tag: Optional[str] = None,
+    rerank: bool = False,
     question_meta: Optional[Dict] = None,
     path: Path = TRACES_FILE,
 ) -> tuple[Dict, Dict]:
     """Answer one question through the real path and log the trace. Returns
     (result, trace)."""
     where = dietary_filter(tag) if tag else None
-    hits = search(question, strategy=strategy, k=k, where=where, mode=mode)
+    hits = search(question, strategy=strategy, k=k, where=where, mode=mode, rerank=rerank)
     result = answer_question(question, hits, threshold=threshold)
     trace = build_trace(
         question,
@@ -124,6 +131,7 @@ def answer_and_trace(
         k=k,
         threshold=threshold,
         where=where,
+        rerank=rerank,
         question_meta=question_meta,
     )
     append_trace(trace, path=path)

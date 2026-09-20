@@ -204,13 +204,13 @@ def build_report(results, sweep_rows, filter_demo, answers, refusal_runs, corpus
       f"- Chunks: basic **{corpus_stats['basic_chunks']}**, structure-aware "
       f"**{corpus_stats['structured_chunks']}**.\n")
 
-    A("\n## 1. The 8 questions, with the recipe and section that answers them\n")
+    A(f"\n## 1. The {n} questions, with the recipe and section that answers them\n")
     A("| Q | Question | Correct recipe | Correct section | Type | Expected answer |")
     A("| --- | --- | --- | --- | --- | --- |")
     for q in QUESTIONS:
         A(f"| {q['qid']} | {q['question']} | {', '.join(q['gold_recipes'])} "
           f"| {q['gold_section']} | {q['type']} | {q['answer']} |")
-    A(f"\n{len(TABLE_QIDS)} of 8 ({', '.join(TABLE_QIDS)}) can only be answered from an "
+    A(f"\n{len(TABLE_QIDS)} of {len(QUESTIONS)} ({', '.join(TABLE_QIDS)}) can only be answered from an "
       "ingredient or nutrition table.\n")
 
     A("\n## 2. Metadata on every chunk\n")
@@ -358,7 +358,7 @@ def build_report(results, sweep_rows, filter_demo, answers, refusal_runs, corpus
       "chunks and repeats tokens. On a 6-card corpus that is free; at scale it is the trade "
       "being bought, and the table above is what it buys.\n")
 
-    A("\n## Appendix — search-only results, all 8 questions, both strategies\n")
+    A(f"\n## Appendix — search-only results, all {len(QUESTIONS)} questions, both strategies\n")
     A("Retrieval only, no generation.\n")
     A(search_only_appendix(results))
 

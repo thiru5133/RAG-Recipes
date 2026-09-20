@@ -22,7 +22,7 @@ RANDOM_SAMPLE_SEED = 42
 RANDOM_SAMPLE_SIZE = 20
 
 # ── the curated demo sample (bonus): the questions shown at reviews ──────────
-# The 8 known-answer questions in eval/questions.py, written up as Q1-Q8 in
+# The original 8 known-answer questions (Q1–Q8 in eval/questions.py), written up
 # results.md and demoed at every review, mapped onto the ids they carry in the
 # question bank. Sampling from these is deliberately NOT random over production:
 # that is the whole point of the comparison.

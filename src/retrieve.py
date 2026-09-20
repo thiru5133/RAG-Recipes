@@ -1,13 +1,17 @@
 """Retrieval front door: one function both the CLI and the UI call.
 
-Supports three modes:
-- "semantic": ChromaDB vector similarity (original behaviour)
+Supports three first-stage modes:
+- "semantic": ChromaDB vector similarity
 - "bm25": BM25 keyword search
 - "hybrid": RRF fusion of semantic + BM25
+
+Optional second stage: retrieve a wider pool, then rerank with BM25-over-pool,
+query-term coverage, and a section prior, fused back into the first-stage
+ranking (also RRF). Cosine is left unchanged for the refusal gate.
 """
 from typing import Dict, List, Optional
 
-from config import RRF_K, STRATEGIES, TOP_K
+from config import RERANK_CANDIDATES, RRF_K, STRATEGIES, TOP_K
 from store import get_collection, query
 
 _cache: Dict[str, object] = {}
@@ -60,20 +64,13 @@ def _rrf_fuse(
     return fused
 
 
-def search(
+def _first_stage(
     question: str,
-    strategy: str = "structured",
-    k: int = TOP_K,
-    where: Optional[Dict] = None,
-    mode: str = "semantic",
+    strategy: str,
+    k: int,
+    where: Optional[Dict],
+    mode: str,
 ) -> List[Dict]:
-    """Retrieve top-k chunks.
-
-    Parameters
-    ----------
-    mode : str
-        "semantic" (default, original behaviour), "bm25", or "hybrid" (RRF fusion).
-    """
     coll = collection_for(strategy)
 
     if mode == "semantic":
@@ -81,19 +78,44 @@ def search(
 
     if mode == "bm25":
         from bm25_search import get_bm25_index
-        idx = get_bm25_index(coll)
-        return idx.search(question, k=k, where=where)
+        return get_bm25_index(coll).search(question, k=k, where=where)
 
     if mode == "hybrid":
         from bm25_search import get_bm25_index
-        # Fetch more candidates from each source, then fuse down to k
         n_candidates = k * 2
         semantic_hits = query(coll, question, k=n_candidates, where=where)
-        bm25_idx = get_bm25_index(coll)
-        bm25_hits = bm25_idx.search(question, k=n_candidates, where=where)
+        bm25_hits = get_bm25_index(coll).search(question, k=n_candidates, where=where)
         return _rrf_fuse(semantic_hits, bm25_hits, k=k)
 
     raise ValueError(f"unknown mode {mode!r}; expected 'semantic', 'bm25', or 'hybrid'")
+
+
+def search(
+    question: str,
+    strategy: str = "structured",
+    k: int = TOP_K,
+    where: Optional[Dict] = None,
+    mode: str = "semantic",
+    rerank: bool = False,
+    rerank_n: Optional[int] = None,
+) -> List[Dict]:
+    """Retrieve top-k chunks.
+
+    Parameters
+    ----------
+    mode : str
+        "semantic" (default), "bm25", or "hybrid" (RRF fusion).
+    rerank : bool
+        If true, retrieve a wider pool then rerank (BM25 + coverage + section).
+    rerank_n : int, optional
+        Pool size when reranking. Defaults to RERANK_CANDIDATES.
+    """
+    pool_k = max(k, rerank_n or RERANK_CANDIDATES) if rerank else k
+    hits = _first_stage(question, strategy, pool_k, where, mode)
+    if rerank:
+        from rerank import rerank as rerank_hits
+        hits = rerank_hits(question, hits, k=k)
+    return hits
 
 
 def dietary_filter(tag: str) -> Dict:

@@ -12,6 +12,7 @@ modes, and k of 3 or 5. Pairs are drawn without replacement under a fixed seed.
 
     python scripts/collect_traces.py --n 400
     python scripts/collect_traces.py --n 50 --resume     # top up an existing log
+    python scripts/collect_traces.py --n 50 --rerank     # second-stage BM25+section rerank
 
 Groq free tier is rate limited, so calls are throttled and 429s back off. The
 log is appended after every call, so an interrupted run keeps everything it got.
@@ -77,7 +78,15 @@ def already_logged(path: Path) -> set[tuple]:
             if not line.strip():
                 continue
             t = json.loads(line)
-            done.add((t["question"], t.get("strategy"), t.get("mode"), t.get("k")))
+            done.add(
+                (
+                    t["question"],
+                    t.get("strategy"),
+                    t.get("mode"),
+                    t.get("k"),
+                    bool(t.get("rerank")),
+                )
+            )
     return done
 
 
@@ -86,6 +95,11 @@ def main() -> None:
     ap.add_argument("--n", type=int, default=400, help="how many traces to collect")
     ap.add_argument("--rpm", type=float, default=25.0, help="max model calls per minute")
     ap.add_argument("--resume", action="store_true", help="skip pairs already in the log")
+    ap.add_argument(
+        "--rerank",
+        action="store_true",
+        help="retrieve a wider pool and rerank (BM25 + coverage + section prior)",
+    )
     ap.add_argument("--out", type=Path, default=TRACES_FILE)
     args = ap.parse_args()
 
@@ -94,12 +108,12 @@ def main() -> None:
     plan = [
         p
         for p in plan
-        if (p["question"], p["strategy"], p["mode"], p["k"]) not in done
+        if (p["question"], p["strategy"], p["mode"], p["k"], args.rerank) not in done
     ][: args.n]
 
     print(
         f"collection seed={COLLECTION_SEED}  planned={len(plan)}  "
-        f"already logged={len(done)}  out={args.out}"
+        f"rerank={args.rerank}  already logged={len(done)}  out={args.out}"
     )
 
     min_gap = 60.0 / args.rpm
@@ -113,6 +127,7 @@ def main() -> None:
                 mode=step["mode"],
                 k=step["k"],
                 threshold=REFUSAL_THRESHOLD,
+                rerank=args.rerank,
                 question_meta=step["question_meta"] | {"source": "collect_traces"},
                 path=args.out,
             )
