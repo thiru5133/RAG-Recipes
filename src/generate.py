@@ -109,8 +109,14 @@ def complete(
             ],
         )
         usage = getattr(resp, "usage", None)
+        msg = resp.choices[0].message
+        content = (msg.content or "").strip()
+        if not content:
+            # gpt-oss on Groq often spends the token budget on `reasoning`
+            # and leaves `content` empty. Fall back so a verdict still lands.
+            content = (getattr(msg, "reasoning", None) or "").strip()
         return {
-            "answer": resp.choices[0].message.content.strip(),
+            "answer": content,
             "finish_reason": resp.choices[0].finish_reason,
             "usage": None
             if usage is None
