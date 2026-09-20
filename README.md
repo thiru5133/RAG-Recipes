@@ -63,13 +63,49 @@ docker compose run --rm rag python scripts/search.py "how much cream in the pane
 | `src/chunking.py` | **strategy A** `chunk_basic`, **strategy B** `chunk_structured`, and the shared metadata builder |
 | `src/store.py` | ChromaDB collections, `where` filtering, cosine scores |
 | `src/evaluate.py` | Hit-in-Top-K and the stricter answer-present check |
-| `src/generate.py` | Groq call with a citation-enforcing prompt |
+| `src/generate.py` | Groq call with a citation-enforcing prompt, versioned and hashed for replay |
 | `src/guardrails.py` | score threshold, refusal detection, citation verification |
+| `src/tracing.py` | builds a trace record and appends it to `traces/traces.jsonl` |
 | `eval/questions.py` | the 8 known-answer questions with gold recipe and section |
 | `eval/unanswerable.py` | the 3 out-of-corpus questions |
+| `eval/question_bank.py` | the wider bank used to collect traces: many phrasings, plus unanswerable and off-topic |
 | `scripts/run_all.py` | regenerates `results.md` end to end |
 | `diff/strategy_b_and_metadata.diff` | the required code diff: strategy B + metadata fields |
 | `results.md` | generated report |
+
+## Error analysis (week 5)
+
+`taxonomy.md` ranks the failure modes found by reading 20 real traces; `notes.md`
+carries the 20 observation sentences, the seeds, the replay evidence and a dated
+prediction. Both are written by hand. The numbers in them are checkable:
+
+```bash
+python scripts/collect_traces.py --n 120 --rpm 25   # run questions through the live pipeline
+python scripts/read_traces.py                       # print the seeded sample of 20 for reading
+python scripts/week5_analysis.py                    # recount every figure in taxonomy.md
+python scripts/replay_trace.py                      # rebuild one trace's prompts and re-run it
+python scripts/verify_prediction.py                 # settle the prediction on a fresh draw
+```
+
+The dated prediction (commit `2e82edf`, before any behaviour change) named the
+hybrid score-scale mismatch as the mode to attack. That change is now in
+`retrieve._rrf_fuse`: ranking is still Reciprocal Rank Fusion, but `score` is
+the chunk's cosine similarity, which is what the 0.30 gate was calibrated on.
+Post-fix traces go in a separate file so they cannot rewrite the sample the
+taxonomy was read from:
+
+```bash
+python scripts/collect_traces.py --n 40 --rpm 25 --out traces/traces_after_hybrid_gate.jsonl
+python scripts/verify_prediction.py --traces traces/traces_after_hybrid_gate.jsonl
+```
+
+| Path | What it is |
+| --- | --- |
+| `traces/traces.jsonl` | real traces the taxonomy was read from (pre-fix) |
+| `traces/traces_after_hybrid_gate.jsonl` | 40 traces collected after the cosine-through-fusion change; seed-43 draw is what settles the prediction |
+| `scripts/sampling.py` | the seeded draws and the population fingerprint, so a sample is reproducible |
+| `scripts/replay_trace.py` | replays a trace from its own record |
+| `results/replay_evidence.json` | original versus replayed output for the seeded pick |
 
 ## The two strategies
 

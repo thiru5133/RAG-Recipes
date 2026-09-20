@@ -14,6 +14,7 @@ from guardrails import answer_question  # noqa: E402
 from loader import load_corpus_from_sources, load_recipe  # noqa: E402
 from retrieve import dietary_filter, search  # noqa: E402
 from store import get_collection, reset_collection, upsert_chunks  # noqa: E402
+from tracing import append_trace, build_trace  # noqa: E402
 
 st.set_page_config(page_title="Recipe RAG", layout="wide")
 st.title("Recipe RAG — Dynamic Document Q&A")
@@ -118,6 +119,19 @@ if question:
         if st.button("Generate grounded answer", type="primary"):
             with st.spinner("Asking the model…"):
                 result = answer_question(question, hits, threshold=threshold)
+            append_trace(
+                build_trace(
+                    question,
+                    hits,
+                    result,
+                    strategy=strategy,
+                    mode=mode,
+                    k=k,
+                    threshold=threshold,
+                    where=where,
+                    question_meta={"source": "ui"},
+                )
+            )
 
             if result["error"]:
                 st.error(result["error"])

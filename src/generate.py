@@ -1,6 +1,8 @@
 """Grounded answer generation via Groq, with citations tied to chunk ids."""
+import hashlib
 import os
 import re
+import time
 from typing import Dict, List, Optional
 
 from dotenv import load_dotenv
@@ -25,6 +27,26 @@ Rules, without exception:
 5. Be brief: two or three sentences at most.
 """
 
+PROMPT_VERSION = "v1.2.0"
+
+PROMPT_REGISTRY = {PROMPT_VERSION: SYSTEM_PROMPT}
+
+TEMPERATURE = 0
+MAX_TOKENS = 400
+
+
+def sha256(text: str) -> str:
+    return hashlib.sha256(text.encode("utf-8")).hexdigest()
+
+
+def system_prompt_for(version: str) -> str:
+    if version not in PROMPT_REGISTRY:
+        raise KeyError(
+            f"prompt version {version!r} is not in the registry; "
+            f"known versions: {sorted(PROMPT_REGISTRY)}"
+        )
+    return PROMPT_REGISTRY[version]
+
 
 def format_context(hits: List[Dict]) -> str:
     blocks = []
@@ -38,6 +60,17 @@ def format_context(hits: List[Dict]) -> str:
     return "\n\n---\n\n".join(blocks)
 
 
+def build_user_prompt(question: str, hits: List[Dict]) -> str:
+    """The exact user message sent to the model. Replay rebuilds it from a trace
+    by calling this with hits reconstructed from the trace's chunk records."""
+    return (
+        f"Context chunks:\n\n{format_context(hits)}\n\n"
+        f"Question: {question}\n\n"
+        "Answer using only the context above, with a [chunk_id | recipe_id] "
+        "citation on every claim."
+    )
+
+
 def _client():
     key = os.environ.get("GROQ_API_KEY")
     if not key:
@@ -47,47 +80,76 @@ def _client():
     return Groq(api_key=key)
 
 
-def generate(question: str, hits: List[Dict], model: str = GROQ_MODEL) -> Dict:
-    """Return {'answer', 'model', 'context_ids', 'error'}."""
-    context_ids = [h["chunk_id"] for h in hits]
+def complete(
+    system_prompt: str,
+    user_prompt: str,
+    model: str = GROQ_MODEL,
+    temperature: float = TEMPERATURE,
+    max_tokens: int = MAX_TOKENS,
+) -> Dict:
+    """One raw model call. Replay uses this directly with a rebuilt prompt."""
     client = _client()
     if client is None:
         return {
             "answer": None,
-            "model": model,
-            "context_ids": context_ids,
+            "finish_reason": None,
+            "usage": None,
+            "latency_ms": None,
             "error": "GROQ_API_KEY is not set; no answer generated.",
         }
-
-    prompt = (
-        f"Context chunks:\n\n{format_context(hits)}\n\n"
-        f"Question: {question}\n\n"
-        "Answer using only the context above, with a [chunk_id | recipe_id] "
-        "citation on every claim."
-    )
+    started = time.perf_counter()
     try:
         resp = client.chat.completions.create(
             model=model,
-            temperature=0,
-            max_tokens=400,
+            temperature=temperature,
+            max_tokens=max_tokens,
             messages=[
-                {"role": "system", "content": SYSTEM_PROMPT},
-                {"role": "user", "content": prompt},
+                {"role": "system", "content": system_prompt},
+                {"role": "user", "content": user_prompt},
             ],
         )
+        usage = getattr(resp, "usage", None)
         return {
             "answer": resp.choices[0].message.content.strip(),
-            "model": model,
-            "context_ids": context_ids,
+            "finish_reason": resp.choices[0].finish_reason,
+            "usage": None
+            if usage is None
+            else {
+                "prompt_tokens": usage.prompt_tokens,
+                "completion_tokens": usage.completion_tokens,
+            },
+            "latency_ms": int((time.perf_counter() - started) * 1000),
             "error": None,
         }
     except Exception as exc:  # network, rate limit, bad key
         return {
             "answer": None,
-            "model": model,
-            "context_ids": context_ids,
+            "finish_reason": None,
+            "usage": None,
+            "latency_ms": int((time.perf_counter() - started) * 1000),
             "error": f"{type(exc).__name__}: {exc}",
         }
+
+
+def generate(question: str, hits: List[Dict], model: str = GROQ_MODEL) -> Dict:
+    """Return the answer plus everything a replay needs to reproduce the call."""
+    context_ids = [h["chunk_id"] for h in hits]
+    user_prompt = build_user_prompt(question, hits)
+    result = complete(SYSTEM_PROMPT, user_prompt, model=model)
+    return {
+        "answer": result["answer"],
+        "model": model,
+        "context_ids": context_ids,
+        "error": result["error"],
+        "prompt_version": PROMPT_VERSION,
+        "system_prompt_sha256": sha256(SYSTEM_PROMPT),
+        "user_prompt": user_prompt,
+        "user_prompt_sha256": sha256(user_prompt),
+        "model_params": {"temperature": TEMPERATURE, "max_tokens": MAX_TOKENS},
+        "finish_reason": result["finish_reason"],
+        "usage": result["usage"],
+        "latency_ms": result["latency_ms"],
+    }
 
 
 CITATION_RE = re.compile(r"\[([A-Za-z0-9_\-]+)\s*\|\s*([A-Za-z0-9_\-]+)\]")

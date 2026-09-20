@@ -26,27 +26,36 @@ def _rrf_fuse(
 ) -> List[Dict]:
     """Reciprocal Rank Fusion: merge two ranked lists into one.
 
-    RRF score for document d = sum over all lists L of  1 / (rrf_k + rank_in_L).
-    Documents not present in a list get no contribution from that list.
+    Rank by RRF. `score` is the chunk's cosine from the semantic list so the
+    refusal gate compares cosine to a cosine threshold, not an RRF figure.
     """
-    scores: Dict[str, float] = {}
-    doc_map: Dict[str, Dict] = {}  # chunk_id -> best hit dict
+    rrf_scores: Dict[str, float] = {}
+    doc_map: Dict[str, Dict] = {}
+    cosine_by_id = {h["chunk_id"]: float(h["score"]) for h in semantic_hits}
 
     for hits in (semantic_hits, bm25_hits):
         for h in hits:
             cid = h["chunk_id"]
-            scores[cid] = scores.get(cid, 0.0) + 1.0 / (rrf_k + h["rank"])
+            rrf_scores[cid] = rrf_scores.get(cid, 0.0) + 1.0 / (rrf_k + h["rank"])
             if cid not in doc_map:
                 doc_map[cid] = h
 
-    ranked = sorted(scores.items(), key=lambda x: x[1], reverse=True)[:k]
+    ranked = sorted(rrf_scores.items(), key=lambda x: x[1], reverse=True)[:k]
 
     fused = []
     for rank, (cid, rrf_score) in enumerate(ranked, start=1):
-        hit = dict(doc_map[cid])  # copy
+        hit = dict(doc_map[cid])
         hit["rank"] = rank
-        hit["score"] = round(rrf_score, 4)
-        hit["distance"] = 0.0  # RRF scores are not distances
+        hit["rrf_score"] = round(rrf_score, 4)
+        cosine = cosine_by_id.get(cid)
+        if cosine is None:
+            hit["gate_score"] = None
+            hit["score"] = 0.0
+            hit["distance"] = 1.0
+        else:
+            hit["gate_score"] = round(cosine, 4)
+            hit["score"] = hit["gate_score"]
+            hit["distance"] = round(1.0 - cosine, 4)
         fused.append(hit)
     return fused
 
