@@ -73,6 +73,8 @@ docker compose run --rm rag python scripts/search.py "how much cream in the pane
 | `scripts/run_week6.py` | one-command substitution eval: assertions, judge v1/v2, pass rate by mode |
 | `eval/substitutions.py` | 27 mode-tagged substitution cases with frozen texts |
 | `eval/week6/` | labels, judge prompts, prediction, agreement artefacts |
+| `scripts/run_week7_race.py` | agent vs workflow race; writes `eval/week7/race.csv` |
+| `src/agent/` | three tools, loop with four budgets, fixed workflow |
 | `diff/strategy_b_and_metadata.diff` | the required code diff: strategy B + metadata fields |
 | `results.md` | generated report |
 
@@ -94,6 +96,16 @@ Read **`WEEK6.md`** for the judge-validation protocol: blind labels, assertions 
 
 ```bash
 python scripts/run_week6.py
+```
+
+## Agents (week 7)
+
+Read **`WEEK7.md`**. Race an agent loop against a three-step workflow on the same 10 adaptation requests.
+
+```bash
+python scripts/run_week7_agent.py --id W07
+python scripts/run_week7_workflow.py --id W07
+python scripts/run_week7_race.py
 ```
 
 ## The two strategies

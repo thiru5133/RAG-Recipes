@@ -1,0 +1,1 @@
+"""Week-7 agent package: tools, loop, fixed workflow, shared contract."""

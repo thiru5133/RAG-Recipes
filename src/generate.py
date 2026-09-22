@@ -80,6 +80,79 @@ def _client():
     return Groq(api_key=key)
 
 
+def complete_messages(
+    messages: List[Dict],
+    model: str = GROQ_MODEL,
+    temperature: float = TEMPERATURE,
+    max_tokens: int = MAX_TOKENS,
+    tools: Optional[List[Dict]] = None,
+) -> Dict:
+    """One chat-completions call. The agent loop uses this so every lap's
+    tokens can be summed; `complete()` stays the two-string helper replay needs.
+    """
+    client = _client()
+    if client is None:
+        return {
+            "content": None,
+            "tool_calls": [],
+            "finish_reason": None,
+            "usage": None,
+            "latency_ms": None,
+            "error": "GROQ_API_KEY is not set; no answer generated.",
+        }
+    started = time.perf_counter()
+    kwargs = {
+        "model": model,
+        "temperature": temperature,
+        "max_tokens": max_tokens,
+        "messages": messages,
+    }
+    if tools:
+        kwargs["tools"] = tools
+        kwargs["tool_choice"] = "auto"
+    try:
+        resp = client.chat.completions.create(**kwargs)
+        usage = getattr(resp, "usage", None)
+        msg = resp.choices[0].message
+        content = (msg.content or "").strip()
+        if not content:
+            content = (getattr(msg, "reasoning", None) or "").strip()
+        tool_calls = []
+        for tc in getattr(msg, "tool_calls", None) or []:
+            fn = tc.function
+            tool_calls.append(
+                {
+                    "id": getattr(tc, "id", "") or "",
+                    "name": fn.name,
+                    "arguments": fn.arguments or "{}",
+                }
+            )
+        return {
+            "content": content,
+            "tool_calls": tool_calls,
+            "finish_reason": resp.choices[0].finish_reason,
+            "usage": None
+            if usage is None
+            else {
+                "prompt_tokens": usage.prompt_tokens,
+                "completion_tokens": usage.completion_tokens,
+            },
+            "latency_ms": int((time.perf_counter() - started) * 1000),
+            "error": None,
+            "raw_message": msg,
+        }
+    except Exception as exc:
+        return {
+            "content": None,
+            "tool_calls": [],
+            "finish_reason": None,
+            "usage": None,
+            "latency_ms": int((time.perf_counter() - started) * 1000),
+            "error": f"{type(exc).__name__}: {exc}",
+            "raw_message": None,
+        }
+
+
 def complete(
     system_prompt: str,
     user_prompt: str,
