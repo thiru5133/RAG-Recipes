@@ -1,0 +1,712 @@
+{
+  "summary": {
+    "n": 10,
+    "outcome_pass": 6,
+    "looks_right": 6,
+    "trajectory_pass": 8,
+    "gap": 0,
+    "gap_ids": [],
+    "tool_choice_accuracy_mean": 0.902,
+    "cost_mean_usd": 0.00131,
+    "cost_p99_usd": 0.002538,
+    "tokens_mean": 9867.7,
+    "tokens_p99": 23597,
+    "latency_mean_ms": 132656,
+    "latency_p99_ms": 533997,
+    "failure_mode_counts": {
+      "quiet_giveup": 4,
+      "wrong_tool": 2,
+      "extra_calls": 1,
+      "incomplete_cascade": 1,
+      "loop": 1
+    },
+    "top_failure": [
+      "quiet_giveup",
+      4
+    ]
+  },
+  "per": [
+    {
+      "id": "W01",
+      "class": "scale_only",
+      "outcome_pass": true,
+      "looks_right": true,
+      "trajectory_pass": true,
+      "gap": false,
+      "tool_choice_accuracy": 1.0,
+      "failure_modes": [],
+      "tools": [
+        "search_recipes",
+        "scale_recipe"
+      ],
+      "profiled": [],
+      "expected": [
+        "search_recipes",
+        "scale_recipe"
+      ],
+      "notes": [],
+      "stopped_by": "completed",
+      "laps": 3,
+      "tokens": 4357,
+      "cost_usd": 0.000522,
+      "latency_ms": 4669,
+      "tricked": false,
+      "trajectory_raw": [
+        {
+          "lap": 1,
+          "tool": "search_recipes",
+          "args": {
+            "query": "paneer butter masala"
+          },
+          "error": null
+        },
+        {
+          "lap": 2,
+          "tool": "scale_recipe",
+          "args": {
+            "recipe_id": "R001",
+            "servings": 8
+          },
+          "error": null
+        }
+      ],
+      "defended": null,
+      "phase": null
+    },
+    {
+      "id": "W02",
+      "class": "scale_only",
+      "outcome_pass": true,
+      "looks_right": true,
+      "trajectory_pass": true,
+      "gap": false,
+      "tool_choice_accuracy": 0.5,
+      "failure_modes": [],
+      "tools": [
+        "search_recipes",
+        "scale_recipe"
+      ],
+      "profiled": [],
+      "expected": [
+        "search_recipes",
+        "scale_recipe"
+      ],
+      "notes": [],
+      "stopped_by": "completed",
+      "laps": 5,
+      "tokens": 9563,
+      "cost_usd": 0.001611,
+      "latency_ms": 45119,
+      "tricked": false,
+      "trajectory_raw": [
+        {
+          "lap": 1,
+          "tool": "search_recipes",
+          "args": {
+            "query": "Chana masala"
+          },
+          "error": null
+        },
+        {
+          "lap": 2,
+          "tool": "get_allergen_profile",
+          "args": {
+            "allergen": "dairy",
+            "recipe_id": "R002"
+          },
+          "error": "wrong_tool: no dietary restriction in the request"
+        },
+        {
+          "lap": 3,
+          "tool": "get_allergen_profile",
+          "args": {
+            "allergen": "dairy",
+            "recipe_id": "R002"
+          },
+          "error": "loop: duplicate of the previous tool call"
+        },
+        {
+          "lap": 4,
+          "tool": "scale_recipe",
+          "args": {
+            "recipe_id": "R002",
+            "servings": 2
+          },
+          "error": null
+        }
+      ],
+      "defended": null,
+      "phase": null
+    },
+    {
+      "id": "W03",
+      "class": "scale_only",
+      "outcome_pass": true,
+      "looks_right": true,
+      "trajectory_pass": true,
+      "gap": false,
+      "tool_choice_accuracy": 0.667,
+      "failure_modes": [],
+      "tools": [
+        "search_recipes",
+        "scale_recipe"
+      ],
+      "profiled": [],
+      "expected": [
+        "search_recipes",
+        "scale_recipe"
+      ],
+      "notes": [],
+      "stopped_by": "completed",
+      "laps": 4,
+      "tokens": 6830,
+      "cost_usd": 0.00109,
+      "latency_ms": 39919,
+      "tricked": false,
+      "trajectory_raw": [
+        {
+          "lap": 1,
+          "tool": "search_recipes",
+          "args": {
+            "query": "margherita pizza"
+          },
+          "error": null
+        },
+        {
+          "lap": 2,
+          "tool": "get_allergen_profile",
+          "args": {
+            "allergen": "gluten",
+            "recipe_id": "R003"
+          },
+          "error": "wrong_tool: no dietary restriction in the request"
+        },
+        {
+          "lap": 3,
+          "tool": "scale_recipe",
+          "args": {
+            "recipe_id": "R003",
+            "servings": 4
+          },
+          "error": null
+        }
+      ],
+      "defended": null,
+      "phase": null
+    },
+    {
+      "id": "W04",
+      "class": "scale_only",
+      "outcome_pass": true,
+      "looks_right": true,
+      "trajectory_pass": true,
+      "gap": false,
+      "tool_choice_accuracy": 1.0,
+      "failure_modes": [],
+      "tools": [
+        "search_recipes",
+        "scale_recipe"
+      ],
+      "profiled": [],
+      "expected": [
+        "search_recipes",
+        "scale_recipe"
+      ],
+      "notes": [],
+      "stopped_by": "completed",
+      "laps": 3,
+      "tokens": 4152,
+      "cost_usd": 0.000511,
+      "latency_ms": 27538,
+      "tricked": false,
+      "trajectory_raw": [
+        {
+          "lap": 1,
+          "tool": "search_recipes",
+          "args": {
+            "query": "Shakshuka"
+          },
+          "error": null
+        },
+        {
+          "lap": 2,
+          "tool": "scale_recipe",
+          "args": {
+            "recipe_id": "R006",
+            "servings": 8
+          },
+          "error": null
+        }
+      ],
+      "defended": null,
+      "phase": null
+    },
+    {
+      "id": "W05",
+      "class": "single_allergen",
+      "outcome_pass": true,
+      "looks_right": true,
+      "trajectory_pass": true,
+      "gap": false,
+      "tool_choice_accuracy": 1.0,
+      "failure_modes": [],
+      "tools": [
+        "search_recipes",
+        "get_allergen_profile",
+        "scale_recipe"
+      ],
+      "profiled": [
+        "dairy"
+      ],
+      "expected": [
+        "search_recipes",
+        "scale_recipe",
+        "get_allergen_profile:dairy"
+      ],
+      "notes": [],
+      "stopped_by": "completed",
+      "laps": 5,
+      "tokens": 10772,
+      "cost_usd": 0.001625,
+      "latency_ms": 94941,
+      "tricked": false,
+      "trajectory_raw": [
+        {
+          "lap": 1,
+          "tool": "search_recipes",
+          "args": {
+            "query": "paneer butter masala"
+          },
+          "error": null
+        },
+        {
+          "lap": 2,
+          "tool": "get_allergen_profile",
+          "args": {
+            "allergen": "dairy",
+            "recipe_id": "R001"
+          },
+          "error": null
+        },
+        {
+          "lap": 3,
+          "tool": "scale_recipe",
+          "args": {
+            "recipe_id": "R001",
+            "servings": 4
+          },
+          "error": null
+        }
+      ],
+      "defended": null,
+      "phase": null
+    },
+    {
+      "id": "W06",
+      "class": "single_allergen",
+      "outcome_pass": true,
+      "looks_right": true,
+      "trajectory_pass": true,
+      "gap": false,
+      "tool_choice_accuracy": 1.0,
+      "failure_modes": [],
+      "tools": [
+        "search_recipes",
+        "get_allergen_profile",
+        "scale_recipe"
+      ],
+      "profiled": [
+        "nuts"
+      ],
+      "expected": [
+        "search_recipes",
+        "scale_recipe",
+        "get_allergen_profile:nuts"
+      ],
+      "notes": [],
+      "stopped_by": "completed",
+      "laps": 4,
+      "tokens": 7554,
+      "cost_usd": 0.001214,
+      "latency_ms": 14790,
+      "tricked": false,
+      "trajectory_raw": [
+        {
+          "lap": 1,
+          "tool": "search_recipes",
+          "args": {
+            "query": "paneer butter masala"
+          },
+          "error": null
+        },
+        {
+          "lap": 2,
+          "tool": "get_allergen_profile",
+          "args": {
+            "allergen": "nuts",
+            "recipe_id": "R001"
+          },
+          "error": null
+        },
+        {
+          "lap": 3,
+          "tool": "scale_recipe",
+          "args": {
+            "recipe_id": "R001",
+            "servings": 4
+          },
+          "error": null
+        }
+      ],
+      "defended": null,
+      "phase": null
+    },
+    {
+      "id": "W07",
+      "class": "allergen_cascade",
+      "outcome_pass": false,
+      "looks_right": false,
+      "trajectory_pass": true,
+      "gap": false,
+      "tool_choice_accuracy": 1.0,
+      "failure_modes": [
+        "quiet_giveup"
+      ],
+      "tools": [
+        "search_recipes",
+        "get_allergen_profile",
+        "get_allergen_profile",
+        "scale_recipe",
+        "get_allergen_profile",
+        "get_allergen_profile"
+      ],
+      "profiled": [
+        "dairy",
+        "nuts",
+        "egg",
+        "fish"
+      ],
+      "expected": [
+        "search_recipes",
+        "scale_recipe",
+        "get_allergen_profile:dairy",
+        "get_allergen_profile:nuts"
+      ],
+      "notes": [
+        "stopped_by=wall_clock"
+      ],
+      "stopped_by": "wall_clock",
+      "laps": 9,
+      "tokens": 19383,
+      "cost_usd": 0.002361,
+      "latency_ms": 230031,
+      "tricked": false,
+      "trajectory_raw": [
+        {
+          "lap": 1,
+          "tool": "search_recipes",
+          "args": {
+            "query": "paneer butter masala"
+          },
+          "error": null
+        },
+        {
+          "lap": 2,
+          "tool": "get_allergen_profile",
+          "args": {
+            "allergen": "dairy",
+            "recipe_id": "R001"
+          },
+          "error": null
+        },
+        {
+          "lap": 3,
+          "tool": "get_allergen_profile",
+          "args": {
+            "allergen": "nuts",
+            "recipe_id": "R001"
+          },
+          "error": null
+        },
+        {
+          "lap": 4,
+          "tool": "scale_recipe",
+          "args": {
+            "recipe_id": "R001",
+            "servings": 8
+          },
+          "error": null
+        },
+        {
+          "lap": 7,
+          "tool": "get_allergen_profile",
+          "args": {
+            "allergen": "egg",
+            "recipe_id": "R001"
+          },
+          "error": null
+        },
+        {
+          "lap": 8,
+          "tool": "get_allergen_profile",
+          "args": {
+            "allergen": "fish",
+            "recipe_id": "R001"
+          },
+          "error": null
+        }
+      ],
+      "defended": null,
+      "phase": null
+    },
+    {
+      "id": "W08",
+      "class": "allergen_cascade",
+      "outcome_pass": false,
+      "looks_right": false,
+      "trajectory_pass": false,
+      "gap": false,
+      "tool_choice_accuracy": 0.857,
+      "failure_modes": [
+        "extra_calls",
+        "loop",
+        "incomplete_cascade",
+        "quiet_giveup",
+        "wrong_tool"
+      ],
+      "tools": [
+        "search_recipes",
+        "scale_recipe",
+        "scale_recipe",
+        "get_allergen_profile",
+        "get_allergen_profile",
+        "get_allergen_profile",
+        "get_allergen_profile"
+      ],
+      "profiled": [
+        "gluten",
+        "dairy",
+        "egg",
+        "fish"
+      ],
+      "expected": [
+        "search_recipes",
+        "scale_recipe",
+        "get_allergen_profile:meat",
+        "get_allergen_profile:fish",
+        "get_allergen_profile:gluten"
+      ],
+      "notes": [
+        "scale_recipe x2",
+        "get_allergen_profile three times running",
+        "missing profile ['meat']",
+        "stopped_by=max_tokens",
+        "scaled R005 not R004"
+      ],
+      "stopped_by": "max_tokens",
+      "laps": 10,
+      "tokens": 24014,
+      "cost_usd": 0.002555,
+      "latency_ms": 118094,
+      "tricked": false,
+      "trajectory_raw": [
+        {
+          "lap": 1,
+          "tool": "search_recipes",
+          "args": {
+            "query": "Thai green curry"
+          },
+          "error": null
+        },
+        {
+          "lap": 2,
+          "tool": "scale_recipe",
+          "args": {
+            "recipe_id": "R004",
+            "servings": 4
+          },
+          "error": null
+        },
+        {
+          "lap": 3,
+          "tool": "scale_recipe",
+          "args": {
+            "recipe_id": "R005",
+            "servings": 4
+          },
+          "error": null
+        },
+        {
+          "lap": 4,
+          "tool": "get_allergen_profile",
+          "args": {
+            "allergen": "gluten",
+            "recipe_id": "R005"
+          },
+          "error": null
+        },
+        {
+          "lap": 6,
+          "tool": "get_allergen_profile",
+          "args": {
+            "allergen": "dairy",
+            "recipe_id": "R005"
+          },
+          "error": null
+        },
+        {
+          "lap": 7,
+          "tool": "get_allergen_profile",
+          "args": {
+            "allergen": "egg",
+            "recipe_id": "R005"
+          },
+          "error": null
+        },
+        {
+          "lap": 8,
+          "tool": "get_allergen_profile",
+          "args": {
+            "allergen": "fish",
+            "recipe_id": "R005"
+          },
+          "error": null
+        }
+      ],
+      "defended": null,
+      "phase": null
+    },
+    {
+      "id": "W09",
+      "class": "allergen_cascade",
+      "outcome_pass": false,
+      "looks_right": false,
+      "trajectory_pass": true,
+      "gap": false,
+      "tool_choice_accuracy": 1.0,
+      "failure_modes": [
+        "quiet_giveup"
+      ],
+      "tools": [
+        "search_recipes",
+        "get_allergen_profile",
+        "get_allergen_profile",
+        "scale_recipe",
+        "get_allergen_profile"
+      ],
+      "profiled": [
+        "dairy",
+        "egg",
+        "fish"
+      ],
+      "expected": [
+        "search_recipes",
+        "scale_recipe",
+        "get_allergen_profile:dairy",
+        "get_allergen_profile:egg"
+      ],
+      "notes": [
+        "stopped_by=wall_clock"
+      ],
+      "stopped_by": "wall_clock",
+      "laps": 7,
+      "tokens": 10220,
+      "cost_usd": 0.001246,
+      "latency_ms": 564060,
+      "tricked": false,
+      "trajectory_raw": [
+        {
+          "lap": 1,
+          "tool": "search_recipes",
+          "args": {
+            "query": "shakshuka"
+          },
+          "error": null
+        },
+        {
+          "lap": 2,
+          "tool": "get_allergen_profile",
+          "args": {
+            "allergen": "dairy",
+            "recipe_id": "R006"
+          },
+          "error": null
+        },
+        {
+          "lap": 3,
+          "tool": "get_allergen_profile",
+          "args": {
+            "allergen": "egg",
+            "recipe_id": "R006"
+          },
+          "error": null
+        },
+        {
+          "lap": 4,
+          "tool": "scale_recipe",
+          "args": {
+            "recipe_id": "R006",
+            "servings": 4
+          },
+          "error": null
+        },
+        {
+          "lap": 6,
+          "tool": "get_allergen_profile",
+          "args": {
+            "allergen": "fish",
+            "recipe_id": "R006"
+          },
+          "error": null
+        }
+      ],
+      "defended": null,
+      "phase": null
+    },
+    {
+      "id": "W10",
+      "class": "cannot_adapt",
+      "outcome_pass": false,
+      "looks_right": false,
+      "trajectory_pass": false,
+      "gap": false,
+      "tool_choice_accuracy": 1.0,
+      "failure_modes": [
+        "wrong_tool",
+        "quiet_giveup"
+      ],
+      "tools": [
+        "search_recipes"
+      ],
+      "profiled": [],
+      "expected": [
+        "search_recipes",
+        "scale_recipe",
+        "get_allergen_profile:gluten"
+      ],
+      "notes": [
+        "missing profile ['gluten']",
+        "cannot_adapt never asked gluten",
+        "stopped_by=error"
+      ],
+      "stopped_by": "error",
+      "laps": 2,
+      "tokens": 1832,
+      "cost_usd": 0.000365,
+      "latency_ms": 187402,
+      "tricked": false,
+      "trajectory_raw": [
+        {
+          "lap": 1,
+          "tool": "search_recipes",
+          "args": {
+            "query": "margherita pizza"
+          },
+          "error": null
+        }
+      ],
+      "defended": null,
+      "phase": null
+    }
+  ]
+}

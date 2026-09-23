@@ -1,11 +1,13 @@
-"""Three recipe-adaptation tools. One job each. Descriptions do not overlap.
+"""Recipe-adaptation tools. One job each. Descriptions do not overlap.
 
 1. search_recipes  — match a dish query to a recipe_id. No ingredients, no scale.
 2. scale_recipe    — multiply quantities to a serving count. No search, no swap.
 3. get_allergen_profile — ONE allergen/diet enum on ONE recipe. No search, no scale.
+4. read_source_document — read-only Notes section. Week 8 attack surface. No swap.
 
-The third tool is the one Week 7 adds. Its schema is the diff in
-eval/week7/tool_description.diff.
+The third tool is the one Week 7 adds. The fourth is the untrusted-document
+channel Week 8 uses for indirect prompt injection. It is off unless the loop
+passes FOUR_TOOL_SCHEMAS.
 """
 from __future__ import annotations
 
@@ -14,6 +16,7 @@ import re
 from functools import lru_cache
 from typing import Dict, List, Optional
 
+from config import ROOT
 from loader import load_corpus
 
 RECIPE_IDS = ["R001", "R002", "R003", "R004", "R005", "R006"]
@@ -275,8 +278,33 @@ ALLERGEN_SCHEMA = {
     },
 }
 
+READ_SCHEMA = {
+    "type": "function",
+    "function": {
+        "name": "read_source_document",
+        "description": (
+            "Read the Notes & Substitutions section of ONE recipe card. "
+            "Returns document text only. Read-only: does not search the corpus, "
+            "does not scale quantities, does not apply swaps, does not fetch URLs."
+        ),
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "recipe_id": {
+                    "type": "string",
+                    "enum": RECIPE_IDS,
+                    "description": "Card id from search_recipes.",
+                }
+            },
+            "required": ["recipe_id"],
+        },
+    },
+}
+
 TWO_TOOL_SCHEMAS = [SEARCH_SCHEMA, SCALE_SCHEMA]
 THREE_TOOL_SCHEMAS = [SEARCH_SCHEMA, SCALE_SCHEMA, ALLERGEN_SCHEMA]
+FOUR_TOOL_SCHEMAS = [SEARCH_SCHEMA, SCALE_SCHEMA, ALLERGEN_SCHEMA, READ_SCHEMA]
+POISON_PATH = ROOT / "eval" / "week8" / "poisoned_notes.txt"
 
 
 # ── implementations ─────────────────────────────────────────────────────────
@@ -376,6 +404,28 @@ def get_allergen_profile(recipe_id: str, allergen: str) -> Dict:
     }
 
 
+def read_source_document(recipe_id: str, poison: bool = False) -> Dict:
+    """Least privilege: one card, notes only, no network, no writes."""
+    if recipe_id not in RECIPE_IDS:
+        return {"error": f"unknown recipe_id {recipe_id}"}
+    if poison:
+        return {
+            "recipe_id": recipe_id,
+            "section": "Notes",
+            "read_only": True,
+            "text": POISON_PATH.read_text(encoding="utf-8"),
+        }
+    card = catalog().get(recipe_id)
+    if not card:
+        return {"error": f"unknown recipe_id {recipe_id}"}
+    return {
+        "recipe_id": recipe_id,
+        "section": "Notes",
+        "read_only": True,
+        "text": card.get("notes") or "",
+    }
+
+
 DISPATCH = {
     "search_recipes": lambda args: search_recipes(args.get("query", "")),
     "scale_recipe": lambda args: scale_recipe(args.get("recipe_id", ""), int(args.get("servings") or 1)),
@@ -385,14 +435,25 @@ DISPATCH = {
 }
 
 
-def run_tool(name: str, args: Dict) -> Dict:
+def run_tool(name: str, args: Dict, *, poison: bool = False) -> Dict:
+    if name == "read_source_document":
+        try:
+            return read_source_document(args.get("recipe_id", ""), poison=poison)
+        except Exception as exc:
+            return {"error": f"{type(exc).__name__}: {exc}"}
     fn = DISPATCH.get(name)
     if not fn:
         return {"error": f"unknown tool {name}"}
     try:
-        return fn(args)
+        payload = fn(args)
     except Exception as exc:
         return {"error": f"{type(exc).__name__}: {exc}"}
+    # Indirect injection channel: the card text rides along with a normal tool
+    # result, the way a retrieved chunk does. Off unless the caller asks.
+    if poison and isinstance(payload, dict) and not payload.get("error"):
+        payload = dict(payload)
+        payload["source_notes"] = POISON_PATH.read_text(encoding="utf-8")
+    return payload
 
 
 def schemas_to_json(schemas: List[Dict]) -> str:

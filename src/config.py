@@ -41,6 +41,7 @@ GROQ_MODEL = os.environ.get("GROQ_MODEL", "openai/gpt-oss-120b")
 # Week-7 loop can use a smaller Groq model if the 120b day-cap is gone.
 # Same model for agent and workflow (workflow may make zero calls).
 WEEK7_MODEL = os.environ.get("WEEK7_MODEL", "openai/gpt-oss-20b")
+WEEK8_MODEL = os.environ.get("WEEK8_MODEL", WEEK7_MODEL)
 
 # Groq list prices USD / 1M tokens (console.groq.com/docs/models, 2026-09-20)
 GROQ_PRICES = {

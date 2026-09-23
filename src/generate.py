@@ -77,7 +77,8 @@ def _client():
         return None
     from groq import Groq
 
-    return Groq(api_key=key)
+    # 90s cap: an unenforced HTTP timeout is how W05 sat for eight hours.
+    return Groq(api_key=key, timeout=90.0)
 
 
 def complete_messages(
@@ -110,47 +111,65 @@ def complete_messages(
     if tools:
         kwargs["tools"] = tools
         kwargs["tool_choice"] = "auto"
-    try:
-        resp = client.chat.completions.create(**kwargs)
-        usage = getattr(resp, "usage", None)
-        msg = resp.choices[0].message
-        content = (msg.content or "").strip()
-        if not content:
-            content = (getattr(msg, "reasoning", None) or "").strip()
-        tool_calls = []
-        for tc in getattr(msg, "tool_calls", None) or []:
-            fn = tc.function
-            tool_calls.append(
-                {
-                    "id": getattr(tc, "id", "") or "",
-                    "name": fn.name,
-                    "arguments": fn.arguments or "{}",
-                }
+    last_err = None
+    for attempt in range(3):
+        try:
+            resp = client.chat.completions.create(**kwargs)
+            usage = getattr(resp, "usage", None)
+            msg = resp.choices[0].message
+            content = (msg.content or "").strip()
+            if not content:
+                content = (getattr(msg, "reasoning", None) or "").strip()
+            tool_calls = []
+            for tc in getattr(msg, "tool_calls", None) or []:
+                fn = tc.function
+                tool_calls.append(
+                    {
+                        "id": getattr(tc, "id", "") or "",
+                        "name": fn.name,
+                        "arguments": fn.arguments or "{}",
+                    }
+                )
+            return {
+                "content": content,
+                "tool_calls": tool_calls,
+                "finish_reason": resp.choices[0].finish_reason,
+                "usage": None
+                if usage is None
+                else {
+                    "prompt_tokens": usage.prompt_tokens,
+                    "completion_tokens": usage.completion_tokens,
+                },
+                "latency_ms": int((time.perf_counter() - started) * 1000),
+                "error": None,
+                "raw_message": msg,
+            }
+        except Exception as exc:
+            last_err = exc
+            msg = f"{type(exc).__name__}: {exc}"
+            low = msg.lower()
+            retryable = (
+                "429" in msg
+                or "rate" in low
+                or "connect" in low
+                or "timeout" in low
+                or "timed out" in low
+                or "temporarily" in low
             )
-        return {
-            "content": content,
-            "tool_calls": tool_calls,
-            "finish_reason": resp.choices[0].finish_reason,
-            "usage": None
-            if usage is None
-            else {
-                "prompt_tokens": usage.prompt_tokens,
-                "completion_tokens": usage.completion_tokens,
-            },
-            "latency_ms": int((time.perf_counter() - started) * 1000),
-            "error": None,
-            "raw_message": msg,
-        }
-    except Exception as exc:
-        return {
-            "content": None,
-            "tool_calls": [],
-            "finish_reason": None,
-            "usage": None,
-            "latency_ms": int((time.perf_counter() - started) * 1000),
-            "error": f"{type(exc).__name__}: {exc}",
-            "raw_message": None,
-        }
+            if retryable and attempt < 2:
+                wait = 25 if "429" in msg or "rate" in low else 5 * (attempt + 1)
+                time.sleep(wait)
+                continue
+            break
+    return {
+        "content": None,
+        "tool_calls": [],
+        "finish_reason": None,
+        "usage": None,
+        "latency_ms": int((time.perf_counter() - started) * 1000),
+        "error": f"{type(last_err).__name__}: {last_err}" if last_err else "unknown error",
+        "raw_message": None,
+    }
 
 
 def complete(

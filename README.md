@@ -108,6 +108,17 @@ python scripts/run_week7_workflow.py --id W07
 python scripts/run_week7_race.py
 ```
 
+## Agents (week 8)
+
+Read **`WEEK8.md`**. Score the path, not just the plate; attack the agent with a poisoned card; then close the top failure.
+
+```bash
+python scripts/run_week8.py --offline
+python scripts/run_week8.py --phase trajectory
+python scripts/run_week8.py --phase injection
+python scripts/run_week8.py --phase after
+```
+
 ## The two strategies
 
 **A — basic.** Fixed-size character windows (default 500 chars, 80 overlap) over
