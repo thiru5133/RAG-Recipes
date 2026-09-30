@@ -325,6 +325,11 @@ def main() -> None:
     (WEEK6 / "summary.json").write_text(json.dumps(summary, indent=2) + "\n", encoding="utf-8")
     print(f"\nWrote {WEEK6 / 'summary.json'}")
 
+    if labels and (v1 or v2):
+        from langfuse_judge import export_week6  # noqa: E402
+
+        print(export_week6(items, labels, v1, v2))
+
 
 if __name__ == "__main__":
     main()

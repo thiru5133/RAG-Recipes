@@ -98,6 +98,8 @@ Read **`WEEK6.md`** for the judge-validation protocol: blind labels, assertions 
 python scripts/run_week6.py
 ```
 
+That command also uploads judge v1 and v2 to Langfuse when `LANGFUSE_PUBLIC_KEY` and `LANGFUSE_SECRET_KEY` are set in `.env`. Blank keys leave the eval local.
+
 ## Agents (week 7)
 
 Read **`WEEK7.md`**. Race an agent loop against a three-step workflow on the same 10 adaptation requests.

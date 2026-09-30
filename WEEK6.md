@@ -93,6 +93,8 @@ If you rank by faithfulness, S03 is the best substitution in the set. It is also
 python scripts/run_week6.py
 ```
 
+With `LANGFUSE_PUBLIC_KEY` and `LANGFUSE_SECRET_KEY` in `.env`, that same command uploads the 54 cached judge rows (v1 and v2). Blank keys skip the upload. Details: `explanation/WEEK6-7-EXPLAINED.md`.
+
 One command. Prints pass rate by Week-5 mode, pass rate by allergen/flavour slice, `agreement_before` / `agreement_after`, assertion count vs judged-criteria count, and the faithfully-wrong case.
 
 The judge will not run if `labels_25.json` is missing. That is the protocol, encoded.
