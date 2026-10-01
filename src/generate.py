@@ -152,10 +152,18 @@ def generate(question: str, hits: List[Dict], model: str = GROQ_MODEL) -> Dict:
     }
 
 
-CITATION_RE = re.compile(r"\[([A-Za-z0-9_\-]+)\s*\|\s*([A-Za-z0-9_\-]+)\]")
+# Models drift from the prompted `[chunk_id | recipe_id]` shape. Normalise the
+# known variants (full-width brackets, non-ASCII hyphens, padded spaces, the
+# context-header form `chunk_id: X | recipe_id: Y`) before matching.
+_BRACKETS = str.maketrans({"\u3010": "[", "\u3011": "]", "\uff3b": "[", "\uff3d": "]"})
+_HYPHENS = re.compile("[\u2010\u2011\u2012\u2013\u2014\u2212]")
+CITATION_RE = re.compile(
+    r"\[\s*(?:chunk_id\s*:\s*)?([A-Za-z0-9_\-]+)\s*\|\s*(?:recipe_id\s*:\s*)?([A-Za-z0-9_\-]+)\s*\]"
+)
 
 
 def extract_citations(answer: Optional[str]):
     if not answer:
         return []
-    return [(m.group(1), m.group(2)) for m in CITATION_RE.finditer(answer)]
+    text = _HYPHENS.sub("-", answer.translate(_BRACKETS))
+    return [(m.group(1), m.group(2)) for m in CITATION_RE.finditer(text)]
