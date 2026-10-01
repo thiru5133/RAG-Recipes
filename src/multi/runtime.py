@@ -6,6 +6,7 @@ bill can be attributed to a specific edge of the graph afterwards.
 from __future__ import annotations
 
 import json
+import sys
 import time
 from dataclasses import dataclass, field
 from typing import Dict, List, Optional, Sequence
@@ -44,7 +45,9 @@ def llm(messages: List[Dict], meter: Meter, handoff: str, tools: Optional[List[D
         model: str = WEEK7_MODEL) -> Dict:
     t0 = time.perf_counter()
     resp = complete_messages(messages, model=model, max_tokens=MAX_OUT, tools=tools or None)
-    meter.add(handoff, resp.get("usage"), int((time.perf_counter() - t0) * 1000))
+    ms = int((time.perf_counter() - t0) * 1000)
+    meter.add(handoff, resp.get("usage"), ms)
+    print(f"    [llm] {handoff} {ms}ms err={str(resp.get('error'))[:80]}", file=sys.stderr, flush=True)
     return resp
 
 
