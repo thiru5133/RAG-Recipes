@@ -24,6 +24,9 @@ from agent.contract import cost_usd
 from mcp_lite.client import McpClient, McpError
 
 DEFAULT_CONFIG = ROOT / "config" / "mcp_servers.json"
+# gpt-oss spends part of this on hidden reasoning; 1200 left an empty answer and the
+# harness then surfaced the reasoning text. One shared cap for every arm (Week 10).
+MAX_OUT_TOKENS = 4000
 
 SYSTEM = """You are a recipe assistant. Use the tools you are given; read each tool's description to decide which one fits.
 Reference data attached by the app (if any) appears below. Do not fetch what is already attached.
@@ -113,7 +116,7 @@ def run_mcp_agent(request_text: str, *, config_path: Path = DEFAULT_CONFIG, mode
                 stopped_by = "max_cost"; break
             if (time.perf_counter() - started) * 1000 >= max_wall_ms:
                 stopped_by = "wall_clock"; break
-            resp = complete_messages(messages, model=model, max_tokens=1200, tools=host.schemas())
+            resp = complete_messages(messages, model=model, max_tokens=MAX_OUT_TOKENS, tools=host.schemas())
             err = resp.get("error") or ""
             if "tool_use_failed" in err or "Failed to call a function" in err:
                 messages.append({"role": "user", "content": "Your last tool call was malformed. Call the tool again with valid JSON arguments."})
