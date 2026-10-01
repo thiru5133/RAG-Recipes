@@ -1,0 +1,9 @@
+{
+  "servers": {
+    "recipes": {
+      "command": "${PYTHON}",
+      "args": ["src/mcp_servers/recipe_server.py"],
+      "attach_resources": ["recipes://allergen-matrix"]
+    }
+  }
+}

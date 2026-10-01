@@ -50,3 +50,6 @@ eval/week7/*.log
 
 # Cursor
 .cursor/
+
+# Week 9 runtime logs (third-party server query log, agent traces)
+logs/
