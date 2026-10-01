@@ -16,6 +16,9 @@ from typing import Any, Dict, List, Optional
 from mcp_lite import PROTOCOL_VERSION
 
 
+SAFE_ENV = ("PATH", "HOME", "LANG", "LC_ALL", "TMPDIR", "SYSTEMROOT")
+
+
 class McpError(RuntimeError):
     pass
 
@@ -25,7 +28,9 @@ class McpClient:
                  cwd: Optional[str] = None, timeout_s: float = 30.0):
         self.name = name
         self._cmd = [command, *args]
-        self._env = {**os.environ, **(env or {})}
+        # Least privilege: a server subprocess gets a minimal env plus what the
+        # config names, never the host's secrets (GROQ_API_KEY etc.).
+        self._env = {**{k: os.environ[k] for k in SAFE_ENV if k in os.environ}, **(env or {})}
         self._cwd = cwd
         self._timeout = timeout_s
         self._proc: Optional[subprocess.Popen] = None

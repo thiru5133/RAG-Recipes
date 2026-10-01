@@ -1,0 +1,13 @@
+{
+  "tokens": {
+    "tok-recipe-agent-full": {
+      "caller": "recipe-agent",
+      "allow": ["*"]
+    },
+    "tok-recipe-agent-allergen-only": {
+      "caller": "recipe-agent",
+      "allow": ["search_recipes", "scale_recipe", "get_allergen_profile", "get_ingredient_allergens"],
+      "deny_message": "Nutrition lookups are switched off for this session. Do not guess nutrition numbers: tell the user nutrition is unavailable here, and answer with the allergen flags (get_ingredient_allergens) instead."
+    }
+  }
+}

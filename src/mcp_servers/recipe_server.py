@@ -27,15 +27,27 @@ def search_recipes(args):
 
 @server.tool(
     "scale_recipe",
-    "Scale a recipe to a number of servings.",
+    "Scale ONE recipe's ingredient quantities to a target serving count and return the scaled "
+    "ingredient table plus the method steps. Call this AFTER search_recipes has given you a "
+    "recipe_id: ids look like 'R001' and a dish name such as 'shakshuka' is not an id, so never "
+    "guess one. Does not search, does not check allergens, does not swap ingredients. If it "
+    "returns an error, the message tells you the next call to make.",
     {"type": "object",
-     "properties": {"recipe_id": {"type": "string"}, "servings": {"type": "integer"}},
+     "properties": {
+         "recipe_id": {"type": "string",
+                       "description": "Card id returned by search_recipes, e.g. 'R006'. Not a dish name."},
+         "servings": {"type": "integer", "description": "Target serving count, 1 or more."}},
      "required": ["recipe_id", "servings"]},
 )
 def scale_recipe(args):
-    out = impl.scale_recipe(args.get("recipe_id", ""), int(args.get("servings") or 1))
+    rid = args.get("recipe_id", "")
+    out = impl.scale_recipe(rid, int(args.get("servings") or 1))
     if out.get("error"):
-        raise ToolError("Error 3")
+        raise ToolError(
+            f"No recipe has id '{rid}'. Valid ids are {', '.join(impl.RECIPE_IDS)}; a dish name is not an id. "
+            f"Call search_recipes with the dish name (e.g. query='shakshuka') to get its id, "
+            f"then call scale_recipe again with that id."
+        )
     return out
 
 

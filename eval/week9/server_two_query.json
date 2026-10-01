@@ -1,0 +1,29 @@
+{
+  "answer": "21 g of protein per 100 g of paneer. Paneer is a dairy product, so it contains the dairy allergen.",
+  "stopped_by": "completed",
+  "laps": 2,
+  "tokens": 1354,
+  "prompt_tokens": 1187,
+  "completion_tokens": 167,
+  "cost_usd": 0.000139,
+  "latency_ms": 1529,
+  "tools_discovered": [
+    "search_recipes",
+    "scale_recipe",
+    "get_allergen_profile",
+    "get_ingredient_allergens",
+    "get_ingredient_nutrition"
+  ],
+  "trace": [
+    {
+      "lap": 1,
+      "tool": "get_ingredient_nutrition",
+      "server": "ingredient_db",
+      "args": {
+        "name": "paneer"
+      },
+      "is_error": false,
+      "result": "{\"ingredient\": \"paneer\", \"per_100g\": {\"kcal\": 321, \"protein_g\": 21, \"fat_g\": 25, \"carbs_g\": 3.6}}"
+    }
+  ]
+}

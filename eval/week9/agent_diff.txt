@@ -1,0 +1,9 @@
+$ git diff week9-server-one week9-server-two -- src/agent/mcp_agent.py src/mcp_lite
+(no output)
+$ git diff --numstat week9-server-one week9-server-two -- src/agent/mcp_agent.py src/mcp_lite
+(no output)
+changed lines in agent module: 0
+
+$ git diff --stat week9-server-one week9-server-two      # everything that DID change
+ config/mcp_servers.json | 4 ++++
+ 1 file changed, 4 insertions(+)
