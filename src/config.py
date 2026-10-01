@@ -40,3 +40,7 @@ REFUSAL_THRESHOLD = 0.30
 GROQ_MODEL = os.environ.get("GROQ_MODEL", "openai/gpt-oss-120b")
 
 
+
+# Week 6: the LLM-as-judge is a different model family from the generator, so it
+# is not grading its own writing.
+JUDGE_MODEL = os.environ.get("JUDGE_MODEL", "qwen/qwen3.8-27b")

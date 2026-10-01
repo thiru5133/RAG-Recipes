@@ -1,0 +1,471 @@
+{
+ "tag": "free",
+ "timestamp": "2026-10-01T20:23:06",
+ "prompt_version": "v1.2.0",
+ "generator": "openai/gpt-oss-120b",
+ "judge": {
+  "model": "qwen/qwen3.8-27b",
+  "prompt_version": "j1.0.0",
+  "validated": false,
+  "agreement": 1.0,
+  "kappa": 1.0,
+  "label_source": "draft"
+ },
+ "config": {
+  "strategy": "structured",
+  "mode": "semantic",
+  "k": 3,
+  "rerank": false
+ },
+ "suites": {
+  "citation_format": {
+   "problem_type": "Citation in a shape the verifier cannot read",
+   "passed": 9,
+   "total": 9,
+   "errors": 0,
+   "cases": [
+    {
+     "id": "T07-plain",
+     "trace": "ac25b5bd",
+     "passed": true,
+     "legacy_passed": true,
+     "expected": [
+      [
+       "R006-A03",
+       "R006"
+      ]
+     ],
+     "got": [
+      [
+       "R006-A03",
+       "R006"
+      ]
+     ]
+    },
+    {
+     "id": "T02-fullwidth",
+     "trace": "a110140c",
+     "passed": true,
+     "legacy_passed": false,
+     "expected": [
+      [
+       "R006-B06",
+       "R006"
+      ]
+     ],
+     "got": [
+      [
+       "R006-B06",
+       "R006"
+      ]
+     ]
+    },
+    {
+     "id": "T17-fullwidth-bold",
+     "trace": "a0425747",
+     "passed": true,
+     "legacy_passed": false,
+     "expected": [
+      [
+       "R005-B01",
+       "R005"
+      ]
+     ],
+     "got": [
+      [
+       "R005-B01",
+       "R005"
+      ]
+     ]
+    },
+    {
+     "id": "T10-padded",
+     "trace": "9c9db0d4",
+     "passed": true,
+     "legacy_passed": false,
+     "expected": [
+      [
+       "R003-A00",
+       "R003"
+      ]
+     ],
+     "got": [
+      [
+       "R003-A00",
+       "R003"
+      ]
+     ]
+    },
+    {
+     "id": "T14-padded",
+     "trace": "fdcb0d08",
+     "passed": true,
+     "legacy_passed": false,
+     "expected": [
+      [
+       "R004-B01",
+       "R004"
+      ]
+     ],
+     "got": [
+      [
+       "R004-B01",
+       "R004"
+      ]
+     ]
+    },
+    {
+     "id": "T18-padded-unicode-hyphen",
+     "trace": "59947af2",
+     "passed": true,
+     "legacy_passed": false,
+     "expected": [
+      [
+       "R002-A00",
+       "R002"
+      ]
+     ],
+     "got": [
+      [
+       "R002-A00",
+       "R002"
+      ]
+     ]
+    },
+    {
+     "id": "T11-header-form",
+     "trace": "6a8e7a17",
+     "passed": true,
+     "legacy_passed": false,
+     "expected": [
+      [
+       "R005-B01",
+       "R005"
+      ]
+     ],
+     "got": [
+      [
+       "R005-B01",
+       "R005"
+      ]
+     ]
+    },
+    {
+     "id": "multi",
+     "trace": null,
+     "passed": true,
+     "legacy_passed": false,
+     "expected": [
+      [
+       "R006-A02",
+       "R006"
+      ],
+      [
+       "R006-A03",
+       "R006"
+      ]
+     ],
+     "got": [
+      [
+       "R006-A02",
+       "R006"
+      ],
+      [
+       "R006-A03",
+       "R006"
+      ]
+     ]
+    },
+    {
+     "id": "none",
+     "trace": null,
+     "passed": true,
+     "legacy_passed": true,
+     "expected": [],
+     "got": []
+    }
+   ],
+   "baseline_passed": 2,
+   "baseline_label": "extractor as shipped in week 5"
+  },
+  "hybrid_gate": {
+   "problem_type": "Hybrid search refused by the score gate",
+   "passed": 26,
+   "total": 26,
+   "errors": 0,
+   "cases": [
+    {
+     "id": "Q1",
+     "passed": true,
+     "legacy_passed": false,
+     "top_rrf": 0.0328,
+     "gate_cosine": 0.6441
+    },
+    {
+     "id": "Q2",
+     "passed": true,
+     "legacy_passed": false,
+     "top_rrf": 0.0325,
+     "gate_cosine": 0.6227
+    },
+    {
+     "id": "Q3",
+     "passed": true,
+     "legacy_passed": false,
+     "top_rrf": 0.0325,
+     "gate_cosine": 0.7063
+    },
+    {
+     "id": "Q4",
+     "passed": true,
+     "legacy_passed": false,
+     "top_rrf": 0.0328,
+     "gate_cosine": 0.7359
+    },
+    {
+     "id": "Q5",
+     "passed": true,
+     "legacy_passed": false,
+     "top_rrf": 0.0328,
+     "gate_cosine": 0.6595
+    },
+    {
+     "id": "Q6",
+     "passed": true,
+     "legacy_passed": false,
+     "top_rrf": 0.0328,
+     "gate_cosine": 0.7996
+    },
+    {
+     "id": "Q7",
+     "passed": true,
+     "legacy_passed": false,
+     "top_rrf": 0.0325,
+     "gate_cosine": 0.6509
+    },
+    {
+     "id": "Q8",
+     "passed": true,
+     "legacy_passed": false,
+     "top_rrf": 0.0325,
+     "gate_cosine": 0.5111
+    },
+    {
+     "id": "Q9",
+     "passed": true,
+     "legacy_passed": false,
+     "top_rrf": 0.0328,
+     "gate_cosine": 0.7425
+    },
+    {
+     "id": "Q10",
+     "passed": true,
+     "legacy_passed": false,
+     "top_rrf": 0.0328,
+     "gate_cosine": 0.6625
+    },
+    {
+     "id": "Q11",
+     "passed": true,
+     "legacy_passed": false,
+     "top_rrf": 0.0328,
+     "gate_cosine": 0.6805
+    },
+    {
+     "id": "Q12",
+     "passed": true,
+     "legacy_passed": false,
+     "top_rrf": 0.0323,
+     "gate_cosine": 0.7468
+    },
+    {
+     "id": "Q13",
+     "passed": true,
+     "legacy_passed": false,
+     "top_rrf": 0.0325,
+     "gate_cosine": 0.5325
+    },
+    {
+     "id": "Q14",
+     "passed": true,
+     "legacy_passed": false,
+     "top_rrf": 0.0328,
+     "gate_cosine": 0.6783
+    },
+    {
+     "id": "Q15",
+     "passed": true,
+     "legacy_passed": false,
+     "top_rrf": 0.0325,
+     "gate_cosine": 0.6989
+    },
+    {
+     "id": "Q16",
+     "passed": true,
+     "legacy_passed": false,
+     "top_rrf": 0.0325,
+     "gate_cosine": 0.4876
+    },
+    {
+     "id": "Q17",
+     "passed": true,
+     "legacy_passed": false,
+     "top_rrf": 0.0325,
+     "gate_cosine": 0.6402
+    },
+    {
+     "id": "Q18",
+     "passed": true,
+     "legacy_passed": false,
+     "top_rrf": 0.0323,
+     "gate_cosine": 0.6811
+    },
+    {
+     "id": "Q19",
+     "passed": true,
+     "legacy_passed": false,
+     "top_rrf": 0.0328,
+     "gate_cosine": 0.5769
+    },
+    {
+     "id": "Q20",
+     "passed": true,
+     "legacy_passed": false,
+     "top_rrf": 0.0328,
+     "gate_cosine": 0.3871
+    },
+    {
+     "id": "Q21",
+     "passed": true,
+     "legacy_passed": false,
+     "top_rrf": 0.0328,
+     "gate_cosine": 0.6707
+    },
+    {
+     "id": "Q22",
+     "passed": true,
+     "legacy_passed": false,
+     "top_rrf": 0.0328,
+     "gate_cosine": 0.6678
+    },
+    {
+     "id": "Q23",
+     "passed": true,
+     "legacy_passed": false,
+     "top_rrf": 0.0328,
+     "gate_cosine": 0.65
+    },
+    {
+     "id": "Q24",
+     "passed": true,
+     "legacy_passed": false,
+     "top_rrf": 0.0328,
+     "gate_cosine": 0.6108
+    },
+    {
+     "id": "Q25",
+     "passed": true,
+     "legacy_passed": false,
+     "top_rrf": 0.0328,
+     "gate_cosine": 0.5413
+    },
+    {
+     "id": "Q26",
+     "passed": true,
+     "legacy_passed": false,
+     "top_rrf": 0.032,
+     "gate_cosine": 0.6948
+    }
+   ],
+   "baseline_passed": 0,
+   "baseline_label": "gate on the RRF score (pre-fix)"
+  },
+  "table_miss": {
+   "problem_type": "Ingredient/nutrition table missing from the top 3",
+   "passed": 10,
+   "total": 11,
+   "errors": 0,
+   "cases": [
+    {
+     "id": "Q1",
+     "passed": true,
+     "legacy_passed": false,
+     "rank_plain": null,
+     "rank_rerank": 2
+    },
+    {
+     "id": "Q2",
+     "passed": true,
+     "legacy_passed": true,
+     "rank_plain": 3,
+     "rank_rerank": 1
+    },
+    {
+     "id": "Q3",
+     "passed": true,
+     "legacy_passed": false,
+     "rank_plain": null,
+     "rank_rerank": 2
+    },
+    {
+     "id": "Q4",
+     "passed": true,
+     "legacy_passed": true,
+     "rank_plain": 1,
+     "rank_rerank": 1
+    },
+    {
+     "id": "Q9",
+     "passed": true,
+     "legacy_passed": false,
+     "rank_plain": null,
+     "rank_rerank": 2
+    },
+    {
+     "id": "Q15",
+     "passed": true,
+     "legacy_passed": false,
+     "rank_plain": null,
+     "rank_rerank": 3
+    },
+    {
+     "id": "Q18",
+     "passed": true,
+     "legacy_passed": false,
+     "rank_plain": null,
+     "rank_rerank": 3
+    },
+    {
+     "id": "Q22",
+     "passed": true,
+     "legacy_passed": false,
+     "rank_plain": null,
+     "rank_rerank": 2
+    },
+    {
+     "id": "Q23",
+     "passed": true,
+     "legacy_passed": true,
+     "rank_plain": 1,
+     "rank_rerank": 1
+    },
+    {
+     "id": "Q24",
+     "passed": false,
+     "legacy_passed": false,
+     "rank_plain": null,
+     "rank_rerank": null
+    },
+    {
+     "id": "Q25",
+     "passed": true,
+     "legacy_passed": false,
+     "rank_plain": null,
+     "rank_rerank": 2
+    }
+   ],
+   "baseline_passed": 3,
+   "baseline_label": "semantic, rerank off"
+  }
+ }
+}

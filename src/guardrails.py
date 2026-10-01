@@ -2,7 +2,7 @@
 from typing import Dict, List, Optional
 
 from config import REFUSAL_THRESHOLD
-from generate import REFUSAL, extract_citations, generate
+from generate import PROMPT_VERSION, REFUSAL, extract_citations, generate
 
 
 def gate_value(hits: List[Dict]) -> Optional[float]:
@@ -45,7 +45,12 @@ def validate_citations(answer: str, hits: List[Dict]) -> Dict:
     }
 
 
-def answer_question(question: str, hits: List[Dict], threshold: float = REFUSAL_THRESHOLD) -> Dict:
+def answer_question(
+    question: str,
+    hits: List[Dict],
+    threshold: float = REFUSAL_THRESHOLD,
+    prompt_version: str = PROMPT_VERSION,
+) -> Dict:
     """Full guarded path: threshold gate, then prompt gate, then verification."""
     top_score = gate_value(hits)
 
@@ -62,7 +67,7 @@ def answer_question(question: str, hits: List[Dict], threshold: float = REFUSAL_
             "generation": None,
         }
 
-    result = generate(question, hits)
+    result = generate(question, hits, prompt_version=prompt_version)
     if result["error"]:
         return {
             "question": question,

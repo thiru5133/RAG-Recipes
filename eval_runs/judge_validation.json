@@ -1,0 +1,310 @@
+{
+ "judge_model": "qwen/qwen3.8-27b",
+ "judge_prompt_version": "j1.0.0",
+ "label_source": "draft",
+ "labelled": 32,
+ "judged": 32,
+ "judge_errors": 0,
+ "agreement": 1.0,
+ "cohens_kappa": 1.0,
+ "false_pass": 0,
+ "false_pass_rate": 0.0,
+ "false_fail": 0,
+ "false_fail_rate": 0.0,
+ "thresholds": {
+  "agreement": 0.85,
+  "kappa": 0.7,
+  "false_pass_rate": 0.1
+ },
+ "trusted": false,
+ "rows": [
+  {
+   "id": "L01",
+   "qid": "S1",
+   "human": "PASS",
+   "judge": "PASS",
+   "reasoning": "The answer contains all required facts: extra-firm tofu (same weight, pressed 30 minutes) for paneer, neutral oil for butter, and thick coconut cream for heavy cream. It does not contradict the card and matches the expected 'answer' behavior.",
+   "error": null,
+   "why_human": "all three swaps"
+  },
+  {
+   "id": "L02",
+   "qid": "S1",
+   "human": "FAIL",
+   "judge": "FAIL",
+   "reasoning": "The answer provides the correct substitution for paneer (extra-firm tofu, same weight, pressed 30 minutes) but fails to include the other two required facts: replacing butter with neutral oil and heavy cream with thick coconut cream. Since the question asks how to make the dish vegan, omitting the other necessary swaps makes the answer incomplete.",
+   "error": null,
+   "why_human": "incomplete: tofu only (the T08 failure)"
+  },
+  {
+   "id": "L03",
+   "qid": "S1",
+   "human": "FAIL",
+   "judge": "FAIL",
+   "reasoning": "The assistant's answer contradicts the recipe card by suggesting cottage cheese (which is not vegan) instead of extra-firm tofu, and by advising to keep the butter and cream, whereas the card explicitly states to swap them for neutral oil and thick coconut cream. All required facts are missing or incorrect.",
+   "error": null,
+   "why_human": "wrong swap, keeps butter"
+  },
+  {
+   "id": "L04",
+   "qid": "S1",
+   "human": "PASS",
+   "judge": "PASS",
+   "reasoning": "The answer correctly identifies all three required substitutions: extra-firm tofu (same weight, pressed 30 minutes/half an hour) for paneer, neutral oil for butter, and thick coconut cream for heavy cream. It does not contradict the card and follows the expected behavior to answer.",
+   "error": null,
+   "why_human": "reworded but complete"
+  },
+  {
+   "id": "L05",
+   "qid": "S1",
+   "human": "FAIL",
+   "judge": "FAIL",
+   "reasoning": "The answer includes the required facts for tofu, oil, and coconut cream. However, it adds an instruction to 'add 2 tablespoons of nutritional yeast for cheesiness,' which is not stated in the recipe card and contradicts the card's specific guidance regarding cashews/melon seeds (implying an unnecessary or incorrect addition). This fails the FAITHFUL step.",
+   "error": null,
+   "why_human": "complete but invents nutritional yeast"
+  },
+  {
+   "id": "L06",
+   "qid": "S2",
+   "human": "PASS",
+   "judge": "PASS",
+   "reasoning": "The answer correctly identifies light soy sauce (2 tbsp) as the replacement for fish sauce, matching all required facts and the recipe card. It does not contradict the card or add unsupported details, and it answers the question as expected.",
+   "error": null,
+   "why_human": "correct"
+  },
+  {
+   "id": "L07",
+   "qid": "S2",
+   "human": "FAIL",
+   "judge": "FAIL",
+   "reasoning": "The assistant suggests Worcestershire sauce, but the recipe card specifies light soy sauce (2 tbsp) as the replacement for fish sauce. This contradicts the required facts and the card text.",
+   "error": null,
+   "why_human": "wrong ingredient"
+  },
+  {
+   "id": "L08",
+   "qid": "S2",
+   "human": "FAIL",
+   "judge": "FAIL",
+   "reasoning": "The expected behavior is to answer the question, but the assistant refused to answer. The required fact (light soy sauce) is missing.",
+   "error": null,
+   "why_human": "refuses an answerable question"
+  },
+  {
+   "id": "L09",
+   "qid": "S3",
+   "human": "PASS",
+   "judge": "PASS",
+   "reasoning": "The answer includes all required facts: omitting eggs and feta, adding two 400 g tins of drained chickpeas at step 3, and simmering for 10 minutes. It does not contradict the card and correctly answers the question.",
+   "error": null,
+   "why_human": "all three facts"
+  },
+  {
+   "id": "L10",
+   "qid": "S3",
+   "human": "FAIL",
+   "judge": "FAIL",
+   "reasoning": "The answer omits the required fact to 'simmer for 10 minutes'.",
+   "error": null,
+   "why_human": "missing the 10 minute simmer"
+  },
+  {
+   "id": "L11",
+   "qid": "S3",
+   "human": "FAIL",
+   "judge": "FAIL",
+   "reasoning": "The assistant's answer contradicts the recipe card by stating to add 'one' tin of chickpeas instead of 'two' and to simmer for '15 minutes' instead of '10 minutes'. These are factual errors regarding quantity and time.",
+   "error": null,
+   "why_human": "wrong quantity and time"
+  },
+  {
+   "id": "L12",
+   "qid": "S4",
+   "human": "PASS",
+   "judge": "PASS",
+   "reasoning": "The answer contains the required fact (1 tablespoon of lemon juice, added off the heat) and does not contradict the card. It correctly answers the question as expected.",
+   "error": null,
+   "why_human": "correct"
+  },
+  {
+   "id": "L13",
+   "qid": "S4",
+   "human": "FAIL",
+   "judge": "FAIL",
+   "reasoning": "The assistant's answer contradicts the recipe card on two required facts: it specifies 'one teaspoon' instead of 'one tablespoon' and says to add it 'at the start of cooking' instead of 'off the heat'.",
+   "error": null,
+   "why_human": "wrong amount"
+  },
+  {
+   "id": "L14",
+   "qid": "S4",
+   "human": "FAIL",
+   "judge": "FAIL",
+   "reasoning": "The assistant suggests tamarind paste, which contradicts the recipe card that specifies lemon juice. The required fact (1 tablespoon of lemon juice, added off the heat) is missing and replaced with an incorrect substitution.",
+   "error": null,
+   "why_human": "invented swap"
+  },
+  {
+   "id": "L15",
+   "qid": "S5",
+   "human": "PASS",
+   "judge": "PASS",
+   "reasoning": "The answer includes all required facts: two 400 g tins drained, reducing the final simmer to 8 minutes, and mashing more chickpeas due to a thinner sauce. It does not contradict the card and correctly answers the question.",
+   "error": null,
+   "why_human": "all three facts"
+  },
+  {
+   "id": "L16",
+   "qid": "S5",
+   "human": "FAIL",
+   "judge": "FAIL",
+   "reasoning": "The answer includes the facts about the tins and simmer time but omits the required fact about mashing more chickpeas to compensate for the thinner sauce. Therefore, it fails the completeness check.",
+   "error": null,
+   "why_human": "missing the mashing advice"
+  },
+  {
+   "id": "L17",
+   "qid": "S5",
+   "human": "FAIL",
+   "judge": "FAIL",
+   "reasoning": "The answer fails the COMPLETE step because it states to simmer for 15 minutes, whereas the required fact is to reduce the final simmer to 8 minutes. It also omits the specific reason for mashing (thinner sauce due to lost starchy water), though the primary failure is the incorrect time.",
+   "error": null,
+   "why_human": "wrong simmer time"
+  },
+  {
+   "id": "L18",
+   "qid": "S6",
+   "human": "PASS",
+   "judge": "PASS",
+   "reasoning": "The answer correctly states the required simmer time of 7 minutes and the consequence of drying out, matching the recipe card exactly. It does not contradict the card or add unsupported details.",
+   "error": null,
+   "why_human": "correct"
+  },
+  {
+   "id": "L19",
+   "qid": "S6",
+   "human": "FAIL",
+   "judge": "FAIL",
+   "reasoning": "The assistant states to simmer for 10 minutes, which contradicts the required fact of 7 minutes and the recipe card text. This fails the COMPLETE and FAITHFUL checks.",
+   "error": null,
+   "why_human": "wrong time"
+  },
+  {
+   "id": "L20",
+   "qid": "S7",
+   "human": "PASS",
+   "judge": "PASS",
+   "reasoning": "The answer confirms the substitution is possible and specifies the required preparation (cut into 2 cm cubes), matching the required facts and the recipe card exactly.",
+   "error": null,
+   "why_human": "correct"
+  },
+  {
+   "id": "L21",
+   "qid": "S7",
+   "human": "FAIL",
+   "judge": "FAIL",
+   "reasoning": "The expected behavior is to answer the question, and the required fact is that regular aubergine cut into 2 cm cubes is a substitute. The assistant refused to answer, which fails the BEHAVIOUR step and misses the REQUIRED FACT.",
+   "error": null,
+   "why_human": "refuses an answerable question"
+  },
+  {
+   "id": "L22",
+   "qid": "S8",
+   "human": "PASS",
+   "judge": "PASS",
+   "reasoning": "The answer confirms that tempeh works in place of tofu and states it needs no pressing, covering all required facts. It does not contradict the card or add unsupported details.",
+   "error": null,
+   "why_human": "both facts"
+  },
+  {
+   "id": "L23",
+   "qid": "S8",
+   "human": "FAIL",
+   "judge": "FAIL",
+   "reasoning": "The assistant contradicts the required fact that tempeh 'needs no pressing' by instructing to press it for 30 minutes. This fails the FAITHFUL and COMPLETE steps.",
+   "error": null,
+   "why_human": "contradicts the card on pressing"
+  },
+  {
+   "id": "L24",
+   "qid": "S9",
+   "human": "PASS",
+   "judge": "PASS",
+   "reasoning": "The answer contains all required facts: it confirms the pizza can be made, specifies the 10-12 minute cooking time, notes the drier crust, and advises using the grill for the final minute. It does not contradict the card or add unsupported details.",
+   "error": null,
+   "why_human": "all three facts"
+  },
+  {
+   "id": "L25",
+   "qid": "S9",
+   "human": "FAIL",
+   "judge": "FAIL",
+   "reasoning": "The assistant refuses to answer and claims the pizza will not cook, which contradicts the recipe card stating that a 220 C oven will work. This fails the BEHAVIOUR step (expected answer, got refusal) and the FAITHFUL step (contradicts card).",
+   "error": null,
+   "why_human": "contradicts the card"
+  },
+  {
+   "id": "L26",
+   "qid": "S10",
+   "human": "PASS",
+   "judge": "PASS",
+   "reasoning": "The answer contains the required fact (2 tablespoons of soaked melon seeds) and does not contradict the card or add unsupported details. Expected behaviour is 'answer', and the assistant provided the substitution.",
+   "error": null,
+   "why_human": "correct"
+  },
+  {
+   "id": "L27",
+   "qid": "S10",
+   "human": "FAIL",
+   "judge": "FAIL",
+   "reasoning": "The assistant's answer contradicts the recipe card, which explicitly states that cashews are 'structural rather than optional' and must not be omitted without replacement. It also fails to provide the required fact of using 2 tablespoons of soaked melon seeds.",
+   "error": null,
+   "why_human": "contradicts the card"
+  },
+  {
+   "id": "L28",
+   "qid": "S11",
+   "human": "PASS",
+   "judge": "PASS",
+   "reasoning": "The expected behavior is to refuse because the recipe card does not provide an answer. The assistant correctly declined to answer based on the provided cards and did not offer any substitutes or invented details.",
+   "error": null,
+   "why_human": "exact refusal"
+  },
+  {
+   "id": "L29",
+   "qid": "S11",
+   "human": "FAIL",
+   "judge": "FAIL",
+   "reasoning": "The expected behavior is to refuse because the recipe card does not provide a substitute for coconut milk. The assistant answered affirmatively and provided a specific quantity (400 ml) not found in the provided card text, failing the behavior and faithfulness checks.",
+   "error": null,
+   "why_human": "invents a substitution"
+  },
+  {
+   "id": "L30",
+   "qid": "S11",
+   "human": "PASS",
+   "judge": "PASS",
+   "reasoning": "The expected behavior is to refuse because the card has no answer. The assistant correctly states that the cards do not list a substitute and declines to answer, without offering any invented information. This matches the required refusal behavior.",
+   "error": null,
+   "why_human": "declines with an explanation"
+  },
+  {
+   "id": "L31",
+   "qid": "S12",
+   "human": "PASS",
+   "judge": "PASS",
+   "reasoning": "The expected behavior is to refuse because the recipe cards do not contain an answer. The assistant correctly declined to answer from the provided cards and did not offer any substitutes or additional information.",
+   "error": null,
+   "why_human": "exact refusal"
+  },
+  {
+   "id": "L32",
+   "qid": "S12",
+   "human": "FAIL",
+   "judge": "FAIL",
+   "reasoning": "The expected behavior is to refuse because the recipe card does not provide a substitute for makrut lime leaves. The assistant provided a specific substitution (grated lime zest), which contradicts the requirement to decline answering from the cards.",
+   "error": null,
+   "why_human": "invents a substitution"
+  }
+ ]
+}

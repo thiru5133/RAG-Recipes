@@ -29,7 +29,20 @@ Rules, without exception:
 
 PROMPT_VERSION = "v1.2.0"
 
-PROMPT_REGISTRY = {PROMPT_VERSION: SYSTEM_PROMPT}
+# v1.3.0 (week 6): the "two or three sentences at most" cap made substitution
+# answers stop after the first swap (e.g. tofu but not the coconut cream and oil
+# the card also requires). Substitution questions now get every swap the context
+# lists for the question; everything else keeps the brief limit.
+SYSTEM_PROMPT_V13 = SYSTEM_PROMPT.replace(
+    "5. Be brief: two or three sentences at most.\n",
+    "5. Be brief: two or three sentences at most. Exception: when asked for a\n"
+    "   substitution or how to adapt a recipe, state EVERY swap, quantity and\n"
+    "   condition the context gives for that question (for example each\n"
+    "   ingredient that must change, not only the first), up to six sentences,\n"
+    "   and never add a swap the context does not list.\n",
+)
+
+PROMPT_REGISTRY = {PROMPT_VERSION: SYSTEM_PROMPT, "v1.3.0": SYSTEM_PROMPT_V13}
 
 TEMPERATURE = 0
 MAX_TOKENS = 400
@@ -131,18 +144,24 @@ def complete(
         }
 
 
-def generate(question: str, hits: List[Dict], model: str = GROQ_MODEL) -> Dict:
+def generate(
+    question: str,
+    hits: List[Dict],
+    model: str = GROQ_MODEL,
+    prompt_version: str = PROMPT_VERSION,
+) -> Dict:
     """Return the answer plus everything a replay needs to reproduce the call."""
+    system_prompt = system_prompt_for(prompt_version)
     context_ids = [h["chunk_id"] for h in hits]
     user_prompt = build_user_prompt(question, hits)
-    result = complete(SYSTEM_PROMPT, user_prompt, model=model)
+    result = complete(system_prompt, user_prompt, model=model)
     return {
         "answer": result["answer"],
         "model": model,
         "context_ids": context_ids,
         "error": result["error"],
-        "prompt_version": PROMPT_VERSION,
-        "system_prompt_sha256": sha256(SYSTEM_PROMPT),
+        "prompt_version": prompt_version,
+        "system_prompt_sha256": sha256(system_prompt),
         "user_prompt": user_prompt,
         "user_prompt_sha256": sha256(user_prompt),
         "model_params": {"temperature": TEMPERATURE, "max_tokens": MAX_TOKENS},
