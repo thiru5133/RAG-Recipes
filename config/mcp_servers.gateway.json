@@ -1,0 +1,10 @@
+{
+  "servers": {
+    "gateway": {
+      "command": "${PYTHON}",
+      "args": ["src/gateway/gateway.py"],
+      "env": {"GATEWAY_TOKEN": "${GATEWAY_TOKEN}"},
+      "attach_resources": ["recipes://allergen-matrix"]
+    }
+  }
+}

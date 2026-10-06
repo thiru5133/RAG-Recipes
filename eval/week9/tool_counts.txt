@@ -1,0 +1,5 @@
+tools discovered via tools/list: 3 before -> 5 after
+
+before (3): recipes::search_recipes, recipes::scale_recipe, recipes::get_allergen_profile
+after  (5): recipes::search_recipes, recipes::scale_recipe, recipes::get_allergen_profile, ingredient_db::get_ingredient_allergens, ingredient_db::get_ingredient_nutrition
+added: ingredient_db::get_ingredient_allergens, ingredient_db::get_ingredient_nutrition

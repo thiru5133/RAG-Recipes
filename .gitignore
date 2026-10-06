@@ -47,3 +47,6 @@ WEEK8-TALK.md
 
 # Cursor
 .cursor/
+
+# Week 9 runtime logs (third-party server query log, agent traces)
+logs/
