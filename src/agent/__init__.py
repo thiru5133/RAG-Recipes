@@ -1,0 +1,1 @@
+"""Agent package: tools, loop, fixed workflow, shared contract, week-8 path eval."""

@@ -1,0 +1,12 @@
+{
+  "servers": {
+    "recipes": {
+      "command": "${PYTHON}",
+      "args": ["src/mcp_servers/recipe_server.py"]
+    },
+    "ingredient_db": {
+      "command": "${PYTHON}",
+      "args": ["third_party/ingredient_db/server.py"]
+    }
+  }
+}

@@ -1,0 +1,546 @@
+{
+ "_comment": "Stand-in for the content team's ingredient DB. Nutrition values are rounded reference figures per 100 g, for the exercise, not a certified source.",
+ "aliases": {
+  "cashews": "raw cashews",
+  "cream": "heavy cream",
+  "eggs": "large eggs",
+  "egg": "large eggs",
+  "tofu": "extra-firm tofu",
+  "soy sauce": "light soy sauce",
+  "butter": "unsalted butter",
+  "mozzarella": "fresh mozzarella",
+  "feta": "feta cheese",
+  "chickpeas": "dried chickpeas",
+  "miso": "white miso paste"
+ },
+ "ingredients": {
+  "paneer": {
+   "allergens": [
+    "dairy"
+   ],
+   "per_100g": {
+    "kcal": 321,
+    "protein_g": 21,
+    "fat_g": 25,
+    "carbs_g": 3.6
+   }
+  },
+  "unsalted butter": {
+   "allergens": [
+    "dairy"
+   ],
+   "per_100g": {
+    "kcal": 717,
+    "protein_g": 0.9,
+    "fat_g": 81,
+    "carbs_g": 0.1
+   }
+  },
+  "heavy cream": {
+   "allergens": [
+    "dairy"
+   ],
+   "per_100g": {
+    "kcal": 340,
+    "protein_g": 2.8,
+    "fat_g": 36,
+    "carbs_g": 2.8
+   }
+  },
+  "fresh mozzarella": {
+   "allergens": [
+    "dairy"
+   ],
+   "per_100g": {
+    "kcal": 280,
+    "protein_g": 18,
+    "fat_g": 22,
+    "carbs_g": 2.2
+   }
+  },
+  "feta cheese": {
+   "allergens": [
+    "dairy"
+   ],
+   "per_100g": {
+    "kcal": 264,
+    "protein_g": 14,
+    "fat_g": 21,
+    "carbs_g": 4
+   }
+  },
+  "raw cashews": {
+   "allergens": [
+    "nuts"
+   ],
+   "per_100g": {
+    "kcal": 553,
+    "protein_g": 18,
+    "fat_g": 44,
+    "carbs_g": 30
+   }
+  },
+  "extra-firm tofu": {
+   "allergens": [
+    "soy"
+   ],
+   "per_100g": {
+    "kcal": 144,
+    "protein_g": 17,
+    "fat_g": 9,
+    "carbs_g": 3
+   }
+  },
+  "large eggs": {
+   "allergens": [
+    "egg"
+   ],
+   "per_100g": {
+    "kcal": 143,
+    "protein_g": 13,
+    "fat_g": 10,
+    "carbs_g": 0.7
+   }
+  },
+  "chicken thigh": {
+   "allergens": [
+    "meat"
+   ],
+   "per_100g": {
+    "kcal": 209,
+    "protein_g": 26,
+    "fat_g": 11,
+    "carbs_g": 0
+   }
+  },
+  "chicken stock": {
+   "allergens": [
+    "meat"
+   ],
+   "per_100g": {
+    "kcal": 5,
+    "protein_g": 0.5,
+    "fat_g": 0.2,
+    "carbs_g": 0.4
+   }
+  },
+  "vegetable stock": {
+   "allergens": [],
+   "per_100g": {
+    "kcal": 6,
+    "protein_g": 0.2,
+    "fat_g": 0.1,
+    "carbs_g": 1.2
+   }
+  },
+  "fish sauce": {
+   "allergens": [
+    "fish"
+   ],
+   "per_100g": {
+    "kcal": 35,
+    "protein_g": 5,
+    "fat_g": 0,
+    "carbs_g": 3.6
+   }
+  },
+  "light soy sauce": {
+   "allergens": [
+    "soy",
+    "gluten"
+   ],
+   "per_100g": {
+    "kcal": 53,
+    "protein_g": 8,
+    "fat_g": 0.6,
+    "carbs_g": 4.9
+   }
+  },
+  "white miso paste": {
+   "allergens": [
+    "soy"
+   ],
+   "per_100g": {
+    "kcal": 199,
+    "protein_g": 12,
+    "fat_g": 6,
+    "carbs_g": 26
+   }
+  },
+  "type 00 flour": {
+   "allergens": [
+    "gluten"
+   ],
+   "per_100g": {
+    "kcal": 364,
+    "protein_g": 10,
+    "fat_g": 1,
+    "carbs_g": 76
+   }
+  },
+  "semolina flour": {
+   "allergens": [
+    "gluten"
+   ],
+   "per_100g": {
+    "kcal": 360,
+    "protein_g": 13,
+    "fat_g": 1.1,
+    "carbs_g": 73
+   }
+  },
+  "dried chickpeas": {
+   "allergens": [],
+   "per_100g": {
+    "kcal": 364,
+    "protein_g": 19,
+    "fat_g": 6,
+    "carbs_g": 61
+   }
+  },
+  "coconut cream": {
+   "allergens": [],
+   "per_100g": {
+    "kcal": 330,
+    "protein_g": 3.6,
+    "fat_g": 34,
+    "carbs_g": 6.7
+   }
+  },
+  "coconut milk": {
+   "allergens": [],
+   "per_100g": {
+    "kcal": 197,
+    "protein_g": 2,
+    "fat_g": 21,
+    "carbs_g": 2.8
+   }
+  },
+  "olive oil": {
+   "allergens": [],
+   "per_100g": {
+    "kcal": 884,
+    "protein_g": 0,
+    "fat_g": 100,
+    "carbs_g": 0
+   }
+  },
+  "extra virgin olive oil": {
+   "allergens": [],
+   "per_100g": {
+    "kcal": 884,
+    "protein_g": 0,
+    "fat_g": 100,
+    "carbs_g": 0
+   }
+  },
+  "neutral oil": {
+   "allergens": [],
+   "per_100g": {
+    "kcal": 884,
+    "protein_g": 0,
+    "fat_g": 100,
+    "carbs_g": 0
+   }
+  },
+  "ripe tomatoes": {
+   "allergens": [],
+   "per_100g": {
+    "kcal": 18,
+    "protein_g": 0.9,
+    "fat_g": 0.2,
+    "carbs_g": 3.9
+   }
+  },
+  "san marzano tomatoes": {
+   "allergens": [],
+   "per_100g": {
+    "kcal": 21,
+    "protein_g": 1,
+    "fat_g": 0.2,
+    "carbs_g": 4.5
+   }
+  },
+  "onion": {
+   "allergens": [],
+   "per_100g": {
+    "kcal": 40,
+    "protein_g": 1.1,
+    "fat_g": 0.1,
+    "carbs_g": 9.3
+   }
+  },
+  "garlic cloves": {
+   "allergens": [],
+   "per_100g": {
+    "kcal": 149,
+    "protein_g": 6.4,
+    "fat_g": 0.5,
+    "carbs_g": 33
+   }
+  },
+  "fresh ginger": {
+   "allergens": [],
+   "per_100g": {
+    "kcal": 80,
+    "protein_g": 1.8,
+    "fat_g": 0.8,
+    "carbs_g": 18
+   }
+  },
+  "granulated sugar": {
+   "allergens": [],
+   "per_100g": {
+    "kcal": 387,
+    "protein_g": 0,
+    "fat_g": 0,
+    "carbs_g": 100
+   }
+  },
+  "palm sugar": {
+   "allergens": [],
+   "per_100g": {
+    "kcal": 375,
+    "protein_g": 0,
+    "fat_g": 0,
+    "carbs_g": 94
+   }
+  },
+  "salt": {
+   "allergens": [],
+   "per_100g": {
+    "kcal": 0,
+    "protein_g": 0,
+    "fat_g": 0,
+    "carbs_g": 0
+   }
+  },
+  "fine sea salt": {
+   "allergens": [],
+   "per_100g": {
+    "kcal": 0,
+    "protein_g": 0,
+    "fat_g": 0,
+    "carbs_g": 0
+   }
+  },
+  "water": {
+   "allergens": [],
+   "per_100g": {
+    "kcal": 0,
+    "protein_g": 0,
+    "fat_g": 0,
+    "carbs_g": 0
+   }
+  },
+  "green chillies": {
+   "allergens": [],
+   "per_100g": {
+    "kcal": 40,
+    "protein_g": 2,
+    "fat_g": 0.2,
+    "carbs_g": 9
+   }
+  },
+  "red chilli": {
+   "allergens": [],
+   "per_100g": {
+    "kcal": 40,
+    "protein_g": 1.9,
+    "fat_g": 0.4,
+    "carbs_g": 8.8
+   }
+  },
+  "red bell peppers": {
+   "allergens": [],
+   "per_100g": {
+    "kcal": 31,
+    "protein_g": 1,
+    "fat_g": 0.3,
+    "carbs_g": 6
+   }
+  },
+  "thai aubergines": {
+   "allergens": [],
+   "per_100g": {
+    "kcal": 25,
+    "protein_g": 1,
+    "fat_g": 0.2,
+    "carbs_g": 6
+   }
+  },
+  "bamboo shoots": {
+   "allergens": [],
+   "per_100g": {
+    "kcal": 27,
+    "protein_g": 2.6,
+    "fat_g": 0.3,
+    "carbs_g": 5.2
+   }
+  },
+  "thai basil": {
+   "allergens": [],
+   "per_100g": {
+    "kcal": 23,
+    "protein_g": 3.2,
+    "fat_g": 0.6,
+    "carbs_g": 2.7
+   }
+  },
+  "fresh basil leaves": {
+   "allergens": [],
+   "per_100g": {
+    "kcal": 23,
+    "protein_g": 3.2,
+    "fat_g": 0.6,
+    "carbs_g": 2.7
+   }
+  },
+  "fresh coriander": {
+   "allergens": [],
+   "per_100g": {
+    "kcal": 23,
+    "protein_g": 2.1,
+    "fat_g": 0.5,
+    "carbs_g": 3.7
+   }
+  },
+  "fresh parsley": {
+   "allergens": [],
+   "per_100g": {
+    "kcal": 36,
+    "protein_g": 3,
+    "fat_g": 0.8,
+    "carbs_g": 6.3
+   }
+  },
+  "green curry paste": {
+   "allergens": [
+    "shellfish"
+   ],
+   "per_100g": {
+    "kcal": 120,
+    "protein_g": 2.5,
+    "fat_g": 6,
+    "carbs_g": 14
+   }
+  },
+  "garam masala": {
+   "allergens": [],
+   "per_100g": {
+    "kcal": 379,
+    "protein_g": 15,
+    "fat_g": 15,
+    "carbs_g": 45
+   }
+  },
+  "turmeric": {
+   "allergens": [],
+   "per_100g": {
+    "kcal": 312,
+    "protein_g": 9.7,
+    "fat_g": 3.3,
+    "carbs_g": 67
+   }
+  },
+  "ground cumin": {
+   "allergens": [],
+   "per_100g": {
+    "kcal": 375,
+    "protein_g": 18,
+    "fat_g": 22,
+    "carbs_g": 44
+   }
+  },
+  "cumin seeds": {
+   "allergens": [],
+   "per_100g": {
+    "kcal": 375,
+    "protein_g": 18,
+    "fat_g": 22,
+    "carbs_g": 44
+   }
+  },
+  "coriander powder": {
+   "allergens": [],
+   "per_100g": {
+    "kcal": 298,
+    "protein_g": 12,
+    "fat_g": 18,
+    "carbs_g": 55
+   }
+  },
+  "kashmiri chilli powder": {
+   "allergens": [],
+   "per_100g": {
+    "kcal": 282,
+    "protein_g": 12,
+    "fat_g": 14,
+    "carbs_g": 50
+   }
+  },
+  "sweet paprika": {
+   "allergens": [],
+   "per_100g": {
+    "kcal": 282,
+    "protein_g": 14,
+    "fat_g": 13,
+    "carbs_g": 54
+   }
+  },
+  "cayenne pepper": {
+   "allergens": [],
+   "per_100g": {
+    "kcal": 318,
+    "protein_g": 12,
+    "fat_g": 17,
+    "carbs_g": 57
+   }
+  },
+  "caraway seeds": {
+   "allergens": [],
+   "per_100g": {
+    "kcal": 333,
+    "protein_g": 20,
+    "fat_g": 15,
+    "carbs_g": 50
+   }
+  },
+  "amchur (dried mango powder)": {
+   "allergens": [],
+   "per_100g": {
+    "kcal": 330,
+    "protein_g": 3,
+    "fat_g": 3,
+    "carbs_g": 76
+   }
+  },
+  "dried fenugreek leaves": {
+   "allergens": [],
+   "per_100g": {
+    "kcal": 323,
+    "protein_g": 23,
+    "fat_g": 6,
+    "carbs_g": 58
+   }
+  },
+  "makrut lime leaves": {
+   "allergens": [],
+   "per_100g": {
+    "kcal": 29,
+    "protein_g": 1.5,
+    "fat_g": 0.4,
+    "carbs_g": 6
+   }
+  },
+  "fresh yeast": {
+   "allergens": [],
+   "per_100g": {
+    "kcal": 105,
+    "protein_g": 8.4,
+    "fat_g": 1.9,
+    "carbs_g": 18
+   }
+  }
+ }
+}

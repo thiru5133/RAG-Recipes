@@ -1,0 +1,94 @@
+[
+  {
+    "type": "function",
+    "function": {
+      "name": "search_recipes",
+      "description": "Match a dish name or cuisine word to a recipe_id in the six-card corpus. Returns id, title, base servings and dietary tags. Does not return ingredient rows, method steps, nutrition, or swaps.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "query": {
+            "type": "string",
+            "description": "Dish name or cuisine keyword, e.g. 'paneer butter masala'."
+          }
+        },
+        "required": [
+          "query"
+        ]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "scale_recipe",
+      "description": "Multiply every ingredient quantity on one recipe from its base servings to a target serving count. Returns the scaled ingredient table and the original method steps. Does not search the corpus, does not inspect allergens, does not swap.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "recipe_id": {
+            "type": "string",
+            "enum": [
+              "R001",
+              "R002",
+              "R003",
+              "R004",
+              "R005",
+              "R006"
+            ],
+            "description": "Card id from search_recipes."
+          },
+          "servings": {
+            "type": "integer",
+            "minimum": 1,
+            "description": "Target serving count."
+          }
+        },
+        "required": [
+          "recipe_id",
+          "servings"
+        ]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "get_allergen_profile",
+      "description": "List the ingredients on one recipe that carry a SINGLE named allergen or diet restriction, and the swap the card itself writes if it writes one. Call again with a different enum value if the swap introduces another allergen (see 'introduces' / 'leaves'). Does not search, does not scale quantities, does not rewrite the method.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "recipe_id": {
+            "type": "string",
+            "enum": [
+              "R001",
+              "R002",
+              "R003",
+              "R004",
+              "R005",
+              "R006"
+            ]
+          },
+          "allergen": {
+            "type": "string",
+            "enum": [
+              "nuts",
+              "dairy",
+              "gluten",
+              "fish",
+              "shellfish",
+              "egg",
+              "meat"
+            ],
+            "description": "Exactly one class per call."
+          }
+        },
+        "required": [
+          "recipe_id",
+          "allergen"
+        ]
+      }
+    }
+  }
+]

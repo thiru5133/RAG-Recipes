@@ -1,0 +1,183 @@
+{
+  "server": "third_party/ingredient_db/server.py (stand-in for the content team's server)",
+  "transport": "stdio, one JSON-RPC message per line",
+  "where_the_model_call_happens": "The model call happens in the host (agent/mcp_agent.py -> complete_messages -> Groq), between frame 5 (tools/list result in) and frame 6 (tools/call out); it does NOT happen in the MCP server or on the wire — the server only runs a dictionary lookup and returns data.",
+  "frames": [
+    {
+      "n": 1,
+      "dir": "client->server",
+      "raw": "{\"jsonrpc\": \"2.0\", \"id\": 1, \"method\": \"initialize\", \"params\": {\"protocolVersion\": \"2025-06-18\", \"capabilities\": {}, \"clientInfo\": {\"name\": \"recipe-agent-host\", \"version\": \"0.9.0\"}}}",
+      "parsed": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "initialize",
+        "params": {
+          "protocolVersion": "2025-06-18",
+          "capabilities": {},
+          "clientInfo": {
+            "name": "recipe-agent-host",
+            "version": "0.9.0"
+          }
+        }
+      },
+      "annotations": {
+        "jsonrpc": "JSON-RPC version tag. Always the string \"2.0\"; lets the peer reject non-JSON-RPC garbage.",
+        "id": "Request id (1). The response echoes it so replies can be matched to requests. Present => a reply is expected.",
+        "method": "What the host is asking: open the session and negotiate versions/capabilities.",
+        "params": "Arguments. protocolVersion = the spec revision the host speaks; capabilities = what the HOST offers the server (none here); clientInfo = who is connecting, for server-side logs."
+      }
+    },
+    {
+      "n": 2,
+      "dir": "server->client",
+      "raw": "{\"jsonrpc\": \"2.0\", \"id\": 1, \"result\": {\"protocolVersion\": \"2025-06-18\", \"capabilities\": {\"tools\": {\"listChanged\": false}}, \"serverInfo\": {\"name\": \"ingredient-db\", \"version\": \"0.3.1\"}}}",
+      "parsed": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "result": {
+          "protocolVersion": "2025-06-18",
+          "capabilities": {
+            "tools": {
+              "listChanged": false
+            }
+          },
+          "serverInfo": {
+            "name": "ingredient-db",
+            "version": "0.3.1"
+          }
+        }
+      },
+      "annotations": {
+        "jsonrpc": "Version tag, \"2.0\".",
+        "id": "Echo of the request id (1) — this is the reply to initialize.",
+        "result": "Success payload (an error would use an `error` key instead, never both). protocolVersion = revision the server agreed to; capabilities.tools = this server offers tools (listChanged:false = the list never changes mid-session); serverInfo = name/version, the identity that shows up in traces."
+      }
+    },
+    {
+      "n": 3,
+      "dir": "client->server",
+      "raw": "{\"jsonrpc\": \"2.0\", \"method\": \"notifications/initialized\"}",
+      "parsed": {
+        "jsonrpc": "2.0",
+        "method": "notifications/initialized"
+      },
+      "annotations": {
+        "jsonrpc": "Version tag, \"2.0\".",
+        "method": "Notification that the host finished the handshake. Handshake step 3.",
+        "(no id)": "There is deliberately NO id: a notification is fire-and-forget, the server must not answer it."
+      }
+    },
+    {
+      "n": 4,
+      "dir": "client->server",
+      "raw": "{\"jsonrpc\": \"2.0\", \"id\": 2, \"method\": \"tools/list\", \"params\": {}}",
+      "parsed": {
+        "jsonrpc": "2.0",
+        "id": 2,
+        "method": "tools/list",
+        "params": {}
+      },
+      "annotations": {
+        "jsonrpc": "Version tag, \"2.0\".",
+        "id": "Request id (2).",
+        "method": "Ask the server to describe every tool it exposes — this is DISCOVERY; the agent has no hard-coded list.",
+        "params": "Empty object; a `cursor` here would page a long list."
+      }
+    },
+    {
+      "n": 5,
+      "dir": "server->client",
+      "raw": "{\"jsonrpc\": \"2.0\", \"id\": 2, \"result\": {\"tools\": [{\"name\": \"get_ingredient_allergens\", \"description\": \"Return allergen flags for an ingredient by name.\", \"inputSchema\": {\"type\": \"object\", \"properties\": {\"name\": {\"type\": \"string\", \"description\": \"Ingredient name\"}}, \"required\": [\"name\"]}}, {\"name\": \"get_ingredient_nutrition\", \"description\": \"Return nutrition per 100 g for an ingredient by name.\", \"inputSchema\": {\"type\": \"object\", \"properties\": {\"name\": {\"type\": \"string\", \"description\": \"Ingredient name\"}}, \"required\": [\"name\"]}}]}}",
+      "parsed": {
+        "jsonrpc": "2.0",
+        "id": 2,
+        "result": {
+          "tools": [
+            {
+              "name": "get_ingredient_allergens",
+              "description": "Return allergen flags for an ingredient by name.",
+              "inputSchema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "description": "Ingredient name"
+                  }
+                },
+                "required": [
+                  "name"
+                ]
+              }
+            },
+            {
+              "name": "get_ingredient_nutrition",
+              "description": "Return nutrition per 100 g for an ingredient by name.",
+              "inputSchema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "description": "Ingredient name"
+                  }
+                },
+                "required": [
+                  "name"
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "annotations": {
+        "jsonrpc": "Version tag, \"2.0\".",
+        "id": "Echo of request id (2).",
+        "result": "{tools:[...]}. Each tool has name (what the model will call), description (the PROMPT the model reads to choose it) and inputSchema (JSON Schema the model's arguments must satisfy). The host forwards these three fields to the model verbatim. No nextCursor => this is the full list."
+      }
+    },
+    {
+      "n": 6,
+      "dir": "client->server",
+      "raw": "{\"jsonrpc\": \"2.0\", \"id\": 3, \"method\": \"tools/call\", \"params\": {\"name\": \"get_ingredient_nutrition\", \"arguments\": {\"name\": \"paneer\"}}}",
+      "parsed": {
+        "jsonrpc": "2.0",
+        "id": 3,
+        "method": "tools/call",
+        "params": {
+          "name": "get_ingredient_nutrition",
+          "arguments": {
+            "name": "paneer"
+          }
+        }
+      },
+      "annotations": {
+        "jsonrpc": "Version tag, \"2.0\".",
+        "id": "Request id (3).",
+        "method": "Execute one tool. Sent by the HOST, only after the MODEL emitted a tool call.",
+        "params": "name = which tool (from tools/list); arguments = the model's JSON args, validated against inputSchema by the host side."
+      }
+    },
+    {
+      "n": 7,
+      "dir": "server->client",
+      "raw": "{\"jsonrpc\": \"2.0\", \"id\": 3, \"result\": {\"content\": [{\"type\": \"text\", \"text\": \"{\\\"ingredient\\\": \\\"paneer\\\", \\\"per_100g\\\": {\\\"kcal\\\": 321, \\\"protein_g\\\": 21, \\\"fat_g\\\": 25, \\\"carbs_g\\\": 3.6}}\"}], \"isError\": false}}",
+      "parsed": {
+        "jsonrpc": "2.0",
+        "id": 3,
+        "result": {
+          "content": [
+            {
+              "type": "text",
+              "text": "{\"ingredient\": \"paneer\", \"per_100g\": {\"kcal\": 321, \"protein_g\": 21, \"fat_g\": 25, \"carbs_g\": 3.6}}"
+            }
+          ],
+          "isError": false
+        }
+      },
+      "annotations": {
+        "jsonrpc": "Version tag, \"2.0\".",
+        "id": "Echo of request id (3).",
+        "result": "content = list of typed blocks handed back to the model (here one text block holding JSON); isError = tool-level failure flag. false => data. true would still be a successful JSON-RPC reply, so the model can read the message and recover; a transport/protocol failure would be a top-level `error` instead."
+      }
+    }
+  ]
+}

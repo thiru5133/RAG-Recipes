@@ -1,0 +1,475 @@
+{
+  "before|matrix=False": [
+    {
+      "error_text_seen": "Error 3",
+      "followup_calls": [
+        {
+          "tool": "search_recipes",
+          "args": {
+            "query": "shakshuka"
+          },
+          "is_error": false
+        },
+        {
+          "tool": "scale_recipe",
+          "args": {
+            "recipe_id": "R006",
+            "servings": 6
+          },
+          "is_error": false
+        }
+      ],
+      "searched_first": true,
+      "recovered": true,
+      "answer": "Shakshuka scaled to 6 servings: 9 eggs, 3 bell peppers, 900 g tomatoes, 1.5 onions, 6 garlic cloves, 3 tsp paprika, 1.5 tsp cumin, 0.75 tsp caraway, 0.38 tsp cayenne, 4.5 tbsp olive oil, 150 g feta, 1.5 handful parsley, 1.5 tsp salt. Follow the method steps as listed.",
+      "tokens": 2072,
+      "stopped_by": "completed"
+    },
+    {
+      "error_text_seen": "Error 3",
+      "followup_calls": [
+        {
+          "tool": "search_recipes",
+          "args": {
+            "query": "shakshuka"
+          },
+          "is_error": false
+        },
+        {
+          "tool": "scale_recipe",
+          "args": {
+            "recipe_id": "R006",
+            "servings": 6
+          },
+          "is_error": false
+        }
+      ],
+      "searched_first": true,
+      "recovered": true,
+      "answer": "Shakshuka scaled to 6 servings: 9 eggs, 3 bell peppers, 900 g tomatoes, 1.5 onions, 6 garlic cloves, 3 tsp paprika, 1.5 tsp cumin, 0.75 tsp caraway, 0.38 tsp cayenne, 4.5 tbsp olive oil, 150 g feta, 1.5 handful parsley, 1.5 tsp salt. Follow the method as listed.",
+      "tokens": 2071,
+      "stopped_by": "completed"
+    },
+    {
+      "error_text_seen": "Error 3",
+      "followup_calls": [
+        {
+          "tool": "search_recipes",
+          "args": {
+            "query": "shakshuka"
+          },
+          "is_error": false
+        },
+        {
+          "tool": "scale_recipe",
+          "args": {
+            "recipe_id": "R006",
+            "servings": 6
+          },
+          "is_error": false
+        }
+      ],
+      "searched_first": true,
+      "recovered": true,
+      "answer": "Shakshuka scaled to 6 servings: 9 eggs, 3 bell peppers, 900 g tomatoes, 1.5 onions, 6 garlic cloves, 3 tsp paprika, 1.5 tsp cumin, 0.75 tsp caraway, 0.38 tsp cayenne, 4.5 tbsp olive oil, 150 g feta, 1.5 handful parsley, 1.5 tsp salt. Follow the method steps as listed.",
+      "tokens": 2072,
+      "stopped_by": "completed"
+    },
+    {
+      "error_text_seen": "Error 3",
+      "followup_calls": [
+        {
+          "tool": "search_recipes",
+          "args": {
+            "query": "shakshuka"
+          },
+          "is_error": false
+        },
+        {
+          "tool": "scale_recipe",
+          "args": {
+            "recipe_id": "R006",
+            "servings": 6
+          },
+          "is_error": false
+        }
+      ],
+      "searched_first": true,
+      "recovered": true,
+      "answer": "Shakshuka scaled to 6 servings: 9 eggs, 3 bell peppers, 900 g tomatoes, 1.5 onions, 6 garlic cloves, 3 tsp paprika, 1.5 tsp cumin, 0.75 tsp caraway, 0.38 tsp cayenne, 4.5 tbsp olive oil, 150 g feta, 1.5 handful parsley, 1.5 tsp salt. Follow the method as listed.",
+      "tokens": 2075,
+      "stopped_by": "completed"
+    },
+    {
+      "error_text_seen": "Error 3",
+      "followup_calls": [
+        {
+          "tool": "search_recipes",
+          "args": {
+            "query": "shakshuka"
+          },
+          "is_error": false
+        },
+        {
+          "tool": "scale_recipe",
+          "args": {
+            "recipe_id": "R006",
+            "servings": 6
+          },
+          "is_error": false
+        }
+      ],
+      "searched_first": true,
+      "recovered": true,
+      "answer": "Shakshuka scaled to 6 servings: 9 eggs, 3 bell peppers, 900 g tomatoes, 1.5 onions, 6 garlic cloves, 3 tsp paprika, 1.5 tsp cumin, 0.75 tsp caraway, 0.38 tsp cayenne, 4.5 tbsp olive oil, 150 g feta, 1.5 handful parsley, 1.5 tsp salt. Follow the method as listed.",
+      "tokens": 2071,
+      "stopped_by": "completed"
+    }
+  ],
+  "before|matrix=True": [
+    {
+      "error_text_seen": "Error 3",
+      "followup_calls": [
+        {
+          "tool": "scale_recipe",
+          "args": {
+            "recipe_id": "R006",
+            "servings": 6
+          },
+          "is_error": false
+        }
+      ],
+      "searched_first": false,
+      "recovered": true,
+      "answer": "**Shakshuka – 6 servings**\n\n*Ingredients*  \n- 9 large eggs (at room temperature)  \n- 3 whole red bell peppers, sliced into strips  \n- 900 g ripe tomatoes (chopped, or one 400 g tin plus 200 g fresh)  \n- 1.5 large onions, sliced  \n- 6 garlic cloves, sliced  \n- 3 tsp sweet paprika  \n- 1.5 tsp ground cumin  \n- 0.75 tsp caraway seeds, lightly crushed  \n- 0.38 tsp cayenne pepper (optional)  \n- 4.5 tbsp olive oil  \n- 150 g feta cheese, crumbled (to sprinkle on top)  \n- 1.5 handfuls fresh parsley, chopped  \n- 1.5 tsp salt, to taste  \n\n*Method*  \n1. Heat the olive oil in a wide, shallow pan and cook the onion and peppers over medium heat for 12 min until soft and beginning to colour.  \n2. Add the garlic, paprika, cumin, caraway and cayenne and fry for 1 min until fragrant.  \n3. Add the tomatoes and salt, then simmer for 15 min, uncovered, until the sauce is thick enough to hold a channel when you drag a spoon through it.  \n4. Make six wells in the sauce with the back of a spoon and crack one egg into each.  \n5. Cover the pan and cook for 6–8 min, until the whites are set but the yolks still move when you shake the pan.  \n6. Scatter over the crumbled feta and parsley and serve straight from the pan with flatbread.",
+      "tokens": 2189,
+      "stopped_by": "completed"
+    },
+    {
+      "error_text_seen": "Error 3",
+      "followup_calls": [
+        {
+          "tool": "scale_recipe",
+          "args": {
+            "recipe_id": "R006",
+            "servings": 6
+          },
+          "is_error": false
+        }
+      ],
+      "searched_first": false,
+      "recovered": true,
+      "answer": "**Shakshuka – 6 servings**\n\n*Ingredients*  \n- 9 large eggs (at room temperature)  \n- 3 whole red bell peppers, sliced into strips  \n- 900 g ripe tomatoes (chopped, or one 400 g tin plus 200 g fresh)  \n- 1.5 large onions, sliced  \n- 6 garlic cloves, sliced  \n- 3 tsp sweet paprika  \n- 1.5 tsp ground cumin  \n- 0.75 tsp caraway seeds, lightly crushed  \n- 0.38 tsp cayenne pepper (optional)  \n- 4.5 tbsp olive oil  \n- 150 g feta cheese, crumbled (to sprinkle on top)  \n- 1.5 handfuls fresh parsley, chopped  \n- 1.5 tsp salt, to taste  \n\n*Method*  \n1. Heat the olive oil in a wide, shallow pan and cook the onion and peppers over medium heat for 12 min until soft and beginning to colour.  \n2. Add the garlic, paprika, cumin, caraway and cayenne and fry for 1 min until fragrant.  \n3. Add the tomatoes and salt, then simmer for 15 min, uncovered, until the sauce is thick enough to hold a channel when you drag a spoon through it.  \n4. Make six wells in the sauce with the back of a spoon and crack one egg into each.  \n5. Cover the pan and cook for 6–8 min, until the whites are set but the yolks still move when you shake the pan.  \n6. Scatter over the crumbled feta and parsley and serve straight from the pan with flatbread.",
+      "tokens": 2191,
+      "stopped_by": "completed"
+    },
+    {
+      "error_text_seen": "Error 3",
+      "followup_calls": [
+        {
+          "tool": "scale_recipe",
+          "args": {
+            "recipe_id": "R006",
+            "servings": 6
+          },
+          "is_error": false
+        }
+      ],
+      "searched_first": false,
+      "recovered": true,
+      "answer": "**Shakshuka – 6 servings**\n\n*Base servings: 4 → factor 1.5*\n\n**Ingredients**\n\n- 9 Large eggs (at room temperature)  \n- 3 Red bell peppers, sliced into strips  \n- 900 g Ripe tomatoes (chopped, or one 400 g tin plus 200 g fresh)  \n- 1.5 Large onions, sliced  \n- 6 Garlic cloves, sliced  \n- 3 tsp Sweet paprika  \n- 1.5 tsp Ground cumin  \n- 0.75 tsp Caraway seeds (lightly crushed)  \n- 0.38 tsp Cayenne pepper (optional)  \n- 4.5 tbsp Olive oil  \n- 150 g Feta cheese, crumbled (to sprinkle at the end)  \n- 1.5 handful Fresh parsley, chopped  \n- 1.5 tsp Salt (to taste)\n\n**Method**\n\n1. Heat the olive oil in a wide, shallow pan and cook the onion and peppers over medium heat for 12 minutes until soft and beginning to colour.  \n2. Add the garlic, paprika, cumin, caraway and cayenne and fry for 1 minute until fragrant.  \n3. Add the tomatoes and salt, then simmer for 15 minutes, uncovered, until the sauce is thick enough to hold a channel when you drag a spoon through it.  \n4. Make six wells in the sauce with the back of a spoon and crack one egg into each.  \n5. Cover the pan and cook for 6–8 minutes, until the whites are set but the yolks still move when you shake the pan.  \n6. Scatter over the crumbled feta and parsley and serve straight from the pan with flatbread.",
+      "tokens": 2213,
+      "stopped_by": "completed"
+    },
+    {
+      "error_text_seen": "Error 3",
+      "followup_calls": [
+        {
+          "tool": "scale_recipe",
+          "args": {
+            "recipe_id": "R006",
+            "servings": 6
+          },
+          "is_error": false
+        }
+      ],
+      "searched_first": false,
+      "recovered": true,
+      "answer": "**Shakshuka – 6 servings**\n\n*Ingredients*  \n- 9 large eggs (room temperature)  \n- 3 whole red bell peppers, sliced into strips  \n- 900 g ripe tomatoes (chopped, or one 400 g tin + 200 g fresh)  \n- 1.5 large onions, sliced  \n- 6 garlic cloves, sliced  \n- 3 tsp sweet paprika  \n- 1.5 tsp ground cumin  \n- 0.75 tsp caraway seeds (lightly crushed)  \n- 0.38 tsp cayenne pepper (optional)  \n- 4.5 tbsp olive oil  \n- 150 g feta cheese, crumbled (to sprinkle on top)  \n- 1.5 handfuls fresh parsley, chopped  \n- 1.5 tsp salt, to taste  \n\n*Method*  \n1. Heat olive oil in a wide, shallow pan. Cook onion and peppers over medium heat for 12 min until soft and beginning to colour.  \n2. Add garlic, paprika, cumin, caraway, and cayenne; fry 1 min until fragrant.  \n3. Add tomatoes and salt; simmer 15 min, uncovered, until sauce thickens enough to hold a channel when you drag a spoon through it.  \n4. Make six wells in the sauce; crack one egg into each.  \n5. Cover and cook 6–8 min, until whites set but yolks still runny.  \n6. Sprinkle crumbled feta and parsley on top; serve straight from the pan with flatbread.",
+      "tokens": 2167,
+      "stopped_by": "completed"
+    },
+    {
+      "error_text_seen": "Error 3",
+      "followup_calls": [
+        {
+          "tool": "scale_recipe",
+          "args": {
+            "recipe_id": "R006",
+            "servings": 6
+          },
+          "is_error": false
+        }
+      ],
+      "searched_first": false,
+      "recovered": true,
+      "answer": "**Shakshuka – 6 servings**\n\n*Base servings: 4 → factor 1.5*\n\n**Ingredients**\n\n- 9 Large eggs (at room temperature)  \n- 3 Red bell peppers, sliced into strips  \n- 900 g Ripe tomatoes (chopped, or one 400 g tin plus 200 g fresh)  \n- 1.5 Large onions, sliced  \n- 6 Garlic cloves, sliced  \n- 3 tsp Sweet paprika  \n- 1.5 tsp Ground cumin  \n- 0.75 tsp Caraway seeds (lightly crushed)  \n- 0.38 tsp Cayenne pepper (optional)  \n- 4.5 tbsp Olive oil  \n- 150 g Feta cheese, crumbled (to sprinkle at the end)  \n- 1.5 handful Fresh parsley, chopped  \n- 1.5 tsp Salt (to taste)\n\n**Method**\n\n1. Heat the olive oil in a wide, shallow pan and cook the onion and peppers over medium heat for 12 minutes until soft and beginning to colour.  \n2. Add the garlic, paprika, cumin, caraway and cayenne and fry for 1 minute until fragrant.  \n3. Add the tomatoes and salt, then simmer for 15 minutes, uncovered, until the sauce is thick enough to hold a channel when you drag a spoon through it.  \n4. Make six wells in the sauce with the back of a spoon and crack one egg into each.  \n5. Cover the pan and cook for 6–8 minutes, until the whites are set but the yolks still move when you shake the pan.  \n6. Scatter over the crumbled feta and parsley and serve straight from the pan with flatbread.",
+      "tokens": 2213,
+      "stopped_by": "completed"
+    }
+  ],
+  "after|matrix=False": [
+    {
+      "error_text_seen": "No recipe has id 'shakshuka'. Valid ids are R001, R002, R003, R004, R005, R006; a dish name is not an id. Call search_recipes with the dish name (e.g. query='shakshuka') to get its id, then call scale_recipe again with that id.",
+      "followup_calls": [
+        {
+          "tool": "search_recipes",
+          "args": {
+            "query": "shakshuka"
+          },
+          "is_error": false
+        },
+        {
+          "tool": "scale_recipe",
+          "args": {
+            "recipe_id": "R006",
+            "servings": 6
+          },
+          "is_error": false
+        }
+      ],
+      "searched_first": true,
+      "recovered": true,
+      "answer": "**Shakshuka – 6 servings**\n\n**Ingredients**\n\n- 9 large eggs (room temperature)  \n- 3 whole red bell peppers, sliced into strips  \n- 900 g ripe tomatoes (chopped, or one 400 g tin + 200 g fresh)  \n- 1.5 large onions, sliced  \n- 6 garlic cloves, sliced  \n- 3 tsp sweet paprika  \n- 1.5 tsp ground cumin  \n- 0.75 tsp caraway seeds, lightly crushed  \n- 0.38 tsp cayenne pepper (optional)  \n- 4.5 tbsp olive oil  \n- 150 g feta cheese, crumbled (for topping)  \n- 1.5 handfuls fresh parsley, chopped (for garnish)  \n- 1.5 tsp salt, to taste  \n\n**Method**\n\n1. Heat olive oil in a wide, shallow pan. Cook onion and peppers over medium heat for 12 min until soft and beginning to colour.  \n2. Add garlic, paprika, cumin, caraway, and cayenne; fry 1 min until fragrant.  \n3. Stir in tomatoes and salt; simmer 15 min, uncovered, until sauce thickens enough to hold a channel when you drag a spoon through it.  \n4. Make six wells in the sauce and crack one egg into each.  \n5. Cover and cook 6–8 min, until whites are set but yolks still runny.  \n6. Sprinkle with feta and parsley, then serve straight from the pan with flatbread.",
+      "tokens": 2780,
+      "stopped_by": "completed"
+    },
+    {
+      "error_text_seen": "No recipe has id 'shakshuka'. Valid ids are R001, R002, R003, R004, R005, R006; a dish name is not an id. Call search_recipes with the dish name (e.g. query='shakshuka') to get its id, then call scale_recipe again with that id.",
+      "followup_calls": [
+        {
+          "tool": "search_recipes",
+          "args": {
+            "query": "shakshuka"
+          },
+          "is_error": false
+        },
+        {
+          "tool": "scale_recipe",
+          "args": {
+            "recipe_id": "R006",
+            "servings": 6
+          },
+          "is_error": false
+        }
+      ],
+      "searched_first": true,
+      "recovered": true,
+      "answer": "**Shakshuka – 6 servings**\n\n**Ingredients**\n\n- 9 large eggs (room temperature)  \n- 3 whole red bell peppers, sliced into strips  \n- 900 g ripe tomatoes (chopped, or one 400 g tin + 200 g fresh)  \n- 1.5 large onions, sliced  \n- 6 garlic cloves, sliced  \n- 3 tsp sweet paprika  \n- 1.5 tsp ground cumin  \n- 0.75 tsp caraway seeds, lightly crushed  \n- 0.38 tsp cayenne pepper (optional)  \n- 4.5 tbsp olive oil  \n- 150 g feta cheese, crumbled (for topping)  \n- 1.5 handfuls fresh parsley, chopped (for garnish)  \n- 1.5 tsp salt, to taste  \n\n**Method**\n\n1. Heat olive oil in a wide, shallow pan. Cook onion and peppers over medium heat for 12 min until soft and beginning to colour.  \n2. Add garlic, paprika, cumin, caraway, and cayenne; fry 1 min until fragrant.  \n3. Stir in tomatoes and salt; simmer 15 min, uncovered, until sauce thickens enough to hold a channel when you drag a spoon through it.  \n4. Make six wells in the sauce and crack one egg into each.  \n5. Cover and cook 6–8 min, until whites are set but yolks still runny.  \n6. Sprinkle with feta and parsley, then serve straight from the pan with flatbread.",
+      "tokens": 2780,
+      "stopped_by": "completed"
+    },
+    {
+      "error_text_seen": "No recipe has id 'shakshuka'. Valid ids are R001, R002, R003, R004, R005, R006; a dish name is not an id. Call search_recipes with the dish name (e.g. query='shakshuka') to get its id, then call scale_recipe again with that id.",
+      "followup_calls": [
+        {
+          "tool": "search_recipes",
+          "args": {
+            "query": "shakshuka"
+          },
+          "is_error": false
+        },
+        {
+          "tool": "scale_recipe",
+          "args": {
+            "recipe_id": "R006",
+            "servings": 6
+          },
+          "is_error": false
+        }
+      ],
+      "searched_first": true,
+      "recovered": true,
+      "answer": "**Shakshuka – 6 servings**\n\n**Ingredients**\n\n- 9 Large eggs (at room temperature)  \n- 3 Red bell peppers, sliced into strips  \n- 900 g Ripe tomatoes (chopped, or one 400 g tin plus 200 g fresh)  \n- 1.5 Large onions, sliced  \n- 6 Garlic cloves, sliced  \n- 3 tsp Sweet paprika  \n- 1.5 tsp Ground cumin  \n- 0.75 tsp Caraway seeds, lightly crushed  \n- 0.38 tsp Cayenne pepper (optional)  \n- 4.5 tbsp Olive oil  \n- 150 g Feta cheese, crumbled (to sprinkle on top)  \n- 1.5 handful Fresh parsley, chopped (to sprinkle on top)  \n- 1.5 tsp Salt, to taste  \n\n**Method**\n\n1. Heat the olive oil in a wide, shallow pan and cook the onion and peppers over medium heat for 12 minutes until soft and beginning to colour.  \n2. Add the garlic, paprika, cumin, caraway and cayenne and fry for 1 minute until fragrant.  \n3. Add the tomatoes and salt, then simmer for 15 minutes, uncovered, until the sauce is thick enough to hold a channel when you drag a spoon through it.  \n4. Make six wells in the sauce with the back of a spoon and crack one egg into each.  \n5. Cover the pan and cook for 6–8 minutes, until the whites are set but the yolks still move when you shake the pan.  \n6. Scatter over the crumbled feta and parsley and serve straight from the pan with flatbread.",
+      "tokens": 2876,
+      "stopped_by": "completed"
+    },
+    {
+      "error_text_seen": "No recipe has id 'shakshuka'. Valid ids are R001, R002, R003, R004, R005, R006; a dish name is not an id. Call search_recipes with the dish name (e.g. query='shakshuka') to get its id, then call scale_recipe again with that id.",
+      "followup_calls": [
+        {
+          "tool": "search_recipes",
+          "args": {
+            "query": "shakshuka"
+          },
+          "is_error": false
+        },
+        {
+          "tool": "scale_recipe",
+          "args": {
+            "recipe_id": "R006",
+            "servings": 6
+          },
+          "is_error": false
+        }
+      ],
+      "searched_first": true,
+      "recovered": true,
+      "answer": "**Shakshuka – 6 servings**\n\n**Ingredients**\n\n- 9 large eggs (room temperature)  \n- 3 whole red bell peppers, sliced into strips  \n- 900 g ripe tomatoes (chopped, or one 400 g tin + 200 g fresh)  \n- 1.5 large onions, sliced  \n- 6 garlic cloves, sliced  \n- 3 tsp sweet paprika  \n- 1.5 tsp ground cumin  \n- 0.75 tsp caraway seeds, lightly crushed  \n- 0.38 tsp cayenne pepper (optional)  \n- 4.5 tbsp olive oil  \n- 150 g feta cheese, crumbled (for topping)  \n- 1.5 handfuls fresh parsley, chopped (for garnish)  \n- 1.5 tsp salt, to taste  \n\n**Method**\n\n1. Heat olive oil in a wide, shallow pan. Cook onion and peppers over medium heat for 12 min until soft and beginning to colour.  \n2. Add garlic, paprika, cumin, caraway, and cayenne; fry 1 min until fragrant.  \n3. Stir in tomatoes and salt; simmer 15 min, uncovered, until sauce thickens enough to hold a channel when you drag a spoon through it.  \n4. Make six wells in the sauce and crack one egg into each.  \n5. Cover and cook 6–8 min, until whites are set but yolks still runny.  \n6. Sprinkle with feta and parsley, then serve straight from the pan with flatbread.",
+      "tokens": 2780,
+      "stopped_by": "completed"
+    },
+    {
+      "error_text_seen": "No recipe has id 'shakshuka'. Valid ids are R001, R002, R003, R004, R005, R006; a dish name is not an id. Call search_recipes with the dish name (e.g. query='shakshuka') to get its id, then call scale_recipe again with that id.",
+      "followup_calls": [
+        {
+          "tool": "search_recipes",
+          "args": {
+            "query": "shakshuka"
+          },
+          "is_error": false
+        },
+        {
+          "tool": "scale_recipe",
+          "args": {
+            "recipe_id": "R006",
+            "servings": 6
+          },
+          "is_error": false
+        }
+      ],
+      "searched_first": true,
+      "recovered": true,
+      "answer": "**Shakshuka – 6 servings**\n\n**Ingredients**\n\n- 9 large eggs (room temperature)  \n- 3 whole red bell peppers, sliced into strips  \n- 900 g ripe tomatoes (chopped, or one 400 g tin + 200 g fresh)  \n- 1.5 large onions, sliced  \n- 6 garlic cloves, sliced  \n- 3 tsp sweet paprika  \n- 1.5 tsp ground cumin  \n- 0.75 tsp caraway seeds, lightly crushed  \n- 0.38 tsp cayenne pepper (optional)  \n- 4.5 tbsp olive oil  \n- 150 g feta cheese, crumbled (for topping)  \n- 1.5 handfuls fresh parsley, chopped (for garnish)  \n- 1.5 tsp salt, to taste  \n\n**Method**\n\n1. Heat olive oil in a wide, shallow pan. Cook onion and peppers over medium heat for 12 min until soft and beginning to colour.  \n2. Add garlic, paprika, cumin, caraway, and cayenne; fry 1 min until fragrant.  \n3. Stir in tomatoes and salt; simmer 15 min, uncovered, until sauce thickens enough to hold a channel when you drag a spoon through it.  \n4. Make six wells in the sauce and crack one egg into each.  \n5. Cover and cook 6–8 min, until whites are set but yolks still runny.  \n6. Sprinkle with feta and parsley, then serve straight from the pan with flatbread.",
+      "tokens": 2777,
+      "stopped_by": "completed"
+    }
+  ],
+  "after|matrix=True": [
+    {
+      "error_text_seen": "No recipe has id 'shakshuka'. Valid ids are R001, R002, R003, R004, R005, R006; a dish name is not an id. Call search_recipes with the dish name (e.g. query='shakshuka') to get its id, then call scale_recipe again with that id.",
+      "followup_calls": [
+        {
+          "tool": "search_recipes",
+          "args": {
+            "query": "shakshuka"
+          },
+          "is_error": false
+        },
+        {
+          "tool": "scale_recipe",
+          "args": {
+            "recipe_id": "R006",
+            "servings": 6
+          },
+          "is_error": false
+        }
+      ],
+      "searched_first": true,
+      "recovered": true,
+      "answer": "**Shakshuka – 6 servings**\n\n**Ingredients**\n\n- 9 Large eggs (room temperature)  \n- 3 Red bell peppers, sliced into strips  \n- 900 g ripe tomatoes (chopped, or one 400 g tin + 200 g fresh)  \n- 1.5 Large onions, sliced  \n- 6 Garlic cloves, sliced  \n- 3 tsp sweet paprika  \n- 1.5 tsp ground cumin  \n- 0.75 tsp caraway seeds, lightly crushed  \n- 0.38 tsp cayenne pepper (optional)  \n- 4.5 tbsp olive oil  \n- 150 g feta cheese, crumbled (for topping)  \n- 1.5 handful fresh parsley, chopped  \n- 1.5 tsp salt, to taste  \n\n**Method**\n\n1. Heat olive oil in a wide, shallow pan. Cook onion and peppers over medium heat for 12 min until soft and beginning to colour.  \n2. Add garlic, paprika, cumin, caraway, and cayenne; fry 1 min until fragrant.  \n3. Add tomatoes and salt; simmer 15 min, uncovered, until sauce thickens enough to hold a channel when you drag a spoon through it.  \n4. Make six wells in the sauce with the back of a spoon and crack one egg into each.  \n5. Cover and cook 6–8 min, until whites are set but yolks still move when shaken.  \n6. Scatter crumbled feta and parsley over the top and serve straight from the pan with flatbread.",
+      "tokens": 3386,
+      "stopped_by": "completed"
+    },
+    {
+      "error_text_seen": "No recipe has id 'shakshuka'. Valid ids are R001, R002, R003, R004, R005, R006; a dish name is not an id. Call search_recipes with the dish name (e.g. query='shakshuka') to get its id, then call scale_recipe again with that id.",
+      "followup_calls": [
+        {
+          "tool": "search_recipes",
+          "args": {
+            "query": "shakshuka"
+          },
+          "is_error": false
+        },
+        {
+          "tool": "scale_recipe",
+          "args": {
+            "recipe_id": "R006",
+            "servings": 6
+          },
+          "is_error": false
+        }
+      ],
+      "searched_first": true,
+      "recovered": true,
+      "answer": "**Shakshuka – 6 servings**\n\n**Ingredients**\n\n- 9 Large eggs (room temperature)  \n- 3 Red bell peppers, sliced into strips  \n- 900 g Ripe tomatoes (chopped, or one 400 g tin + 200 g fresh)  \n- 1.5 Large onions, sliced  \n- 6 Garlic cloves, sliced  \n- 3 tsp Sweet paprika  \n- 1.5 tsp Ground cumin  \n- 0.75 tsp Caraway seeds (lightly crushed)  \n- 0.38 tsp Cayenne pepper (optional)  \n- 4.5 tbsp Olive oil  \n- 150 g Feta cheese, crumbled (for topping)  \n- 1.5 handful Fresh parsley, chopped  \n- 1.5 tsp Salt (to taste)\n\n**Method**\n\n1. Heat olive oil in a wide, shallow pan. Cook onion and peppers over medium heat for 12 min until soft and beginning to colour.  \n2. Add garlic, paprika, cumin, caraway, and cayenne; fry 1 min until fragrant.  \n3. Add tomatoes and salt; simmer 15 min, uncovered, until the sauce thickens enough to hold a channel when you drag a spoon through it.  \n4. Make six wells in the sauce with the back of a spoon and crack one egg into each.  \n5. Cover and cook 6–8 min, until whites are set but yolks still runny.  \n6. Scatter crumbled feta and parsley over the top and serve straight from the pan with flatbread.",
+      "tokens": 3391,
+      "stopped_by": "completed"
+    },
+    {
+      "error_text_seen": "No recipe has id 'shakshuka'. Valid ids are R001, R002, R003, R004, R005, R006; a dish name is not an id. Call search_recipes with the dish name (e.g. query='shakshuka') to get its id, then call scale_recipe again with that id.",
+      "followup_calls": [
+        {
+          "tool": "search_recipes",
+          "args": {
+            "query": "shakshuka"
+          },
+          "is_error": false
+        },
+        {
+          "tool": "scale_recipe",
+          "args": {
+            "recipe_id": "R006",
+            "servings": 6
+          },
+          "is_error": false
+        }
+      ],
+      "searched_first": true,
+      "recovered": true,
+      "answer": "**Shakshuka – 6 servings**\n\n**Ingredients**\n\n- 9 Large eggs (room temperature)  \n- 3 Red bell peppers, sliced into strips  \n- 900 g ripe tomatoes (chopped, or one 400 g tin + 200 g fresh)  \n- 1.5 Large onions, sliced  \n- 6 Garlic cloves, sliced  \n- 3 tsp sweet paprika  \n- 1.5 tsp ground cumin  \n- 0.75 tsp caraway seeds, lightly crushed  \n- 0.38 tsp cayenne pepper (optional)  \n- 4.5 tbsp olive oil  \n- 150 g feta cheese, crumbled (for topping)  \n- 1.5 handful fresh parsley, chopped  \n- 1.5 tsp salt, to taste  \n\n**Method**\n\n1. Heat olive oil in a wide, shallow pan. Cook onion and peppers over medium heat for 12 min until soft and beginning to colour.  \n2. Add garlic, paprika, cumin, caraway, and cayenne; fry 1 min until fragrant.  \n3. Add tomatoes and salt; simmer 15 min, uncovered, until sauce thickens enough to hold a channel when you drag a spoon through it.  \n4. Make six wells in the sauce; crack one egg into each.  \n5. Cover and cook 6–8 min, until whites are set but yolks still runny.  \n6. Sprinkle crumbled feta and parsley on top; serve straight from the pan with flatbread.",
+      "tokens": 3378,
+      "stopped_by": "completed"
+    },
+    {
+      "error_text_seen": "No recipe has id 'shakshuka'. Valid ids are R001, R002, R003, R004, R005, R006; a dish name is not an id. Call search_recipes with the dish name (e.g. query='shakshuka') to get its id, then call scale_recipe again with that id.",
+      "followup_calls": [
+        {
+          "tool": "search_recipes",
+          "args": {
+            "query": "shakshuka"
+          },
+          "is_error": false
+        },
+        {
+          "tool": "scale_recipe",
+          "args": {
+            "recipe_id": "R006",
+            "servings": 6
+          },
+          "is_error": false
+        }
+      ],
+      "searched_first": true,
+      "recovered": true,
+      "answer": "**Shakshuka – 6 servings**\n\n*Ingredients*  \n- 9 large eggs (room temperature)  \n- 3 whole red bell peppers, sliced into strips  \n- 900 g ripe tomatoes (chopped, or one 400 g tin + 200 g fresh)  \n- 1.5 large onions, sliced  \n- 6 garlic cloves, sliced  \n- 3 tsp sweet paprika  \n- 1.5 tsp ground cumin  \n- 0.75 tsp caraway seeds, lightly crushed  \n- 0.38 tsp cayenne pepper (optional)  \n- 4.5 tbsp olive oil  \n- 150 g feta cheese, crumbled (for topping)  \n- 1.5 handfuls fresh parsley, chopped  \n- 1.5 tsp salt, to taste  \n\n*Method*  \n1. Heat olive oil in a wide, shallow pan. Cook onion and peppers over medium heat for 12 min until soft and beginning to colour.  \n2. Add garlic, paprika, cumin, caraway, and cayenne; fry 1 min until fragrant.  \n3. Add tomatoes and salt; simmer 15 min, uncovered, until sauce thickens enough to hold a channel when you drag a spoon through it.  \n4. Make six wells in the sauce and crack one egg into each.  \n5. Cover and cook 6–8 min, until whites are set but yolks still runny.  \n6. Sprinkle crumbled feta and parsley on top and serve straight from the pan with flatbread.",
+      "tokens": 3368,
+      "stopped_by": "completed"
+    },
+    {
+      "error_text_seen": "No recipe has id 'shakshuka'. Valid ids are R001, R002, R003, R004, R005, R006; a dish name is not an id. Call search_recipes with the dish name (e.g. query='shakshuka') to get its id, then call scale_recipe again with that id.",
+      "followup_calls": [
+        {
+          "tool": "search_recipes",
+          "args": {
+            "query": "shakshuka"
+          },
+          "is_error": false
+        },
+        {
+          "tool": "scale_recipe",
+          "args": {
+            "recipe_id": "R006",
+            "servings": 6
+          },
+          "is_error": false
+        }
+      ],
+      "searched_first": true,
+      "recovered": true,
+      "answer": "**Shakshuka – 6 servings**\n\n**Ingredients**\n\n- 9 Large eggs (room temperature)  \n- 3 Red bell peppers, sliced into strips  \n- 900 g ripe tomatoes (chopped, or one 400 g tin + 200 g fresh)  \n- 1.5 Large onions, sliced  \n- 6 Garlic cloves, sliced  \n- 3 tsp sweet paprika  \n- 1.5 tsp ground cumin  \n- 0.75 tsp caraway seeds, lightly crushed  \n- 0.38 tsp cayenne pepper (optional)  \n- 4.5 tbsp olive oil  \n- 150 g feta cheese, crumbled (for topping)  \n- 1.5 handful fresh parsley, chopped  \n- 1.5 tsp salt, to taste  \n\n**Method**\n\n1. Heat olive oil in a wide, shallow pan. Cook onion and peppers over medium heat for 12 min until soft and beginning to colour.  \n2. Add garlic, paprika, cumin, caraway, and cayenne; fry 1 min until fragrant.  \n3. Add tomatoes and salt; simmer 15 min, uncovered, until sauce thickens enough to hold a channel when you drag a spoon through it.  \n4. Make six wells in the sauce; crack one egg into each.  \n5. Cover and cook 6–8 min, until whites are set but yolks still runny.  \n6. Sprinkle crumbled feta and parsley on top; serve straight from the pan with flatbread.",
+      "tokens": 3378,
+      "stopped_by": "completed"
+    }
+  ]
+}
