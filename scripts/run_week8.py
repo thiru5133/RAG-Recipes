@@ -508,7 +508,14 @@ def main() -> None:
     ap.add_argument("--ids", default=None, help="comma-separated ids to (re)run")
     ap.add_argument("--rescore", action="store_true", help="re-score saved json, no API")
     ap.add_argument("--id", default=None, help="single request id (W01 / I01)")
+    ap.add_argument("--langfuse", action="store_true", help="upload saved week-8 runs to Langfuse, no API")
     args = ap.parse_args()
+
+    if args.langfuse:
+        from langfuse_week8 import export_week8
+
+        print(export_week8())
+        return
 
     if args.offline:
         raise SystemExit(offline())

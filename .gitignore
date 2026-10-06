@@ -45,8 +45,5 @@ TALK.md
 WEEK7-TALK.md
 WEEK8-TALK.md
 
-# Runtime logs from Week 7 budget-termination runs
-eval/week7/*.log
-
 # Cursor
 .cursor/
