@@ -38,5 +38,23 @@ RERANK_RRF_K = 10
 REFUSAL_THRESHOLD = 0.30
 
 GROQ_MODEL = os.environ.get("GROQ_MODEL", "openai/gpt-oss-120b")
+# Week-7 loop can use a smaller Groq model if the 120b day-cap is gone.
+# Same model for agent and workflow (workflow may make zero calls).
+WEEK7_MODEL = os.environ.get("WEEK7_MODEL", "openai/gpt-oss-20b")
+WEEK8_MODEL = os.environ.get("WEEK8_MODEL", WEEK7_MODEL)
+
+# Groq list prices USD / 1M tokens (console.groq.com/docs/models, 2026-09-20)
+GROQ_PRICES = {
+    "openai/gpt-oss-120b": (0.15, 0.60),
+    "openai/gpt-oss-20b": (0.075, 0.30),
+}
+GROQ_PRICE_INPUT_PER_M = float(os.environ.get("GROQ_PRICE_INPUT_PER_M", "0.15"))
+GROQ_PRICE_OUTPUT_PER_M = float(os.environ.get("GROQ_PRICE_OUTPUT_PER_M", "0.60"))
+
+# Agent-loop budgets. All four are checked every lap in src/agent/loop.py.
+AGENT_MAX_ITERS = int(os.environ.get("AGENT_MAX_ITERS", "8"))
+AGENT_MAX_TOKENS = int(os.environ.get("AGENT_MAX_TOKENS", "12000"))
+AGENT_MAX_COST_USD = float(os.environ.get("AGENT_MAX_COST_USD", "0.05"))
+AGENT_MAX_WALL_MS = int(os.environ.get("AGENT_MAX_WALL_MS", "60000"))
 
 

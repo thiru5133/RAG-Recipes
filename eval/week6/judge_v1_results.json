@@ -1,0 +1,197 @@
+{
+  "version": "v1",
+  "judged_at": "2026-09-20T16:25:14Z",
+  "n": 27,
+  "substitutions_sha256": "e4e4217fc4198f24e202f63086e17b58a9607b199c0850288b345014bb2dba16",
+  "per": [
+    {
+      "qid": "S01",
+      "verdict": "FAIL",
+      "raw": "VERDICT: FAIL\nREASON: The substitution still includes cashews, so it does not honor the nut‑free constraint.",
+      "error": null,
+      "latency_ms": 960
+    },
+    {
+      "qid": "S02",
+      "verdict": "PASS",
+      "raw": "VERDICT: PASS\nREASON: All dairy ingredients (paneer, butter, heavy cream) are replaced with tofu, oil, and coconut cream, and the only nut used (cashews) is permissible.",
+      "error": null,
+      "latency_ms": 1147
+    },
+    {
+      "qid": "S03",
+      "verdict": "FAIL",
+      "raw": "VERDICT: FAIL\nREASON: The substitution still uses fish sauce (and chicken), so it does not meet the vegan constraint.",
+      "error": null,
+      "latency_ms": 910
+    },
+    {
+      "qid": "S04",
+      "verdict": "PASS",
+      "raw": "VERDICT: PASS\nREASON: The recipe removes eggs and feta and adds chickpeas, satisfying the vegan constraint.",
+      "error": null,
+      "latency_ms": 549
+    },
+    {
+      "qid": "S05",
+      "verdict": "PASS",
+      "raw": "VERDICT: PASS\nREASON: The substitution replaces all wheat flour with rice flour, eliminating gluten while keeping the rest of the recipe intact.",
+      "error": null,
+      "latency_ms": 839
+    },
+    {
+      "qid": "S06",
+      "verdict": "PASS",
+      "raw": "VERDICT: PASS\nREASON: The substituted paste is explicitly certified vegan and contains no shrimp or fish sauce, satisfying the vegan constraint.",
+      "error": null,
+      "latency_ms": 724
+    },
+    {
+      "qid": "S07",
+      "verdict": "PASS",
+      "raw": "VERDICT: PASS\nREASON: The substitution replaces dairy with tofu, oil, and coconut cream and swaps cashews for soaked melon seeds, satisfying both vegan and nut‑free constraints.",
+      "error": null,
+      "latency_ms": 876
+    },
+    {
+      "qid": "S08",
+      "verdict": "PASS",
+      "raw": "VERDICT: PASS\nREASON: The substitution uses lemon juice as suggested to provide comparable sourness, satisfying the constraint.",
+      "error": null,
+      "latency_ms": 791
+    },
+    {
+      "qid": "S09",
+      "verdict": "PASS",
+      "raw": "VERDICT: PASS\nREASON: The recipe uses chicken breast and adjusts the simmer time to 7 minutes as advised, correctly honoring the constraint.",
+      "error": null,
+      "latency_ms": 602
+    },
+    {
+      "qid": "S10",
+      "verdict": "PASS",
+      "raw": "VERDICT: PASS\nREASON: The substitution follows the recipe notes for using tinned chickpeas, matching the constraint.",
+      "error": null,
+      "latency_ms": 742
+    },
+    {
+      "qid": "S11",
+      "verdict": "PASS",
+      "raw": "VERDICT: PASS\nREASON: The recipe uses regular aubergine cut into 2 cm cubes, exactly as the source notes recommend as a fine substitute for Thai aubergines.",
+      "error": null,
+      "latency_ms": 749
+    },
+    {
+      "qid": "S12",
+      "verdict": "FAIL",
+      "raw": "VERDICT: FAIL\nREASON: Using extra garam masala does not provide the sourness that amchur supplies, so the sour finish is not maintained.",
+      "error": null,
+      "latency_ms": 831
+    },
+    {
+      "qid": "S13",
+      "verdict": "PASS",
+      "raw": "VERDICT: PASS\nREASON: The rewrite starts with the recommended 30 g of unfamiliar paste, limits initial cooking time, and adds more only after tasting, thus avoiding over‑heating.",
+      "error": null,
+      "latency_ms": 1185
+    },
+    {
+      "qid": "S14",
+      "verdict": "PASS",
+      "raw": "VERDICT: PASS\nREASON: The substitution follows the note that tempeh works in place of tofu, adjusts preparation accordingly, and thus satisfies the constraint.",
+      "error": null,
+      "latency_ms": 2719
+    },
+    {
+      "qid": "S15",
+      "verdict": "FAIL",
+      "raw": "VERDICT: FAIL\nREASON: The answer refuses to provide guidance, which does not satisfy the request to honor the constraint.",
+      "error": null,
+      "latency_ms": 3793
+    },
+    {
+      "qid": "S16",
+      "verdict": "PASS",
+      "raw": "VERDICT: PASS\nREASON: The substitution replaces paneer, butter, and cream with tofu, oil, and coconut cream, all of which satisfy the vegan constraint.",
+      "error": null,
+      "latency_ms": 6599
+    },
+    {
+      "qid": "S17",
+      "verdict": "PASS",
+      "raw": "VERDICT: PASS\nREASON: The substitution uses the recommended amount (two 400 g tins) and adjusts cooking time accordingly, satisfying the constraint of using tinned chickpeas instead of dried.",
+      "error": null,
+      "latency_ms": 5954
+    },
+    {
+      "qid": "S18",
+      "verdict": "PASS",
+      "raw": "VERDICT: PASS\nREASON: The recipe follows the note to use chicken breast and reduces simmer time to 7 minutes, satisfying the constraint.",
+      "error": null,
+      "latency_ms": 3907
+    },
+    {
+      "qid": "S19",
+      "verdict": "PASS",
+      "raw": "VERDICT: PASS\nREASON: Using a 100 g 100 % hydration sourdough starter with adjusted water and longer fermentation reasonably replaces the small amount of yeast while satisfying the constraint.",
+      "error": null,
+      "latency_ms": 5956
+    },
+    {
+      "qid": "S20",
+      "verdict": "FAIL",
+      "raw": "VERDICT: FAIL\nREASON: The substitution only replaces paneer with tofu and does not address the butter and heavy cream, so the dish would still contain non‑vegan ingredients.",
+      "error": null,
+      "latency_ms": 3901
+    },
+    {
+      "qid": "S21",
+      "verdict": "PASS",
+      "raw": "VERDICT: PASS  \nREASON: The paneer is replaced with tofu and all dairy ingredients (butter, cream) are swapped for vegan alternatives, meeting the vegan constraint.",
+      "error": null,
+      "latency_ms": 6983
+    },
+    {
+      "qid": "S22",
+      "verdict": "PASS",
+      "raw": "VERDICT: PASS\nREASON: The substitution uses light soy sauce and white miso as specified, providing a vegan alternative to fish sauce.",
+      "error": null,
+      "latency_ms": 4828
+    },
+    {
+      "qid": "S23",
+      "verdict": "PASS",
+      "raw": "VERDICT: PASS\nREASON: The substitution removes eggs and feta and adds chickpeas, fully complying with the vegan constraint.",
+      "error": null,
+      "latency_ms": 4819
+    },
+    {
+      "qid": "S24",
+      "verdict": "FAIL",
+      "raw": "VERDICT: FAIL  \nREASON: The method still calls for heavy cream, which is not vegan, so the substitution does not honor the vegan constraint.",
+      "error": null,
+      "latency_ms": 4789
+    },
+    {
+      "qid": "S25",
+      "verdict": "PASS",
+      "raw": "VERDICT: PASS\nREASON: The substitution uses 400 g of extra‑firm tofu, matching the original 400 g paneer weight as required.",
+      "error": null,
+      "latency_ms": 5879
+    },
+    {
+      "qid": "S26",
+      "verdict": "FAIL",
+      "raw": "VERDICT: FAIL\nREASON: The substitution uses green curry paste copied from a chicken recipe, which is not guaranteed to be a milder vegan paste, thus it does not honor the “milder vegan curry paste” constraint.",
+      "error": null,
+      "latency_ms": 6045
+    },
+    {
+      "qid": "S27",
+      "verdict": "PASS",
+      "raw": "VERDICT: PASS\nREASON: The substitution removes eggs and feta and replaces them with chickpeas, fully complying with the vegan constraint.",
+      "error": null,
+      "latency_ms": 4814
+    }
+  ]
+}

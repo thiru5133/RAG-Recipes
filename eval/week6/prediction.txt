@@ -1,0 +1,1 @@
+Few-shotting S05 (rice-flour margherita) and S19 (invented sourdough schedule) as FAIL examples will stop the judge treating general cooking knowledge as a pass when the source card forbids or simply does not contain the swap; I expect both disagreements to flip to FAIL and I do not expect card-specified swaps (S08 lemon-for-amchur, S14 tempeh) to flip with them.

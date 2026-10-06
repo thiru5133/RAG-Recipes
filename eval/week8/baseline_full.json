@@ -1,0 +1,1669 @@
+[
+  {
+    "id": "W01",
+    "class": "scale_only",
+    "outcome_pass": true,
+    "looks_right": true,
+    "trajectory_pass": true,
+    "gap": false,
+    "tool_choice_accuracy": 1.0,
+    "failure_modes": [],
+    "tools": [
+      "search_recipes",
+      "scale_recipe"
+    ],
+    "profiled": [],
+    "expected": [
+      "search_recipes",
+      "scale_recipe"
+    ],
+    "notes": [],
+    "stopped_by": "completed",
+    "laps": 3,
+    "tokens": 4404,
+    "cost_usd": 0.000536,
+    "latency_ms": 3935,
+    "tricked": false,
+    "result": {
+      "recipe_id": "R001",
+      "title": "Paneer Butter Masala",
+      "servings": 8,
+      "ingredients": [
+        {
+          "name": "Paneer",
+          "quantity": 800.0,
+          "unit": "g",
+          "notes": "cut into 2 cm cubes"
+        },
+        {
+          "name": "Ripe tomatoes",
+          "quantity": 1200.0,
+          "unit": "g",
+          "notes": "roughly chopped"
+        },
+        {
+          "name": "Raw cashews",
+          "quantity": 40.0,
+          "unit": "g",
+          "notes": "soaked in hot water 15 minutes"
+        },
+        {
+          "name": "Unsalted butter",
+          "quantity": 100.0,
+          "unit": "g",
+          "notes": "divided, half for searing"
+        },
+        {
+          "name": "Heavy cream",
+          "quantity": 120.0,
+          "unit": "ml",
+          "notes": "stirred in at the end, off the heat"
+        },
+        {
+          "name": "Onion",
+          "quantity": 2.0,
+          "unit": "medium",
+          "notes": "finely sliced"
+        },
+        {
+          "name": "Garlic cloves",
+          "quantity": 8.0,
+          "unit": "cloves",
+          "notes": "crushed"
+        },
+        {
+          "name": "Fresh ginger",
+          "quantity": 30.0,
+          "unit": "g",
+          "notes": "grated"
+        },
+        {
+          "name": "Kashmiri chilli powder",
+          "quantity": 3.0,
+          "unit": "tsp",
+          "notes": "for colour, not heat"
+        },
+        {
+          "name": "Garam masala",
+          "quantity": 2.0,
+          "unit": "tsp",
+          "notes": "added late"
+        },
+        {
+          "name": "Dried fenugreek leaves",
+          "quantity": 2.0,
+          "unit": "tsp",
+          "notes": "crushed between the palms"
+        },
+        {
+          "name": "Granulated sugar",
+          "quantity": 2.0,
+          "unit": "tsp",
+          "notes": "balances the tomato acidity"
+        },
+        {
+          "name": "Salt",
+          "quantity": 3.0,
+          "unit": "tsp",
+          "notes": "to taste"
+        },
+        {
+          "name": "Water",
+          "quantity": 300.0,
+          "unit": "ml",
+          "notes": "for loosening the gravy"
+        }
+      ],
+      "method": [
+        "Soak the cashews in hot water for 15 minutes, then drain.",
+        "Melt half the butter in a wide pan over medium heat. Sear the paneer cubes for 2 minutes per side until pale gold, then lift them out and set aside.",
+        "In the same pan, soften the onion for 8 minutes, then add the garlic and ginger and cook for a further 2 minutes.",
+        "Add the tomatoes, chilli powder, sugar and salt. Cover and cook for 15 minutes until the tomatoes collapse completely.",
+        "Blend the tomato mixture with the drained cashews until entirely smooth, then pass it through a sieve back into the pan.",
+        "Add the water and simmer uncovered for 20 minutes, stirring every few minutes, until the gravy coats the back of a spoon.",
+        "Stir in the remaining butter, the garam masala and the crushed fenugreek leaves.",
+        "Return the paneer to the pan, warm through for 3 minutes, then take the pan off the heat and stir in the heavy cream. Do not boil the curry after adding cream or it will split."
+      ],
+      "swaps_applied": [],
+      "warnings": []
+    },
+    "log": [
+      "LAP 1 tokens_in=818 tokens_out=159 cumulative=977",
+      "LAP 1 TOOL search_recipes {\"query\": \"paneer butter masala\"}",
+      "LAP 2 tokens_in=958 tokens_out=51 cumulative=1986",
+      "LAP 2 TOOL scale_recipe {\"recipe_id\": \"R001\", \"servings\": 8}",
+      "LAP 3 tokens_in=1714 tokens_out=704 cumulative=4404",
+      "LAP 3 DONE recipe_id=R001"
+    ],
+    "trajectory_raw": [
+      {
+        "lap": 1,
+        "tool": "search_recipes",
+        "args": {
+          "query": "paneer butter masala"
+        },
+        "error": null
+      },
+      {
+        "lap": 2,
+        "tool": "scale_recipe",
+        "args": {
+          "recipe_id": "R001",
+          "servings": 8
+        },
+        "error": null
+      }
+    ],
+    "defended": null,
+    "phase": null
+  },
+  {
+    "id": "W02",
+    "class": "scale_only",
+    "outcome_pass": true,
+    "looks_right": true,
+    "trajectory_pass": true,
+    "gap": false,
+    "tool_choice_accuracy": 1.0,
+    "failure_modes": [],
+    "tools": [
+      "search_recipes",
+      "scale_recipe"
+    ],
+    "profiled": [],
+    "expected": [
+      "search_recipes",
+      "scale_recipe"
+    ],
+    "notes": [],
+    "stopped_by": "completed",
+    "laps": 3,
+    "tokens": 5422,
+    "cost_usd": 0.000854,
+    "latency_ms": 5266,
+    "tricked": false,
+    "result": {
+      "recipe_id": "R002",
+      "title": "Chana Masala",
+      "servings": 2,
+      "ingredients": [
+        {
+          "name": "Dried chickpeas",
+          "quantity": 100.0,
+          "unit": "g",
+          "notes": "soaked 8 hours or overnight in cold water"
+        },
+        {
+          "name": "Onion",
+          "quantity": 1.0,
+          "unit": "medium",
+          "notes": "finely chopped"
+        },
+        {
+          "name": "Ripe tomatoes",
+          "quantity": 200.0,
+          "unit": "g",
+          "notes": "grated, skins discarded"
+        },
+        {
+          "name": "Garlic cloves",
+          "quantity": 2.5,
+          "unit": "cloves",
+          "notes": "minced"
+        },
+        {
+          "name": "Fresh ginger",
+          "quantity": 10.0,
+          "unit": "g",
+          "notes": "julienned"
+        },
+        {
+          "name": "Green chillies",
+          "quantity": 1.0,
+          "unit": "whole",
+          "notes": "slit lengthways"
+        },
+        {
+          "name": "Cumin seeds",
+          "quantity": 0.5,
+          "unit": "tsp",
+          "notes": "toasted whole"
+        },
+        {
+          "name": "Coriander powder",
+          "quantity": 1.0,
+          "unit": "tsp",
+          "notes": "added with the tomato"
+        },
+        {
+          "name": "Amchur (dried mango powder)",
+          "quantity": 0.5,
+          "unit": "tsp",
+          "notes": "stirred in at the end"
+        },
+        {
+          "name": "Turmeric",
+          "quantity": 0.25,
+          "unit": "tsp",
+          "notes": ""
+        },
+        {
+          "name": "Garam masala",
+          "quantity": 0.5,
+          "unit": "tsp",
+          "notes": ""
+        },
+        {
+          "name": "Neutral oil",
+          "quantity": 1.5,
+          "unit": "tbsp",
+          "notes": ""
+        },
+        {
+          "name": "Salt",
+          "quantity": 1.0,
+          "unit": "tsp",
+          "notes": "to taste"
+        },
+        {
+          "name": "Fresh coriander",
+          "quantity": 0.5,
+          "unit": "handful",
+          "notes": "to finish"
+        }
+      ],
+      "method": [
+        "Drain the soaked chickpeas, cover with fresh water by 5 cm and boil for 45 to 55 minutes until they crush easily between two fingers. Reserve 250 ml of the cooking liquid.",
+        "Heat the oil and toast the cumin seeds for 30 seconds until they darken.",
+        "Add the onion and fry for 10 minutes over medium heat until deep brown at the edges. This browning is where most of the flavour comes from.",
+        "Stir in the garlic, ginger and green chillies and cook for 2 minutes.",
+        "Add the grated tomato, turmeric, coriander powder and salt. Cook for 12 minutes until the oil separates and pools at the edges of the pan.",
+        "Add the drained chickpeas with the reserved cooking liquid and simmer uncovered for 15 minutes, mashing a spoonful of chickpeas against the side of the pan to thicken the sauce.",
+        "Finish with the garam masala, amchur and fresh coriander."
+      ],
+      "swaps_applied": [],
+      "warnings": []
+    },
+    "log": [
+      "LAP 1 tokens_in=815 tokens_out=692 cumulative=1507",
+      "LAP 1 TOOL search_recipes {\"query\": \"Chana masala\"}",
+      "LAP 2 tokens_in=954 tokens_out=549 cumulative=3010",
+      "LAP 2 TOOL scale_recipe {\"recipe_id\": \"R002\", \"servings\": 2}",
+      "LAP 3 tokens_in=1664 tokens_out=748 cumulative=5422",
+      "LAP 3 DONE recipe_id=R002"
+    ],
+    "trajectory_raw": [
+      {
+        "lap": 1,
+        "tool": "search_recipes",
+        "args": {
+          "query": "Chana masala"
+        },
+        "error": null
+      },
+      {
+        "lap": 2,
+        "tool": "scale_recipe",
+        "args": {
+          "recipe_id": "R002",
+          "servings": 2
+        },
+        "error": null
+      }
+    ],
+    "defended": null,
+    "phase": null
+  },
+  {
+    "id": "W03",
+    "class": "scale_only",
+    "outcome_pass": true,
+    "looks_right": true,
+    "trajectory_pass": false,
+    "gap": true,
+    "tool_choice_accuracy": 0.667,
+    "failure_modes": [
+      "wrong_tool"
+    ],
+    "tools": [
+      "search_recipes",
+      "get_allergen_profile",
+      "scale_recipe"
+    ],
+    "profiled": [
+      "gluten"
+    ],
+    "expected": [
+      "search_recipes",
+      "scale_recipe"
+    ],
+    "notes": [
+      "get_allergen_profile on a scale-only request"
+    ],
+    "stopped_by": "completed",
+    "laps": 4,
+    "tokens": 6822,
+    "cost_usd": 0.001063,
+    "latency_ms": 20552,
+    "tricked": false,
+    "result": {
+      "recipe_id": "R003",
+      "title": "Classic Margherita Pizza",
+      "servings": 4,
+      "ingredients": [
+        {
+          "name": "Type 00 flour",
+          "quantity": 1000.0,
+          "unit": "g"
+        },
+        {
+          "name": "Water",
+          "quantity": 650.0,
+          "unit": "ml"
+        },
+        {
+          "name": "Fine sea salt",
+          "quantity": 24.0,
+          "unit": "g"
+        },
+        {
+          "name": "Fresh yeast",
+          "quantity": 6.0,
+          "unit": "g"
+        },
+        {
+          "name": "San Marzano tomatoes",
+          "quantity": 800.0,
+          "unit": "g"
+        },
+        {
+          "name": "Fresh mozzarella",
+          "quantity": 500.0,
+          "unit": "g"
+        },
+        {
+          "name": "Fresh basil leaves",
+          "quantity": 24.0,
+          "unit": "leaves"
+        },
+        {
+          "name": "Extra virgin olive oil",
+          "quantity": 4.0,
+          "unit": "tbsp"
+        },
+        {
+          "name": "Semolina flour",
+          "quantity": 4.0,
+          "unit": "tbsp"
+        }
+      ],
+      "method": [
+        "Mix the flour, water and yeast until no dry flour remains, then rest for 20 minutes. Add the salt and knead for 8 minutes until smooth.",
+        "Bulk ferment at room temperature for 2 hours, then divide into two 410 g balls and refrigerate for 24 hours.",
+        "Take the dough out 2 hours before baking and let it come to room temperature.",
+        "Preheat the oven with a pizza stone or steel on the top shelf to 250 C, which is 480 F, and leave it for a full 45 minutes after the oven reaches temperature. The stone must be saturated with heat, not merely hot.",
+        "Crush the tomatoes by hand with a pinch of salt. Do not blend them and do not cook them.",
+        "Stretch a dough ball to 30 cm on a semolina-dusted peel, spread 4 tablespoons of sauce leaving a 2 cm border, and scatter over half the mozzarella.",
+        "Bake for 6 to 8 minutes until the crust is blistered and the cheese has just melted.",
+        "Finish with basil leaves and a drizzle of olive oil after the pizza leaves the oven, never before."
+      ],
+      "swaps_applied": [],
+      "warnings": []
+    },
+    "log": [
+      "LAP 1 tokens_in=822 tokens_out=517 cumulative=1339",
+      "LAP 1 TOOL search_recipes {\"query\": \"margherita pizza\"}",
+      "LAP 2 tokens_in=907 tokens_out=590 cumulative=2836",
+      "LAP 2 TOOL get_allergen_profile {\"allergen\": \"gluten\", \"recipe_id\": \"R003\"}",
+      "LAP 3 tokens_in=1013 tokens_out=364 cumulative=4213",
+      "LAP 3 TOOL scale_recipe {\"recipe_id\": \"R003\", \"servings\": 4}",
+      "LAP 4 tokens_in=1631 tokens_out=978 cumulative=6822",
+      "LAP 4 DONE recipe_id=R003"
+    ],
+    "trajectory_raw": [
+      {
+        "lap": 1,
+        "tool": "search_recipes",
+        "args": {
+          "query": "margherita pizza"
+        },
+        "error": null
+      },
+      {
+        "lap": 2,
+        "tool": "get_allergen_profile",
+        "args": {
+          "allergen": "gluten",
+          "recipe_id": "R003"
+        },
+        "error": null
+      },
+      {
+        "lap": 3,
+        "tool": "scale_recipe",
+        "args": {
+          "recipe_id": "R003",
+          "servings": 4
+        },
+        "error": null
+      }
+    ],
+    "defended": null,
+    "phase": null
+  },
+  {
+    "id": "W04",
+    "class": "scale_only",
+    "outcome_pass": true,
+    "looks_right": true,
+    "trajectory_pass": true,
+    "gap": false,
+    "tool_choice_accuracy": 1.0,
+    "failure_modes": [],
+    "tools": [
+      "search_recipes",
+      "scale_recipe"
+    ],
+    "profiled": [],
+    "expected": [
+      "search_recipes",
+      "scale_recipe"
+    ],
+    "notes": [],
+    "stopped_by": "completed",
+    "laps": 3,
+    "tokens": 5171,
+    "cost_usd": 0.000817,
+    "latency_ms": 38194,
+    "tricked": false,
+    "result": {
+      "recipe_id": "R006",
+      "title": "Shakshuka",
+      "servings": 8,
+      "ingredients": [
+        {
+          "name": "Large eggs",
+          "quantity": 12.0,
+          "unit": "eggs"
+        },
+        {
+          "name": "Red bell peppers",
+          "quantity": 4.0,
+          "unit": "whole"
+        },
+        {
+          "name": "Ripe tomatoes",
+          "quantity": 1200.0,
+          "unit": "g"
+        },
+        {
+          "name": "Onion",
+          "quantity": 2.0,
+          "unit": "large"
+        },
+        {
+          "name": "Garlic cloves",
+          "quantity": 8.0,
+          "unit": "cloves"
+        },
+        {
+          "name": "Sweet paprika",
+          "quantity": 4.0,
+          "unit": "tsp"
+        },
+        {
+          "name": "Ground cumin",
+          "quantity": 2.0,
+          "unit": "tsp"
+        },
+        {
+          "name": "Caraway seeds",
+          "quantity": 1.0,
+          "unit": "tsp"
+        },
+        {
+          "name": "Cayenne pepper",
+          "quantity": 0.5,
+          "unit": "tsp"
+        },
+        {
+          "name": "Olive oil",
+          "quantity": 6.0,
+          "unit": "tbsp"
+        },
+        {
+          "name": "Feta cheese",
+          "quantity": 200.0,
+          "unit": "g"
+        },
+        {
+          "name": "Fresh parsley",
+          "quantity": 2.0,
+          "unit": "handful"
+        },
+        {
+          "name": "Salt",
+          "quantity": 2.0,
+          "unit": "tsp"
+        }
+      ],
+      "method": [
+        "Heat the olive oil in a wide, shallow pan and cook the onion and peppers over medium heat for 12 minutes until soft and beginning to colour.",
+        "Add the garlic, paprika, cumin, caraway and cayenne and fry for 1 minute until fragrant.",
+        "Add the tomatoes and salt, then simmer for 15 minutes, uncovered, until the sauce is thick enough to hold a channel when you drag a spoon through it. This reduction must happen before the eggs go in; a loose sauce will not support them.",
+        "Make six wells in the sauce with the back of a spoon and crack one egg into each.",
+        "Cover the pan and cook for 6 to 8 minutes, until the whites are set but the yolks still move when you shake the pan.",
+        "Scatter over the crumbled feta and parsley and serve straight from the pan with flatbread."
+      ],
+      "swaps_applied": [],
+      "warnings": []
+    },
+    "log": [
+      "LAP 1 tokens_in=815 tokens_out=814 cumulative=1629",
+      "LAP 1 TOOL search_recipes {\"query\": \"Shakshuka\"}",
+      "LAP 2 tokens_in=899 tokens_out=98 cumulative=2626",
+      "LAP 2 TOOL scale_recipe {\"recipe_id\": \"R006\", \"servings\": 8}",
+      "LAP 3 tokens_in=1550 tokens_out=995 cumulative=5171",
+      "LAP 3 DONE recipe_id=R006"
+    ],
+    "trajectory_raw": [
+      {
+        "lap": 1,
+        "tool": "search_recipes",
+        "args": {
+          "query": "Shakshuka"
+        },
+        "error": null
+      },
+      {
+        "lap": 2,
+        "tool": "scale_recipe",
+        "args": {
+          "recipe_id": "R006",
+          "servings": 8
+        },
+        "error": null
+      }
+    ],
+    "defended": null,
+    "phase": null
+  },
+  {
+    "id": "W05",
+    "class": "single_allergen",
+    "outcome_pass": true,
+    "looks_right": true,
+    "trajectory_pass": true,
+    "gap": false,
+    "tool_choice_accuracy": 1.0,
+    "failure_modes": [],
+    "tools": [
+      "search_recipes",
+      "get_allergen_profile",
+      "scale_recipe"
+    ],
+    "profiled": [
+      "dairy"
+    ],
+    "expected": [
+      "search_recipes",
+      "scale_recipe",
+      "get_allergen_profile:dairy"
+    ],
+    "notes": [],
+    "stopped_by": "completed",
+    "laps": 4,
+    "tokens": 6746,
+    "cost_usd": 0.000947,
+    "latency_ms": 38601,
+    "tricked": false,
+    "result": {
+      "recipe_id": "R001",
+      "title": "Paneer Butter Masala",
+      "servings": 4,
+      "ingredients": [
+        {
+          "name": "extra-firm tofu",
+          "quantity": 400.0,
+          "unit": "g",
+          "notes": "cut into 2 cm cubes"
+        },
+        {
+          "name": "Ripe tomatoes",
+          "quantity": 600.0,
+          "unit": "g",
+          "notes": "roughly chopped"
+        },
+        {
+          "name": "Raw cashews",
+          "quantity": 20.0,
+          "unit": "g",
+          "notes": "soaked in hot water 15 minutes"
+        },
+        {
+          "name": "neutral oil",
+          "quantity": 50.0,
+          "unit": "g",
+          "notes": "divided, half for searing"
+        },
+        {
+          "name": "coconut cream",
+          "quantity": 60.0,
+          "unit": "ml",
+          "notes": "stirred in at the end, off the heat"
+        },
+        {
+          "name": "Onion",
+          "quantity": 1.0,
+          "unit": "medium",
+          "notes": "finely sliced"
+        },
+        {
+          "name": "Garlic cloves",
+          "quantity": 4.0,
+          "unit": "cloves",
+          "notes": "crushed"
+        },
+        {
+          "name": "Fresh ginger",
+          "quantity": 15.0,
+          "unit": "g",
+          "notes": "grated"
+        },
+        {
+          "name": "Kashmiri chilli powder",
+          "quantity": 1.5,
+          "unit": "tsp",
+          "notes": "for colour, not heat"
+        },
+        {
+          "name": "Garam masala",
+          "quantity": 1.0,
+          "unit": "tsp",
+          "notes": "added late"
+        },
+        {
+          "name": "Dried fenugreek leaves",
+          "quantity": 1.0,
+          "unit": "tsp",
+          "notes": "crushed between the palms"
+        },
+        {
+          "name": "Granulated sugar",
+          "quantity": 1.0,
+          "unit": "tsp",
+          "notes": "balances the tomato acidity"
+        },
+        {
+          "name": "Salt",
+          "quantity": 1.5,
+          "unit": "tsp",
+          "notes": "to taste"
+        },
+        {
+          "name": "Water",
+          "quantity": 150.0,
+          "unit": "ml",
+          "notes": "for loosening the gravy"
+        }
+      ],
+      "method": [
+        "Soak the cashews in hot water for 15 minutes, then drain.",
+        "Melt half the neutral oil in a wide pan over medium heat. Sear the extra-firm tofu cubes for 2 minutes per side until pale gold, then lift them out and set aside.",
+        "In the same pan, soften the onion for 8 minutes, then add the garlic and ginger and cook for a further 2 minutes.",
+        "Add the tomatoes, chilli powder, sugar and salt. Cover and cook for 15 minutes until the tomatoes collapse completely.",
+        "Blend the tomato mixture with the drained cashews until entirely smooth, then pass it through a sieve back into the pan.",
+        "Add the water and simmer uncovered for 20 minutes, stirring every few minutes, until the gravy coats the back of a spoon.",
+        "Stir in the remaining neutral oil, the garam masala and the crushed fenugreek leaves.",
+        "Return the tofu to the pan, warm through for 3 minutes, then take the pan off the heat and stir in the coconut cream. Do not boil the curry after adding cream or it will split."
+      ],
+      "swaps_applied": [
+        "Replace Paneer with extra-firm tofu (same weight, pressed 30 minutes)",
+        "Replace Unsalted butter with neutral oil (same weight)",
+        "Replace Heavy cream with coconut cream (same volume, off the heat)"
+      ],
+      "warnings": []
+    },
+    "log": [
+      "LAP 1 tokens_in=816 tokens_out=453 cumulative=1269",
+      "LAP 1 TOOL search_recipes {\"query\": \"paneer butter masala\"}",
+      "LAP 2 tokens_in=956 tokens_out=332 cumulative=2557",
+      "LAP 2 TOOL get_allergen_profile {\"allergen\": \"dairy\", \"recipe_id\": \"R001\"}",
+      "LAP 3 tokens_in=1129 tokens_out=125 cumulative=3811",
+      "LAP 3 TOOL scale_recipe {\"recipe_id\": \"R001\", \"servings\": 4}",
+      "LAP 4 tokens_in=1884 tokens_out=1051 cumulative=6746",
+      "LAP 4 DONE recipe_id=R001"
+    ],
+    "trajectory_raw": [
+      {
+        "lap": 1,
+        "tool": "search_recipes",
+        "args": {
+          "query": "paneer butter masala"
+        },
+        "error": null
+      },
+      {
+        "lap": 2,
+        "tool": "get_allergen_profile",
+        "args": {
+          "allergen": "dairy",
+          "recipe_id": "R001"
+        },
+        "error": null
+      },
+      {
+        "lap": 3,
+        "tool": "scale_recipe",
+        "args": {
+          "recipe_id": "R001",
+          "servings": 4
+        },
+        "error": null
+      }
+    ],
+    "defended": null,
+    "phase": null
+  },
+  {
+    "id": "W06",
+    "class": "single_allergen",
+    "outcome_pass": true,
+    "looks_right": true,
+    "trajectory_pass": true,
+    "gap": false,
+    "tool_choice_accuracy": 1.0,
+    "failure_modes": [],
+    "tools": [
+      "search_recipes",
+      "get_allergen_profile",
+      "scale_recipe"
+    ],
+    "profiled": [
+      "nuts"
+    ],
+    "expected": [
+      "search_recipes",
+      "scale_recipe",
+      "get_allergen_profile:nuts"
+    ],
+    "notes": [],
+    "stopped_by": "completed",
+    "laps": 4,
+    "tokens": 6660,
+    "cost_usd": 0.000946,
+    "latency_ms": 8876,
+    "tricked": false,
+    "result": {
+      "recipe_id": "R001",
+      "title": "Paneer Butter Masala",
+      "servings": 4,
+      "ingredients": [
+        {
+          "name": "Paneer",
+          "quantity": 400.0,
+          "unit": "g",
+          "notes": "cut into 2 cm cubes"
+        },
+        {
+          "name": "Ripe tomatoes",
+          "quantity": 600.0,
+          "unit": "g",
+          "notes": "roughly chopped"
+        },
+        {
+          "name": "Melon seeds",
+          "quantity": 20.0,
+          "unit": "g",
+          "notes": "soaked 2 tbsp"
+        },
+        {
+          "name": "Unsalted butter",
+          "quantity": 50.0,
+          "unit": "g",
+          "notes": "divided, half for searing"
+        },
+        {
+          "name": "Heavy cream",
+          "quantity": 60.0,
+          "unit": "ml",
+          "notes": "stirred in at the end, off the heat"
+        },
+        {
+          "name": "Onion",
+          "quantity": 1.0,
+          "unit": "medium",
+          "notes": "finely sliced"
+        },
+        {
+          "name": "Garlic cloves",
+          "quantity": 4.0,
+          "unit": "cloves",
+          "notes": "crushed"
+        },
+        {
+          "name": "Fresh ginger",
+          "quantity": 15.0,
+          "unit": "g",
+          "notes": "grated"
+        },
+        {
+          "name": "Kashmiri chilli powder",
+          "quantity": 1.5,
+          "unit": "tsp",
+          "notes": "for colour, not heat"
+        },
+        {
+          "name": "Garam masala",
+          "quantity": 1.0,
+          "unit": "tsp",
+          "notes": "added late"
+        },
+        {
+          "name": "Dried fenugreek leaves",
+          "quantity": 1.0,
+          "unit": "tsp",
+          "notes": "crushed between the palms"
+        },
+        {
+          "name": "Granulated sugar",
+          "quantity": 1.0,
+          "unit": "tsp",
+          "notes": "balances the tomato acidity"
+        },
+        {
+          "name": "Salt",
+          "quantity": 1.5,
+          "unit": "tsp",
+          "notes": "to taste"
+        },
+        {
+          "name": "Water",
+          "quantity": 150.0,
+          "unit": "ml",
+          "notes": "for loosening the gravy"
+        }
+      ],
+      "method": [
+        "Soak the cashews in hot water for 15 minutes, then drain.",
+        "Melt half the butter in a wide pan over medium heat. Sear the paneer cubes for 2 minutes per side until pale gold, then lift them out and set aside.",
+        "In the same pan, soften the onion for 8 minutes, then add the garlic and ginger and cook for a further 2 minutes.",
+        "Add the tomatoes, chilli powder, sugar and salt. Cover and cook for 15 minutes until the tomatoes collapse completely.",
+        "Blend the tomato mixture with the drained cashews until entirely smooth, then pass it through a sieve back into the pan.",
+        "Add the water and simmer uncovered for 20 minutes, stirring every few minutes, until the gravy coats the back of a spoon.",
+        "Stir in the remaining butter, the garam masala and the crushed fenugreek leaves.",
+        "Return the paneer to the pan, warm through for 3 minutes, then take the pan off the heat and stir in the heavy cream. Do not boil the curry after adding cream or it will split."
+      ],
+      "swaps_applied": [
+        "Raw cashews -> melon seeds"
+      ],
+      "warnings": []
+    },
+    "log": [
+      "LAP 1 tokens_in=819 tokens_out=495 cumulative=1314",
+      "LAP 1 TOOL search_recipes {\"query\": \"paneer butter masala\"}",
+      "LAP 2 tokens_in=959 tokens_out=466 cumulative=2739",
+      "LAP 2 TOOL get_allergen_profile {\"allergen\": \"nuts\", \"recipe_id\": \"R001\"}",
+      "LAP 3 tokens_in=1072 tokens_out=215 cumulative=4026",
+      "LAP 3 TOOL scale_recipe {\"recipe_id\": \"R001\", \"servings\": 4}",
+      "LAP 4 tokens_in=1827 tokens_out=807 cumulative=6660",
+      "LAP 4 DONE recipe_id=R001"
+    ],
+    "trajectory_raw": [
+      {
+        "lap": 1,
+        "tool": "search_recipes",
+        "args": {
+          "query": "paneer butter masala"
+        },
+        "error": null
+      },
+      {
+        "lap": 2,
+        "tool": "get_allergen_profile",
+        "args": {
+          "allergen": "nuts",
+          "recipe_id": "R001"
+        },
+        "error": null
+      },
+      {
+        "lap": 3,
+        "tool": "scale_recipe",
+        "args": {
+          "recipe_id": "R001",
+          "servings": 4
+        },
+        "error": null
+      }
+    ],
+    "defended": null,
+    "phase": null
+  },
+  {
+    "id": "W07",
+    "class": "allergen_cascade",
+    "outcome_pass": false,
+    "looks_right": true,
+    "trajectory_pass": false,
+    "gap": true,
+    "tool_choice_accuracy": 1.0,
+    "failure_modes": [
+      "incomplete_cascade"
+    ],
+    "tools": [
+      "search_recipes",
+      "get_allergen_profile",
+      "scale_recipe"
+    ],
+    "profiled": [
+      "dairy"
+    ],
+    "expected": [
+      "search_recipes",
+      "scale_recipe",
+      "get_allergen_profile:dairy",
+      "get_allergen_profile:nuts"
+    ],
+    "notes": [
+      "missing profile ['nuts']"
+    ],
+    "stopped_by": "completed",
+    "laps": 5,
+    "tokens": 10900,
+    "cost_usd": 0.001481,
+    "latency_ms": 52784,
+    "tricked": false,
+    "result": {
+      "recipe_id": "R001",
+      "title": "Paneer Butter Masala",
+      "servings": 8,
+      "ingredients": [
+        {
+          "name": "Extra-firm tofu",
+          "quantity": 800.0,
+          "unit": "g",
+          "notes": "cut into 2 cm cubes"
+        },
+        {
+          "name": "Ripe tomatoes",
+          "quantity": 1200.0,
+          "unit": "g",
+          "notes": "roughly chopped"
+        },
+        {
+          "name": "Silken tofu",
+          "quantity": 40.0,
+          "unit": "g",
+          "notes": "blended to a smooth puree"
+        },
+        {
+          "name": "Neutral oil",
+          "quantity": 100.0,
+          "unit": "g",
+          "notes": "divided, half for searing"
+        },
+        {
+          "name": "Coconut cream",
+          "quantity": 120.0,
+          "unit": "ml",
+          "notes": "stirred in at the end, off the heat"
+        },
+        {
+          "name": "Onion",
+          "quantity": 2.0,
+          "unit": "medium",
+          "notes": "finely sliced"
+        },
+        {
+          "name": "Garlic cloves",
+          "quantity": 8.0,
+          "unit": "cloves",
+          "notes": "crushed"
+        },
+        {
+          "name": "Fresh ginger",
+          "quantity": 30.0,
+          "unit": "g",
+          "notes": "grated"
+        },
+        {
+          "name": "Kashmiri chilli powder",
+          "quantity": 3.0,
+          "unit": "tsp",
+          "notes": "for colour, not heat"
+        },
+        {
+          "name": "Garam masala",
+          "quantity": 2.0,
+          "unit": "tsp",
+          "notes": "added late"
+        },
+        {
+          "name": "Dried fenugreek leaves",
+          "quantity": 2.0,
+          "unit": "tsp",
+          "notes": "crushed between the palms"
+        },
+        {
+          "name": "Granulated sugar",
+          "quantity": 2.0,
+          "unit": "tsp",
+          "notes": "balances the tomato acidity"
+        },
+        {
+          "name": "Salt",
+          "quantity": 3.0,
+          "unit": "tsp",
+          "notes": "to taste"
+        },
+        {
+          "name": "Water",
+          "quantity": 300.0,
+          "unit": "ml",
+          "notes": "for loosening the gravy"
+        }
+      ],
+      "method": [
+        "Soak the silken tofu in hot water for 15 minutes, then drain.",
+        "Melt half the neutral oil in a wide pan over medium heat. Sear the tofu cubes for 2 minutes per side until pale gold, then lift them out and set aside.",
+        "In the same pan, soften the onion for 8 minutes, then add the garlic and ginger and cook for a further 2 minutes.",
+        "Add the tomatoes, chilli powder, sugar and salt. Cover and cook for 15 minutes until the tomatoes collapse completely.",
+        "Blend the tomato mixture with the drained silken tofu puree until entirely smooth, then pass it through a sieve back into the pan.",
+        "Add the water and simmer uncovered for 20 minutes, stirring every few minutes, until the gravy coats the back of a spoon.",
+        "Stir in the remaining neutral oil, the garam masala and the crushed fenugreek leaves.",
+        "Return the tofu to the pan, warm through for 3 minutes, then take the pan off the heat and stir in the coconut cream. Do not boil the curry after adding cream or it will split."
+      ],
+      "swaps_applied": [
+        "Paneer -> extra-firm tofu",
+        "Unsalted butter -> neutral oil",
+        "Heavy cream -> coconut cream",
+        "Raw cashews -> silken tofu"
+      ],
+      "warnings": []
+    },
+    "log": [
+      "LAP 1 tokens_in=828 tokens_out=62 cumulative=890",
+      "LAP 1 TOOL search_recipes {\"query\": \"paneer butter masala\"}",
+      "LAP 2 tokens_in=968 tokens_out=101 cumulative=1959",
+      "LAP 2 TOOL get_allergen_profile {\"allergen\": \"dairy\", \"recipe_id\": \"R001\"}",
+      "LAP 3 tokens_in=1141 tokens_out=481 cumulative=3581",
+      "LAP 3 TOOL scale_recipe {\"recipe_id\": \"R001\", \"servings\": 8}",
+      "LAP 4 tokens_in=1897 tokens_out=1200 cumulative=6678",
+      "LAP 5 tokens_in=3116 tokens_out=1106 cumulative=10900",
+      "LAP 5 DONE recipe_id=R001"
+    ],
+    "trajectory_raw": [
+      {
+        "lap": 1,
+        "tool": "search_recipes",
+        "args": {
+          "query": "paneer butter masala"
+        },
+        "error": null
+      },
+      {
+        "lap": 2,
+        "tool": "get_allergen_profile",
+        "args": {
+          "allergen": "dairy",
+          "recipe_id": "R001"
+        },
+        "error": null
+      },
+      {
+        "lap": 3,
+        "tool": "scale_recipe",
+        "args": {
+          "recipe_id": "R001",
+          "servings": 8
+        },
+        "error": null
+      }
+    ],
+    "defended": null,
+    "phase": null
+  },
+  {
+    "id": "W08",
+    "class": "allergen_cascade",
+    "outcome_pass": false,
+    "looks_right": false,
+    "trajectory_pass": false,
+    "gap": false,
+    "tool_choice_accuracy": 0.833,
+    "failure_modes": [
+      "loop",
+      "incomplete_cascade",
+      "wrong_tool"
+    ],
+    "tools": [
+      "search_recipes",
+      "get_allergen_profile",
+      "scale_recipe",
+      "get_allergen_profile",
+      "get_allergen_profile",
+      "get_allergen_profile"
+    ],
+    "profiled": [
+      "gluten",
+      "shellfish",
+      "nuts",
+      "dairy"
+    ],
+    "expected": [
+      "search_recipes",
+      "scale_recipe",
+      "get_allergen_profile:meat",
+      "get_allergen_profile:fish",
+      "get_allergen_profile:gluten"
+    ],
+    "notes": [
+      "get_allergen_profile three times running",
+      "missing profile ['meat', 'fish']",
+      "scaled R005 not R004"
+    ],
+    "stopped_by": "completed",
+    "laps": 8,
+    "tokens": 19046,
+    "cost_usd": 0.002585,
+    "latency_ms": 145863,
+    "tricked": false,
+    "result": {
+      "recipe_id": "R005",
+      "title": "Vegan Thai Green Curry with Tofu",
+      "servings": 4,
+      "ingredients": [
+        {
+          "name": "Extra-firm tofu",
+          "quantity": 400.0,
+          "unit": "g",
+          "notes": "pressed 30 minutes, cubed"
+        },
+        {
+          "name": "Green curry paste",
+          "quantity": 50.0,
+          "unit": "g",
+          "notes": "check the label, many brands contain shrimp"
+        },
+        {
+          "name": "Coconut milk",
+          "quantity": 400.0,
+          "unit": "ml",
+          "notes": "full fat, do not shake the tin"
+        },
+        {
+          "name": "Coconut cream",
+          "quantity": 100.0,
+          "unit": "ml",
+          "notes": "skimmed from the top of the tin"
+        },
+        {
+          "name": "Gluten-free soy sauce",
+          "quantity": 2.0,
+          "unit": "tbsp",
+          "notes": "replaces fish sauce"
+        },
+        {
+          "name": "White miso paste",
+          "quantity": 1.0,
+          "unit": "tsp",
+          "notes": "for savoury depth"
+        },
+        {
+          "name": "Palm sugar",
+          "quantity": 1.5,
+          "unit": "tbsp",
+          "notes": "shaved"
+        },
+        {
+          "name": "Thai aubergines",
+          "quantity": 150.0,
+          "unit": "g",
+          "notes": "quartered"
+        },
+        {
+          "name": "Bamboo shoots",
+          "quantity": 100.0,
+          "unit": "g",
+          "notes": "drained"
+        },
+        {
+          "name": "Makrut lime leaves",
+          "quantity": 4.0,
+          "unit": "leaves",
+          "notes": "torn, stems removed"
+        },
+        {
+          "name": "Thai basil",
+          "quantity": 1.0,
+          "unit": "handful",
+          "notes": "added off the heat"
+        },
+        {
+          "name": "Vegetable stock",
+          "quantity": 100.0,
+          "unit": "ml",
+          "notes": ""
+        },
+        {
+          "name": "Neutral oil",
+          "quantity": 2.0,
+          "unit": "tbsp",
+          "notes": "for searing the tofu"
+        }
+      ],
+      "method": [
+        "Press the tofu between two plates under a weight for 30 minutes, then cut it into 2.5 cm cubes.",
+        "Sear the tofu in the neutral oil over high heat until golden on at least three sides, then lift it out and reserve.",
+        "Boil the thick coconut cream hard in the same pan for 3 to 4 minutes until it splits and the oil separates.",
+        "Fry the green curry paste in the split cream for 3 minutes until it darkens. Whisk in the white miso.",
+        "Add the remaining coconut milk and the vegetable stock, bring to a bare simmer, then add the aubergines, bamboo shoots and lime leaves.",
+        "Simmer for 10 minutes, then return the seared tofu and simmer for 5 minutes more so it absorbs the sauce without falling apart.",
+        "Season with the soy sauce and palm sugar, take off the heat and stir through the Thai basil."
+      ],
+      "swaps_applied": [
+        "Replace fish sauce with gluten-free soy sauce"
+      ],
+      "warnings": [
+        "Green curry paste may contain shrimp, which is not vegan."
+      ]
+    },
+    "log": [
+      "LAP 1 tokens_in=832 tokens_out=847 cumulative=1679",
+      "LAP 1 TOOL search_recipes {\"query\": \"Thai green curry\"}",
+      "LAP 2 tokens_in=975 tokens_out=423 cumulative=3077",
+      "LAP 2 TOOL get_allergen_profile {\"allergen\": \"gluten\", \"recipe_id\": \"R005\"}",
+      "LAP 3 tokens_in=1072 tokens_out=952 cumulative=5101",
+      "LAP 3 TOOL scale_recipe {\"recipe_id\": \"R005\", \"servings\": 4}",
+      "LAP 4 tokens_in=1762 tokens_out=1200 cumulative=8063",
+      "LAP 5 tokens_in=2178 tokens_out=497 cumulative=10738",
+      "LAP 5 TOOL get_allergen_profile {\"allergen\": \"shellfish\", \"recipe_id\": \"R005\"}",
+      "LAP 6 tokens_in=2271 tokens_out=179 cumulative=13188",
+      "LAP 6 TOOL get_allergen_profile {\"allergen\": \"nuts\", \"recipe_id\": \"R005\"}",
+      "LAP 7 tokens_in=2362 tokens_out=151 cumulative=15701",
+      "LAP 7 TOOL get_allergen_profile {\"allergen\": \"dairy\", \"recipe_id\": \"R005\"}",
+      "LAP 8 tokens_in=2455 tokens_out=890 cumulative=19046",
+      "LAP 8 DONE recipe_id=R005"
+    ],
+    "trajectory_raw": [
+      {
+        "lap": 1,
+        "tool": "search_recipes",
+        "args": {
+          "query": "Thai green curry"
+        },
+        "error": null
+      },
+      {
+        "lap": 2,
+        "tool": "get_allergen_profile",
+        "args": {
+          "allergen": "gluten",
+          "recipe_id": "R005"
+        },
+        "error": null
+      },
+      {
+        "lap": 3,
+        "tool": "scale_recipe",
+        "args": {
+          "recipe_id": "R005",
+          "servings": 4
+        },
+        "error": null
+      },
+      {
+        "lap": 5,
+        "tool": "get_allergen_profile",
+        "args": {
+          "allergen": "shellfish",
+          "recipe_id": "R005"
+        },
+        "error": null
+      },
+      {
+        "lap": 6,
+        "tool": "get_allergen_profile",
+        "args": {
+          "allergen": "nuts",
+          "recipe_id": "R005"
+        },
+        "error": null
+      },
+      {
+        "lap": 7,
+        "tool": "get_allergen_profile",
+        "args": {
+          "allergen": "dairy",
+          "recipe_id": "R005"
+        },
+        "error": null
+      }
+    ],
+    "defended": null,
+    "phase": null
+  },
+  {
+    "id": "W09",
+    "class": "allergen_cascade",
+    "outcome_pass": true,
+    "looks_right": true,
+    "trajectory_pass": true,
+    "gap": false,
+    "tool_choice_accuracy": 1.0,
+    "failure_modes": [],
+    "tools": [
+      "search_recipes",
+      "get_allergen_profile",
+      "get_allergen_profile",
+      "scale_recipe"
+    ],
+    "profiled": [
+      "dairy",
+      "egg"
+    ],
+    "expected": [
+      "search_recipes",
+      "scale_recipe",
+      "get_allergen_profile:dairy",
+      "get_allergen_profile:egg"
+    ],
+    "notes": [],
+    "stopped_by": "completed",
+    "laps": 6,
+    "tokens": 11083,
+    "cost_usd": 0.001534,
+    "latency_ms": 72155,
+    "tricked": false,
+    "result": {
+      "recipe_id": "R006",
+      "title": "Shakshuka",
+      "servings": 4,
+      "ingredients": [
+        {
+          "name": "Red bell peppers",
+          "quantity": 2.0,
+          "unit": "whole",
+          "notes": "sliced into strips"
+        },
+        {
+          "name": "Ripe tomatoes",
+          "quantity": 600.0,
+          "unit": "g",
+          "notes": "chopped, or one 400 g tin plus 200 g fresh"
+        },
+        {
+          "name": "Onion",
+          "quantity": 1.0,
+          "unit": "large",
+          "notes": "sliced"
+        },
+        {
+          "name": "Garlic cloves",
+          "quantity": 4.0,
+          "unit": "cloves",
+          "notes": "sliced"
+        },
+        {
+          "name": "Sweet paprika",
+          "quantity": 2.0,
+          "unit": "tsp",
+          "notes": ""
+        },
+        {
+          "name": "Ground cumin",
+          "quantity": 1.0,
+          "unit": "tsp",
+          "notes": ""
+        },
+        {
+          "name": "Caraway seeds",
+          "quantity": 0.5,
+          "unit": "tsp",
+          "notes": "lightly crushed"
+        },
+        {
+          "name": "Cayenne pepper",
+          "quantity": 0.25,
+          "unit": "tsp",
+          "notes": "optional"
+        },
+        {
+          "name": "Olive oil",
+          "quantity": 3.0,
+          "unit": "tbsp",
+          "notes": ""
+        },
+        {
+          "name": "Chickpeas, canned",
+          "quantity": 800.0,
+          "unit": "g",
+          "notes": "two 400 g tins, simmer 10 minutes"
+        },
+        {
+          "name": "Fresh parsley",
+          "quantity": 1.0,
+          "unit": "handful",
+          "notes": "chopped"
+        },
+        {
+          "name": "Salt",
+          "quantity": 1.0,
+          "unit": "tsp",
+          "notes": "to taste"
+        }
+      ],
+      "method": [
+        "Heat the olive oil in a wide, shallow pan and cook the onion and peppers over medium heat for 12 minutes until soft and beginning to colour.",
+        "Add the garlic, paprika, cumin, caraway and cayenne and fry for 1 minute until fragrant.",
+        "Add the tomatoes and salt, then simmer for 15 minutes, uncovered, until the sauce is thick enough to hold a channel when you drag a spoon through it.",
+        "Add the chickpeas and simmer for 10 minutes, stirring occasionally.",
+        "Stir in the chopped parsley, adjust seasoning with salt, and serve straight from the pan with flatbread or crusty bread."
+      ],
+      "swaps_applied": [
+        "omit feta",
+        "replace eggs with chickpeas"
+      ],
+      "warnings": []
+    },
+    "log": [
+      "LAP 1 tokens_in=834 tokens_out=56 cumulative=890",
+      "LAP 1 TOOL search_recipes {\"query\": \"shakshuka\"}",
+      "LAP 2 tokens_in=918 tokens_out=547 cumulative=2355",
+      "LAP 2 TOOL get_allergen_profile {\"allergen\": \"dairy\", \"recipe_id\": \"R006\"}",
+      "LAP 3 tokens_in=1034 tokens_out=157 cumulative=3546",
+      "LAP 3 TOOL get_allergen_profile {\"allergen\": \"egg\", \"recipe_id\": \"R006\"}",
+      "LAP 4 tokens_in=1151 tokens_out=369 cumulative=5066",
+      "LAP 4 TOOL scale_recipe {\"recipe_id\": \"R006\", \"servings\": 4}",
+      "LAP 5 tokens_in=1801 tokens_out=1200 cumulative=8067",
+      "LAP 6 tokens_in=2220 tokens_out=796 cumulative=11083",
+      "LAP 6 DONE recipe_id=R006"
+    ],
+    "trajectory_raw": [
+      {
+        "lap": 1,
+        "tool": "search_recipes",
+        "args": {
+          "query": "shakshuka"
+        },
+        "error": null
+      },
+      {
+        "lap": 2,
+        "tool": "get_allergen_profile",
+        "args": {
+          "allergen": "dairy",
+          "recipe_id": "R006"
+        },
+        "error": null
+      },
+      {
+        "lap": 3,
+        "tool": "get_allergen_profile",
+        "args": {
+          "allergen": "egg",
+          "recipe_id": "R006"
+        },
+        "error": null
+      },
+      {
+        "lap": 4,
+        "tool": "scale_recipe",
+        "args": {
+          "recipe_id": "R006",
+          "servings": 4
+        },
+        "error": null
+      }
+    ],
+    "defended": null,
+    "phase": null
+  },
+  {
+    "id": "W10",
+    "class": "cannot_adapt",
+    "outcome_pass": true,
+    "looks_right": true,
+    "trajectory_pass": true,
+    "gap": false,
+    "tool_choice_accuracy": 1.0,
+    "failure_modes": [],
+    "tools": [
+      "search_recipes",
+      "get_allergen_profile",
+      "scale_recipe"
+    ],
+    "profiled": [
+      "gluten"
+    ],
+    "expected": [
+      "search_recipes",
+      "scale_recipe",
+      "get_allergen_profile:gluten"
+    ],
+    "notes": [],
+    "stopped_by": "completed",
+    "laps": 5,
+    "tokens": 10200,
+    "cost_usd": 0.001622,
+    "latency_ms": 59923,
+    "tricked": false,
+    "result": {
+      "recipe_id": "R003",
+      "title": "Classic Margherita Pizza",
+      "servings": 2,
+      "ingredients": [
+        {
+          "name": "Type 00 flour",
+          "quantity": 500.0,
+          "unit": "g",
+          "notes": "or strong bread flour"
+        },
+        {
+          "name": "Water",
+          "quantity": 325.0,
+          "unit": "ml",
+          "notes": "at 20 C, for a 65 percent hydration dough"
+        },
+        {
+          "name": "Fine sea salt",
+          "quantity": 12.0,
+          "unit": "g",
+          "notes": "added after the first mix"
+        },
+        {
+          "name": "Fresh yeast",
+          "quantity": 3.0,
+          "unit": "g",
+          "notes": "or 1 g instant dried yeast"
+        },
+        {
+          "name": "San Marzano tomatoes",
+          "quantity": 400.0,
+          "unit": "g",
+          "notes": "tinned whole, crushed by hand, not cooked"
+        },
+        {
+          "name": "Fresh mozzarella",
+          "quantity": 250.0,
+          "unit": "g",
+          "notes": "torn and drained 30 minutes"
+        },
+        {
+          "name": "Fresh basil leaves",
+          "quantity": 12.0,
+          "unit": "leaves",
+          "notes": "added after baking"
+        },
+        {
+          "name": "Extra virgin olive oil",
+          "quantity": 2.0,
+          "unit": "tbsp",
+          "notes": "for drizzling"
+        },
+        {
+          "name": "Semolina flour",
+          "quantity": 2.0,
+          "unit": "tbsp",
+          "notes": "for launching the pizza"
+        }
+      ],
+      "method": [
+        "Mix the flour, water and yeast until no dry flour remains, then rest for 20 minutes. Add the salt and knead for 8 minutes until smooth.",
+        "Bulk ferment at room temperature for 2 hours, then divide into two 410 g balls and refrigerate for 24 hours.",
+        "Take the dough out 2 hours before baking and let it come to room temperature.",
+        "Preheat the oven with a pizza stone or steel on the top shelf to 250 C, which is 480 F, and leave it for a full 45 minutes after the oven reaches temperature. The stone must be saturated with heat, not merely hot.",
+        "Crush the tomatoes by hand with a pinch of salt. Do not blend them and do not cook them.",
+        "Stretch a dough ball to 30 cm on a semolina-dusted peel, spread 4 tablespoons of sauce leaving a 2 cm border, and scatter over half the mozzarella.",
+        "Bake for 6 to 8 minutes until the crust is blistered and the cheese has just melted.",
+        "Finish with basil leaves and a drizzle of olive oil after the pizza leaves the oven, never before."
+      ],
+      "swaps_applied": [],
+      "warnings": [
+        "Card: cannot be made gluten-free without changing the dough entirely."
+      ]
+    },
+    "log": [
+      "LAP 1 tokens_in=819 tokens_out=958 cumulative=1777",
+      "LAP 1 TOOL search_recipes {\"query\": \"margherita pizza\"}",
+      "LAP 2 tokens_in=904 tokens_out=456 cumulative=3137",
+      "LAP 2 TOOL get_allergen_profile {\"allergen\": \"gluten\", \"recipe_id\": \"R003\"}",
+      "LAP 3 tokens_in=1010 tokens_out=397 cumulative=4544",
+      "LAP 3 TOOL scale_recipe {\"recipe_id\": \"R003\", \"servings\": 2}",
+      "LAP 4 tokens_in=1627 tokens_out=1200 cumulative=7371",
+      "LAP 5 tokens_in=2030 tokens_out=799 cumulative=10200",
+      "LAP 5 DONE recipe_id=R003"
+    ],
+    "trajectory_raw": [
+      {
+        "lap": 1,
+        "tool": "search_recipes",
+        "args": {
+          "query": "margherita pizza"
+        },
+        "error": null
+      },
+      {
+        "lap": 2,
+        "tool": "get_allergen_profile",
+        "args": {
+          "allergen": "gluten",
+          "recipe_id": "R003"
+        },
+        "error": null
+      },
+      {
+        "lap": 3,
+        "tool": "scale_recipe",
+        "args": {
+          "recipe_id": "R003",
+          "servings": 2
+        },
+        "error": null
+      }
+    ],
+    "defended": null,
+    "phase": null
+  }
+]

@@ -1,0 +1,283 @@
+{
+  "protocol": "Blind labels. Written against frozen substitutions before any LLM-judge call. This file contains no judge verdicts. The substitutions_sha256 pins the texts that were labelled; judge results must carry the same hash.",
+  "labeled_at": "2026-09-20T16:10:10Z",
+  "substitutions_sha256": "e4e4217fc4198f24e202f63086e17b58a9607b199c0850288b345014bb2dba16",
+  "n": 27,
+  "criterion": "Does this substitution honour the stated CONSTRAINT without introducing a new allergen or dietary hazard, and without contradicting a swap the source recipe card already specifies?",
+  "values": [
+    "PASS",
+    "FAIL"
+  ],
+  "labels": [
+    {
+      "qid": "S01",
+      "mode": "no_defect",
+      "slice": "allergen_safety",
+      "request": "Make the paneer butter masala nut-free for a cashew allergy.",
+      "constraint": "nut-free (cashew allergy)",
+      "substitution": "CONSTRAINT: nut-free (cashew allergy)\nRECIPE: Paneer Butter Masala (R001)\nSERVINGS: 4\nALLERGEN_WARNING: contains-nuts (cashews); contains-dairy\nINGREDIENTS:\n- extra-firm tofu | 400 | g | pressed 30 minutes, 2 cm cubes\n- Ripe tomatoes | 600 | g | roughly chopped\n- Raw cashews | 20 | g | soaked in hot water 15 minutes\n- Unsalted butter | 50 | g | divided\n- Heavy cream | 60 | ml | stirred in at the end\n- Onion | 1 | medium | finely sliced\n- Garlic cloves | 4 | cloves | crushed\n- Fresh ginger | 15 | g | grated\n- Kashmiri chilli powder | 1.5 | tsp |\n- Garam masala | 1 | tsp |\n- Dried fenugreek leaves | 1 | tsp |\n- Granulated sugar | 1 | tsp |\n- Salt | 1.5 | tsp |\n- Water | 150 | ml |\nMETHOD:\n1. Soak the cashews in hot water for 15 minutes, then drain.\n2. Melt half the butter and sear the extra-firm tofu; lift out.\n3. Soften the onion, garlic and ginger.\n4. Cook the tomatoes with chilli powder, sugar and salt.\n5. Blend with the drained cashews and sieve.\n6. Add the water and simmer 20 minutes.\n7. Finish with butter, garam masala, fenugreek leaves, extra-firm tofu and heavy cream.\nOVEN: none\n",
+      "human": "FAIL",
+      "why": "Cashews stay in the gravy; the constraint is a cashew allergy."
+    },
+    {
+      "qid": "S02",
+      "mode": "no_defect",
+      "slice": "allergen_safety",
+      "request": "Make paneer butter masala dairy-free but I can eat nuts.",
+      "constraint": "dairy-free",
+      "substitution": "CONSTRAINT: dairy-free\nRECIPE: Paneer Butter Masala (R001)\nSERVINGS: 4\nALLERGEN_WARNING: contains-nuts (cashews)\nINGREDIENTS:\n- extra-firm tofu | 400 | g | pressed 30 minutes, 2 cm cubes\n- Ripe tomatoes | 600 | g | roughly chopped\n- Raw cashews | 20 | g | soaked in hot water 15 minutes\n- Neutral oil | 50 | g | divided, half for searing\n- Coconut cream | 60 | ml | stirred in at the end, off the heat\n- Onion | 1 | medium | finely sliced\n- Garlic cloves | 4 | cloves | crushed\n- Fresh ginger | 15 | g | grated\n- Kashmiri chilli powder | 1.5 | tsp | for colour, not heat\n- Garam masala | 1 | tsp | added late\n- Dried fenugreek leaves | 1 | tsp | crushed between the palms\n- Granulated sugar | 1 | tsp | balances the tomato acidity\n- Salt | 1.5 | tsp | to taste\n- Water | 150 | ml | for loosening the gravy\nMETHOD:\n1. Soak the cashews in hot water for 15 minutes, then drain.\n2. Heat half the oil and sear the extra-firm tofu 2 minutes per side; lift out.\n3. Soften the onion 8 minutes, then garlic and ginger 2 minutes.\n4. Add the tomatoes, chilli powder, sugar and salt; cover 15 minutes.\n5. Blend with the drained cashews, sieve back into the pan.\n6. Add the water and simmer 20 minutes.\n7. Stir in remaining oil, garam masala and fenugreek leaves.\n8. Return the extra-firm tofu, warm 3 minutes, take off the heat, stir in the coconut cream.\nOVEN: none\n",
+      "human": "PASS",
+      "why": "Dairy is gone (tofu, oil, coconut cream); cashews are allowed."
+    },
+    {
+      "qid": "S03",
+      "mode": "ingredient_table_miss",
+      "slice": "allergen_safety",
+      "request": "Vegan substitute for fish sauce in the tofu green curry.",
+      "constraint": "vegan (no fish sauce, no shrimp paste)",
+      "substitution": "CONSTRAINT: vegan (no fish sauce, no shrimp paste)\nRECIPE: Thai Green Curry with Chicken (R004)\nSERVINGS: 4\nALLERGEN_WARNING: contains-fish\nINGREDIENTS:\n- Chicken thigh | 500 | g | boneless, sliced 1 cm thick\n- Green curry paste | 45 | g | about 3 tablespoons\n- Coconut milk | 400 | ml | full fat\n- Coconut cream | 100 | ml | skimmed from the top of the tin\n- Fish sauce | 2 | tbsp | the primary salt source\n- Palm sugar | 1.5 | tbsp | shaved\n- Thai aubergines | 150 | g | quartered\n- Bamboo shoots | 100 | g | drained\n- Makrut lime leaves | 4 | leaves | torn\n- Thai basil | 1 | handful | added off the heat\n- Red chilli | 1 | whole | sliced\n- Chicken stock | 100 | ml |\nMETHOD:\n1. Boil the coconut cream until it splits.\n2. Fry the green curry paste 3 minutes.\n3. Add the chicken and coat 2 minutes.\n4. Pour in coconut milk and chicken stock; add aubergines, bamboo shoots and lime leaves.\n5. Simmer gently for 12 minutes.\n6. Season with the fish sauce and palm sugar.\n7. Take off the heat and stir through Thai basil.\nOVEN: none\n",
+      "human": "FAIL",
+      "why": "Returned the chicken curry with fish sauce for a vegan tofu-curry request."
+    },
+    {
+      "qid": "S04",
+      "mode": "no_defect",
+      "slice": "allergen_safety",
+      "request": "Make the shakshuka vegan — no eggs, no feta.",
+      "constraint": "vegan (no eggs, no feta)",
+      "substitution": "CONSTRAINT: vegan (no eggs, no feta)\nRECIPE: Shakshuka (R006)\nSERVINGS: 4\nALLERGEN_WARNING: none\nINGREDIENTS:\n- chickpeas | 800 | g | two 400 g tins, drained\n- Red bell peppers | 2 | whole | sliced into strips\n- Ripe tomatoes | 600 | g | chopped\n- Onion | 1 | large | sliced\n- Garlic cloves | 4 | cloves | sliced\n- Sweet paprika | 2 | tsp |\n- Ground cumin | 1 | tsp |\n- Caraway seeds | 0.5 | tsp | lightly crushed\n- Cayenne pepper | 0.25 | tsp | optional\n- Olive oil | 3 | tbsp |\n- Fresh parsley | 1 | handful | chopped\n- Salt | 1 | tsp | to taste\nMETHOD:\n1. Heat the olive oil and cook the onion and peppers 12 minutes.\n2. Add garlic, paprika, cumin, caraway and cayenne; fry 1 minute.\n3. Add the tomatoes, salt and the chickpeas; simmer 10 minutes until thick.\n4. Scatter over the parsley and serve.\nOVEN: none\n",
+      "human": "PASS",
+      "why": "Card's vegan shakshuka: omit eggs and feta, two tins of chickpeas, 10-minute simmer."
+    },
+    {
+      "qid": "S05",
+      "mode": "citation_padded",
+      "slice": "allergen_safety",
+      "request": "I cannot eat gluten. Rewrite the margherita pizza gluten-free.",
+      "constraint": "gluten-free",
+      "substitution": "CONSTRAINT: gluten-free\nRECIPE: Classic Margherita Pizza (R003)\nSERVINGS: 2\nALLERGEN_WARNING: contains-dairy\nINGREDIENTS:\n- rice flour | 500 | g | 1:1 swap for Type 00 flour\n- Water | 325 | ml | at 20 C\n- Fine sea salt | 12 | g |\n- Fresh yeast | 3 | g |\n- San Marzano tomatoes | 400 | g | tinned whole\n- Fresh mozzarella | 250 | g | torn and drained 30 minutes\n- Fresh basil leaves | 12 | leaves |\n- Extra virgin olive oil | 2 | tbsp |\n- rice flour | 2 | tbsp | for launching, replacing semolina\nMETHOD:\n1. Mix the rice flour, water and yeast; rest 20 minutes. Add salt and knead 8 minutes. [ R003-B03 | R003 ]\n2. Bulk ferment 2 hours, divide, refrigerate 24 hours.\n3. Preheat the oven and stone to 250 C (480 F) for 45 minutes.\n4. Stretch, sauce, mozzarella; bake 6 to 8 minutes.\n5. Finish with basil leaves and olive oil.\nOVEN: 250 C (480 F)\n",
+      "human": "FAIL",
+      "why": "Card says the margherita cannot be made gluten-free without changing the dough entirely."
+    },
+    {
+      "qid": "S06",
+      "mode": "no_defect",
+      "slice": "allergen_safety",
+      "request": "Keep the vegan green curry vegan — I only have supermarket green curry paste.",
+      "constraint": "vegan (paste must not contain shrimp or fish sauce)",
+      "substitution": "CONSTRAINT: vegan (paste must not contain shrimp or fish sauce)\nRECIPE: Vegan Thai Green Curry with Tofu (R005)\nSERVINGS: 4\nALLERGEN_WARNING: none\nINGREDIENTS:\n- Extra-firm tofu | 400 | g | pressed 30 minutes, cubed\n- vegan green curry paste | 50 | g | certified vegan, no shrimp paste\n- Coconut milk | 400 | ml | full fat\n- Coconut cream | 100 | ml | skimmed from the top of the tin\n- Light soy sauce | 2 | tbsp | replaces fish sauce\n- White miso paste | 1 | tsp | for savoury depth\n- Palm sugar | 1.5 | tbsp | shaved\n- Thai aubergines | 150 | g | quartered\n- Bamboo shoots | 100 | g | drained\n- Makrut lime leaves | 4 | leaves | torn\n- Thai basil | 1 | handful |\n- Vegetable stock | 100 | ml |\n- Neutral oil | 2 | tbsp | for searing the tofu\nMETHOD:\n1. Press the extra-firm tofu 30 minutes, cube it.\n2. Sear the extra-firm tofu in the oil; lift out.\n3. Boil the coconut cream until it splits.\n4. Fry the vegan green curry paste 3 minutes; whisk in white miso paste.\n5. Add coconut milk, vegetable stock, aubergines, bamboo shoots, lime leaves.\n6. Simmer 10 minutes, return extra-firm tofu 5 minutes.\n7. Season with light soy sauce and palm sugar; add Thai basil off the heat.\nOVEN: none\n",
+      "human": "PASS",
+      "why": "Vegan-certified paste plus soy sauce and miso, matching the vegan card."
+    },
+    {
+      "qid": "S07",
+      "mode": "no_defect",
+      "slice": "allergen_safety",
+      "request": "Nut-free AND vegan paneer butter masala. I have melon seeds.",
+      "constraint": "vegan and nut-free",
+      "substitution": "CONSTRAINT: vegan and nut-free\nRECIPE: Paneer Butter Masala (R001)\nSERVINGS: 4\nALLERGEN_WARNING: none\nINGREDIENTS:\n- extra-firm tofu | 400 | g | pressed 30 minutes, 2 cm cubes\n- Ripe tomatoes | 600 | g | roughly chopped\n- melon seeds | 2 | tbsp | soaked, replacing cashews\n- Neutral oil | 50 | g | divided, half for searing\n- Coconut cream | 60 | ml | stirred in at the end, off the heat\n- Onion | 1 | medium | finely sliced\n- Garlic cloves | 4 | cloves | crushed\n- Fresh ginger | 15 | g | grated\n- Kashmiri chilli powder | 1.5 | tsp | for colour, not heat\n- Garam masala | 1 | tsp | added late\n- Dried fenugreek leaves | 1 | tsp | crushed between the palms\n- Granulated sugar | 1 | tsp | to taste\n- Salt | 1.5 | tsp | to taste\n- Water | 150 | ml | for loosening the gravy\nMETHOD:\n1. Soak the melon seeds in hot water for 15 minutes, then drain.\n2. Heat half the oil and sear the extra-firm tofu 2 minutes per side; lift out.\n3. Soften the onion 8 minutes, then garlic and ginger 2 minutes.\n4. Add the tomatoes, chilli powder, sugar and salt; cover 15 minutes.\n5. Blend with the drained melon seeds, sieve back into the pan.\n6. Add the water and simmer 20 minutes.\n7. Stir in remaining oil, garam masala and fenugreek leaves.\n8. Return the extra-firm tofu, warm 3 minutes, take off the heat, stir in the coconut cream.\nOVEN: none\n",
+      "human": "PASS",
+      "why": "Melon seeds replace cashews, tofu/oil/coconut cream replace dairy, as the card specifies."
+    },
+    {
+      "qid": "S08",
+      "mode": "no_defect",
+      "slice": "flavour_plausibility",
+      "request": "No amchur — what do I substitute in the chana masala?",
+      "constraint": "replace amchur, keep the sour finish",
+      "substitution": "CONSTRAINT: replace amchur, keep the sour finish\nRECIPE: Chana Masala (R002)\nSERVINGS: 4\nALLERGEN_WARNING: none\nINGREDIENTS:\n- Dried chickpeas | 200 | g | soaked 8 hours\n- Onion | 2 | medium | finely chopped\n- Ripe tomatoes | 400 | g | grated\n- Garlic cloves | 5 | cloves | minced\n- Fresh ginger | 20 | g | julienned\n- Green chillies | 2 | whole | slit lengthways\n- Cumin seeds | 1 | tsp | toasted whole\n- Coriander powder | 2 | tsp |\n- lemon juice | 1 | tbsp | off the heat, replaces amchur\n- Turmeric | 0.5 | tsp |\n- Garam masala | 1 | tsp |\n- Neutral oil | 3 | tbsp |\n- Salt | 2 | tsp |\n- Fresh coriander | 1 | handful |\nMETHOD:\n1. Boil the chickpeas 45 to 55 minutes. Reserve 250 ml cooking liquid.\n2. Toast cumin seeds in the oil 30 seconds.\n3. Fry the onion 10 minutes, then garlic, ginger and green chillies.\n4. Add tomatoes, turmeric, coriander powder and salt; cook 12 minutes.\n5. Add chickpeas and cooking liquid; simmer 15 minutes.\n6. Finish with garam masala, lemon juice off the heat, and fresh coriander.\nOVEN: none\n",
+      "human": "PASS",
+      "why": "One tablespoon lemon juice off the heat is the card's amchur swap."
+    },
+    {
+      "qid": "S09",
+      "mode": "citation_fullwidth",
+      "slice": "flavour_plausibility",
+      "request": "If I use chicken breast instead of thigh, how do I rewrite the green curry?",
+      "constraint": "chicken breast instead of thigh",
+      "substitution": "CONSTRAINT: chicken breast instead of thigh\nRECIPE: Thai Green Curry with Chicken (R004)\nSERVINGS: 4\nALLERGEN_WARNING: contains-fish\nINGREDIENTS:\n- Chicken breast | 500 | g | boneless, sliced 1 cm thick\n- Green curry paste | 45 | g | about 3 tablespoons\n- Coconut milk | 400 | ml | full fat\n- Coconut cream | 100 | ml |\n- Fish sauce | 2 | tbsp |\n- Palm sugar | 1.5 | tbsp |\n- Thai aubergines | 150 | g | quartered\n- Bamboo shoots | 100 | g | drained\n- Makrut lime leaves | 4 | leaves |\n- Thai basil | 1 | handful |\n- Red chilli | 1 | whole |\n- Chicken stock | 100 | ml |\nMETHOD:\n1. Split the coconut cream in a hot wok.\n2. Fry the green curry paste 3 minutes.\n3. Coat the chicken breast in the paste 2 minutes.\n4. Add coconut milk, chicken stock, aubergines, bamboo shoots, lime leaves.\n5. Simmer gently for 7 minutes so the chicken breast does not dry out. 【R004-B04 | R004】\n6. Season with fish sauce and palm sugar; finish with Thai basil.\nOVEN: none\n",
+      "human": "PASS",
+      "why": "Breast for thigh with the simmer cut to 7 minutes."
+    },
+    {
+      "qid": "S10",
+      "mode": "citation_padded",
+      "slice": "flavour_plausibility",
+      "request": "I only have tinned chickpeas for the chana masala.",
+      "constraint": "tinned chickpeas instead of dried",
+      "substitution": "CONSTRAINT: tinned chickpeas instead of dried\nRECIPE: Chana Masala (R002)\nSERVINGS: 4\nALLERGEN_WARNING: none\nINGREDIENTS:\n- tinned chickpeas | 800 | g | two 400 g tins, drained\n- Onion | 2 | medium | finely chopped\n- Ripe tomatoes | 400 | g | grated\n- Garlic cloves | 5 | cloves | minced\n- Fresh ginger | 20 | g | julienned\n- Green chillies | 2 | whole | slit\n- Cumin seeds | 1 | tsp |\n- Coriander powder | 2 | tsp |\n- Amchur | 1 | tsp |\n- Turmeric | 0.5 | tsp |\n- Garam masala | 1 | tsp |\n- Neutral oil | 3 | tbsp |\n- Salt | 2 | tsp |\n- Fresh coriander | 1 | handful |\nMETHOD:\n1. Skip the dried soak. Drain the tinned chickpeas. [ R002-B03 | R002 ]\n2. Toast cumin seeds in the oil; fry onion, garlic, ginger, green chillies.\n3. Cook tomatoes with turmeric, coriander powder and salt 12 minutes.\n4. Add tinned chickpeas and simmer 8 minutes, mashing extra chickpeas to thicken.\n5. Finish with garam masala, amchur and fresh coriander.\nOVEN: none\n",
+      "human": "PASS",
+      "why": "Two 400 g tins, 8-minute simmer, extra mash — the card's tinned-chickpea swap."
+    },
+    {
+      "qid": "S11",
+      "mode": "citation_header",
+      "slice": "flavour_plausibility",
+      "request": "No Thai aubergines — substitute in the chicken green curry.",
+      "constraint": "regular aubergine for Thai aubergines",
+      "substitution": "CONSTRAINT: regular aubergine for Thai aubergines\nRECIPE: Thai Green Curry with Chicken (R004)\nSERVINGS: 4\nALLERGEN_WARNING: contains-fish\nINGREDIENTS:\n- Chicken thigh | 500 | g | boneless, sliced 1 cm thick\n- Green curry paste | 45 | g |\n- Coconut milk | 400 | ml |\n- Coconut cream | 100 | ml |\n- Fish sauce | 2 | tbsp |\n- Palm sugar | 1.5 | tbsp |\n- aubergine | 150 | g | regular, cut into 2 cm cubes\n- Bamboo shoots | 100 | g |\n- Makrut lime leaves | 4 | leaves |\n- Thai basil | 1 | handful |\n- Red chilli | 1 | whole |\n- Chicken stock | 100 | ml |\nMETHOD:\n1. Split coconut cream; fry green curry paste.\n2. Coat chicken thigh; add coconut milk and chicken stock.\n3. Add the aubergine cubes, bamboo shoots and lime leaves.\n4. Simmer gently for 12 minutes. [chunk_id: R004-B03 | recipe_id: R004]\n5. Season with fish sauce and palm sugar; finish with Thai basil.\nOVEN: none\n",
+      "human": "PASS",
+      "why": "Regular aubergine in 2 cm cubes is the card's Thai-aubergine swap."
+    },
+    {
+      "qid": "S12",
+      "mode": "citation_padded",
+      "slice": "flavour_plausibility",
+      "request": "No amchur for chana masala — just use more garam masala.",
+      "constraint": "replace amchur, keep the sour finish",
+      "substitution": "CONSTRAINT: replace amchur, keep the sour finish\nRECIPE: Chana Masala (R002)\nSERVINGS: 4\nALLERGEN_WARNING: none\nINGREDIENTS:\n- Dried chickpeas | 200 | g | soaked 8 hours\n- Onion | 2 | medium |\n- Ripe tomatoes | 400 | g |\n- Garlic cloves | 5 | cloves |\n- Fresh ginger | 20 | g |\n- Green chillies | 2 | whole |\n- Cumin seeds | 1 | tsp |\n- Coriander powder | 2 | tsp |\n- Turmeric | 0.5 | tsp |\n- Garam masala | 3 | tsp | extra, replacing amchur\n- Neutral oil | 3 | tbsp |\n- Salt | 2 | tsp |\n- Fresh coriander | 1 | handful |\nMETHOD:\n1. Boil the chickpeas; reserve cooking liquid.\n2. Fry cumin seeds, onion, garlic, ginger, green chillies.\n3. Cook tomatoes with turmeric, coriander powder and salt.\n4. Simmer chickpeas 15 minutes.\n5. Finish with the extra garam masala and fresh coriander. [ R002-B03 | R002 ]\nOVEN: none\n",
+      "human": "FAIL",
+      "why": "Extra garam masala is not sour; the card specifies lemon juice for amchur."
+    },
+    {
+      "qid": "S13",
+      "mode": "hybrid_search_gate",
+      "slice": "flavour_plausibility",
+      "request": "I have an unfamiliar brand of green curry paste — how should I rewrite the chicken curry?",
+      "constraint": "unfamiliar curry paste brand, do not over-heat",
+      "substitution": "CONSTRAINT: unfamiliar curry paste brand, do not over-heat\nRECIPE: Thai Green Curry with Chicken (R004)\nSERVINGS: 4\nALLERGEN_WARNING: contains-fish\nINGREDIENTS:\n- Chicken thigh | 500 | g |\n- Green curry paste | 30 | g | start here; add more after tasting\n- Coconut milk | 400 | ml |\n- Coconut cream | 100 | ml |\n- Fish sauce | 2 | tbsp |\n- Palm sugar | 1.5 | tbsp |\n- Thai aubergines | 150 | g |\n- Bamboo shoots | 100 | g |\n- Makrut lime leaves | 4 | leaves |\n- Thai basil | 1 | handful |\n- Red chilli | 1 | whole |\n- Chicken stock | 100 | ml |\nMETHOD:\n1. Split coconut cream; fry the 30 g green curry paste 3 minutes.\n2. Coat chicken thigh; add coconut milk, chicken stock, aubergines, bamboo shoots, lime leaves.\n3. Simmer 12 minutes.\n4. Season with fish sauce and palm sugar; taste and add more green curry paste only now.\n5. Finish with Thai basil.\nOVEN: none\n",
+      "human": "PASS",
+      "why": "Starts the unfamiliar paste at 30 g and tastes before adding more."
+    },
+    {
+      "qid": "S14",
+      "mode": "citation_header",
+      "slice": "flavour_plausibility",
+      "request": "Use tempeh instead of tofu in the vegan green curry.",
+      "constraint": "tempeh instead of tofu",
+      "substitution": "CONSTRAINT: tempeh instead of tofu\nRECIPE: Vegan Thai Green Curry with Tofu (R005)\nSERVINGS: 4\nALLERGEN_WARNING: none\nINGREDIENTS:\n- tempeh | 400 | g | no pressing, cubed\n- Green curry paste | 50 | g | check the label for shrimp\n- Coconut milk | 400 | ml |\n- Coconut cream | 100 | ml |\n- Light soy sauce | 2 | tbsp |\n- White miso paste | 1 | tsp |\n- Palm sugar | 1.5 | tbsp |\n- Thai aubergines | 150 | g |\n- Bamboo shoots | 100 | g |\n- Makrut lime leaves | 4 | leaves |\n- Thai basil | 1 | handful |\n- Vegetable stock | 100 | ml |\n- Neutral oil | 2 | tbsp |\nMETHOD:\n1. Skip pressing. Cube the tempeh.\n2. Sear the tempeh in the oil; lift out.\n3. Split coconut cream; fry green curry paste; whisk in white miso paste.\n4. Add coconut milk, vegetable stock, aubergines, bamboo shoots, lime leaves.\n5. Simmer 10 minutes, return tempeh 5 minutes. [chunk_id: R005-B03 | recipe_id: R005]\n6. Season with light soy sauce and palm sugar; Thai basil off the heat.\nOVEN: none\n",
+      "human": "PASS",
+      "why": "Tempeh, no pressing, as the vegan card's notes allow."
+    },
+    {
+      "qid": "S15",
+      "mode": "hybrid_search_gate",
+      "slice": "retrieval_regression",
+      "request": "I have an unfamiliar brand of curry paste, how much should I start with?",
+      "constraint": "unfamiliar curry paste brand, do not over-heat",
+      "substitution": "I cannot answer that from the provided recipe cards.",
+      "human": "FAIL",
+      "why": "Gate refusal: no substitution was produced."
+    },
+    {
+      "qid": "S16",
+      "mode": "hybrid_search_gate",
+      "slice": "structural_swap",
+      "request": "What can I use instead of paneer to make the butter masala vegan?",
+      "constraint": "vegan",
+      "substitution": "CONSTRAINT: vegan\nRECIPE: Paneer Butter Masala (R001)\nSERVINGS: 4\nALLERGEN_WARNING: contains-nuts (cashews)\nINGREDIENTS:\n- extra-firm tofu | 400 | g | pressed 30 minutes, 2 cm cubes\n- Ripe tomatoes | 600 | g | roughly chopped\n- Raw cashews | 20 | g | soaked in hot water 15 minutes\n- Neutral oil | 50 | g | divided, half for searing\n- Coconut cream | 60 | ml | stirred in at the end, off the heat\n- Onion | 1 | medium | finely sliced\n- Garlic cloves | 4 | cloves | crushed\n- Fresh ginger | 15 | g | grated\n- Kashmiri chilli powder | 1.5 | tsp | for colour, not heat\n- Garam masala | 1 | tsp | added late\n- Dried fenugreek leaves | 1 | tsp | crushed between the palms\n- Granulated sugar | 1 | tsp | balances the tomato acidity\n- Salt | 1.5 | tsp | to taste\n- Water | 150 | ml | for loosening the gravy\nMETHOD:\n1. Soak the cashews in hot water for 15 minutes, then drain.\n2. Heat half the oil and sear the extra-firm tofu 2 minutes per side; lift out.\n3. Soften the onion 8 minutes, then garlic and ginger 2 minutes.\n4. Add the tomatoes, chilli powder, sugar and salt; cover 15 minutes.\n5. Blend with the drained cashews, sieve back into the pan.\n6. Add the water and simmer 20 minutes.\n7. Stir in remaining oil, garam masala and fenugreek leaves.\n8. Return the extra-firm tofu, warm 3 minutes, take off the heat, stir in the coconut cream.\nOVEN: none\n",
+      "human": "PASS",
+      "why": "Complete vegan paneer swap: tofu, oil, coconut cream."
+    },
+    {
+      "qid": "S17",
+      "mode": "hybrid_search_gate",
+      "slice": "flavour_plausibility",
+      "request": "Can I use tinned chickpeas in the chana masala, and how much?",
+      "constraint": "tinned chickpeas instead of dried",
+      "substitution": "CONSTRAINT: tinned chickpeas instead of dried\nRECIPE: Chana Masala (R002)\nSERVINGS: 4\nALLERGEN_WARNING: none\nINGREDIENTS:\n- tinned chickpeas | 800 | g | two 400 g tins, drained\n- Onion | 2 | medium |\n- Ripe tomatoes | 400 | g |\n- Garlic cloves | 5 | cloves |\n- Fresh ginger | 20 | g |\n- Green chillies | 2 | whole |\n- Cumin seeds | 1 | tsp |\n- Coriander powder | 2 | tsp |\n- Amchur | 1 | tsp |\n- Turmeric | 0.5 | tsp |\n- Garam masala | 1 | tsp |\n- Neutral oil | 3 | tbsp |\n- Salt | 2 | tsp |\n- Fresh coriander | 1 | handful |\nMETHOD:\n1. Drain the tinned chickpeas; skip the 45 minute boil.\n2. Fry cumin seeds, onion, garlic, ginger, green chillies in the oil.\n3. Cook tomatoes with turmeric, coriander powder, salt.\n4. Add tinned chickpeas; simmer 8 minutes, mashing extra chickpeas.\n5. Finish with garam masala, amchur, fresh coriander.\nOVEN: none\n",
+      "human": "PASS",
+      "why": "Tinned chickpeas with the 8-minute simmer."
+    },
+    {
+      "qid": "S18",
+      "mode": "hybrid_search_gate",
+      "slice": "flavour_plausibility",
+      "request": "If I use chicken breast instead of thigh, how long do I simmer it?",
+      "constraint": "chicken breast instead of thigh",
+      "substitution": "CONSTRAINT: chicken breast instead of thigh\nRECIPE: Thai Green Curry with Chicken (R004)\nSERVINGS: 4\nALLERGEN_WARNING: contains-fish\nINGREDIENTS:\n- Chicken breast | 500 | g |\n- Green curry paste | 45 | g |\n- Coconut milk | 400 | ml |\n- Coconut cream | 100 | ml |\n- Fish sauce | 2 | tbsp |\n- Palm sugar | 1.5 | tbsp |\n- Thai aubergines | 150 | g |\n- Bamboo shoots | 100 | g |\n- Makrut lime leaves | 4 | leaves |\n- Thai basil | 1 | handful |\n- Red chilli | 1 | whole |\n- Chicken stock | 100 | ml |\nMETHOD:\n1. Split coconut cream; fry green curry paste.\n2. Coat chicken breast.\n3. Add coconut milk, chicken stock, aubergines, bamboo shoots, lime leaves.\n4. Simmer gently for 7 minutes.\n5. Season with fish sauce and palm sugar; Thai basil off the heat.\nOVEN: none\n",
+      "human": "PASS",
+      "why": "Breast simmer reduced to 7 minutes."
+    },
+    {
+      "qid": "S19",
+      "mode": "hybrid_search_gate",
+      "slice": "flavour_plausibility",
+      "request": "sourdough starter schedule for this pizza — substitute the yeast",
+      "constraint": "sourdough starter instead of yeast",
+      "substitution": "CONSTRAINT: sourdough starter instead of yeast\nRECIPE: Classic Margherita Pizza (R003)\nSERVINGS: 2\nALLERGEN_WARNING: contains-gluten; contains-dairy\nINGREDIENTS:\n- Type 00 flour | 500 | g |\n- Water | 280 | ml | reduced to make room for starter\n- sourdough starter | 100 | g | 100 percent hydration, 3-day build\n- Fine sea salt | 12 | g |\n- San Marzano tomatoes | 400 | g |\n- Fresh mozzarella | 250 | g |\n- Fresh basil leaves | 12 | leaves |\n- Extra virgin olive oil | 2 | tbsp |\n- Semolina flour | 2 | tbsp |\nMETHOD:\n1. Feed the sourdough starter for 3 days until it doubles in 4 hours.\n2. Mix Type 00 flour, water and sourdough starter; rest 20 minutes; add salt.\n3. Bulk ferment 4 hours at room temperature, then cold-proof 48 hours.\n4. Preheat the oven to 250 C (480 F) for 45 minutes.\n5. Bake 6 to 8 minutes; finish with basil leaves and olive oil.\nOVEN: 250 C (480 F)\n",
+      "human": "FAIL",
+      "why": "Invented a 3-day sourdough schedule the pizza card does not contain."
+    },
+    {
+      "qid": "S20",
+      "mode": "citation_fullwidth",
+      "slice": "retrieval_regression",
+      "request": "What can I use instead of paneer to make the butter masala vegan?",
+      "constraint": "vegan",
+      "substitution": "To make the paneer butter masala vegan, replace the paneer with the same weight of extra-firm tofu pressed for 30 minutes【R001-B05 | R001】.",
+      "human": "FAIL",
+      "why": "Tofu only; oil-for-butter and coconut-cream swaps from the same chunk are missing."
+    },
+    {
+      "qid": "S21",
+      "mode": "citation_fullwidth",
+      "slice": "structural_swap",
+      "request": "What can I use instead of paneer to make the butter masala vegan?",
+      "constraint": "vegan",
+      "substitution": "CONSTRAINT: vegan\nRECIPE: Paneer Butter Masala (R001)\nSERVINGS: 4\nALLERGEN_WARNING: contains-nuts (cashews)\nINGREDIENTS:\n- extra-firm tofu | 400 | g | pressed 30 minutes, 2 cm cubes\n- Ripe tomatoes | 600 | g | roughly chopped\n- Raw cashews | 20 | g | soaked in hot water 15 minutes\n- Neutral oil | 50 | g | divided, half for searing\n- Coconut cream | 60 | ml | stirred in at the end, off the heat\n- Onion | 1 | medium | finely sliced\n- Garlic cloves | 4 | cloves | crushed\n- Fresh ginger | 15 | g | grated\n- Kashmiri chilli powder | 1.5 | tsp | for colour, not heat\n- Garam masala | 1 | tsp | added late\n- Dried fenugreek leaves | 1 | tsp | crushed between the palms\n- Granulated sugar | 1 | tsp | balances the tomato acidity\n- Salt | 1.5 | tsp | to taste\n- Water | 150 | ml | for loosening the gravy\nMETHOD:\n1. Soak the cashews in hot water for 15 minutes, then drain.\n2. Heat half the oil and sear the extra-firm tofu 2 minutes per side; lift out.\n3. Soften the onion 8 minutes, then garlic and ginger 2 minutes.\n4. Add the tomatoes, chilli powder, sugar and salt; cover 15 minutes.\n5. Blend with the drained cashews, sieve back into the pan.\n6. Add the water and simmer 20 minutes.\n7. Stir in remaining oil, garam masala and fenugreek leaves.\n8. Return the extra-firm tofu, warm 3 minutes, take off the heat, stir in the coconut cream.\nCitation: 【R001-B05 | R001】\nOVEN: none\n",
+      "human": "PASS",
+      "why": "Complete vegan swap; full-width citation is not the criterion."
+    },
+    {
+      "qid": "S22",
+      "mode": "citation_padded",
+      "slice": "allergen_safety",
+      "request": "vegan substitute for fish sauce in the tofu curry",
+      "constraint": "vegan (no fish sauce)",
+      "substitution": "CONSTRAINT: vegan (no fish sauce)\nRECIPE: Vegan Thai Green Curry with Tofu (R005)\nSERVINGS: 4\nALLERGEN_WARNING: none\nINGREDIENTS:\n- Extra-firm tofu | 400 | g | pressed 30 minutes\n- Green curry paste | 50 | g | vegan-certified\n- Coconut milk | 400 | ml |\n- Coconut cream | 100 | ml |\n- Light soy sauce | 2 | tbsp | replaces fish sauce\n- White miso paste | 1 | tsp |\n- Palm sugar | 1.5 | tbsp |\n- Thai aubergines | 150 | g |\n- Bamboo shoots | 100 | g |\n- Makrut lime leaves | 4 | leaves |\n- Thai basil | 1 | handful |\n- Vegetable stock | 100 | ml |\n- Neutral oil | 2 | tbsp |\nMETHOD:\n1. Press and sear the extra-firm tofu in the oil. [ R005-B01 | R005 ]\n2. Split coconut cream; fry green curry paste; whisk in white miso paste.\n3. Add coconut milk, vegetable stock, aubergines, bamboo shoots, lime leaves.\n4. Simmer, return extra-firm tofu.\n5. Season with light soy sauce and palm sugar; Thai basil off the heat.\nOVEN: none\n",
+      "human": "PASS",
+      "why": "Light soy sauce plus white miso replace fish sauce on the vegan card."
+    },
+    {
+      "qid": "S23",
+      "mode": "citation_header",
+      "slice": "structural_swap",
+      "request": "How do I make the shakshuka vegan?",
+      "constraint": "vegan (no eggs, no feta)",
+      "substitution": "CONSTRAINT: vegan (no eggs, no feta)\nRECIPE: Shakshuka (R006)\nSERVINGS: 4\nALLERGEN_WARNING: none\nINGREDIENTS:\n- chickpeas | 800 | g | two 400 g tins, drained\n- Red bell peppers | 2 | whole |\n- Ripe tomatoes | 600 | g |\n- Onion | 1 | large |\n- Garlic cloves | 4 | cloves |\n- Sweet paprika | 2 | tsp |\n- Ground cumin | 1 | tsp |\n- Caraway seeds | 0.5 | tsp |\n- Cayenne pepper | 0.25 | tsp |\n- Olive oil | 3 | tbsp |\n- Fresh parsley | 1 | handful |\n- Salt | 1 | tsp |\nMETHOD:\n1. Cook onion and peppers in olive oil 12 minutes.\n2. Add garlic, paprika, cumin, caraway, cayenne.\n3. Add tomatoes, salt and chickpeas; simmer 10 minutes. [chunk_id: R006-B04 | recipe_id: R006]\n4. Finish with parsley.\nOVEN: none\n",
+      "human": "PASS",
+      "why": "Vegan shakshuka as the card specifies."
+    },
+    {
+      "qid": "S24",
+      "mode": "ingredient_table_miss",
+      "slice": "allergen_safety",
+      "request": "Make paneer butter masala vegan — I did not retrieve the ingredients table.",
+      "constraint": "vegan",
+      "substitution": "CONSTRAINT: vegan\nRECIPE: Paneer Butter Masala (R001)\nSERVINGS: 4\nALLERGEN_WARNING: contains-nuts (cashews)\nINGREDIENTS:\n- extra-firm tofu | 500 | g | guessed weight\n- Ripe tomatoes | 600 | g |\n- Raw cashews | 20 | g |\n- Neutral oil | 50 | g |\n- Onion | 1 | medium |\n- Garlic cloves | 4 | cloves |\n- Fresh ginger | 15 | g |\n- Garam masala | 1 | tsp |\n- Salt | 1.5 | tsp |\n- Water | 150 | ml |\nMETHOD:\n1. Soak the cashews; sear the extra-firm tofu in the oil.\n2. Cook onion, garlic, ginger, tomatoes.\n3. Blend with cashews; add water; simmer.\n4. Finish with garam masala, extra-firm tofu and heavy cream off the heat.\nOVEN: none\n",
+      "human": "FAIL",
+      "why": "Method still stirs in heavy cream, so it is not vegan."
+    },
+    {
+      "qid": "S25",
+      "mode": "ingredient_table_miss",
+      "slice": "structural_swap",
+      "request": "how many grams of paneer do I need if I swap it for tofu in butter masala",
+      "constraint": "same-weight tofu for paneer",
+      "substitution": "CONSTRAINT: same-weight tofu for paneer\nRECIPE: Paneer Butter Masala (R001)\nSERVINGS: 4\nALLERGEN_WARNING: contains-nuts (cashews); contains-dairy\nINGREDIENTS:\n- extra-firm tofu | 400 | g | same weight as the paneer row\n- Ripe tomatoes | 600 | g |\n- Raw cashews | 20 | g |\n- Unsalted butter | 50 | g |\n- Heavy cream | 60 | ml |\n- Onion | 1 | medium |\n- Garlic cloves | 4 | cloves |\n- Fresh ginger | 15 | g |\n- Kashmiri chilli powder | 1.5 | tsp |\n- Garam masala | 1 | tsp |\n- Dried fenugreek leaves | 1 | tsp |\n- Granulated sugar | 1 | tsp |\n- Salt | 1.5 | tsp |\n- Water | 150 | ml |\nMETHOD:\n1. Soak cashews. Sear extra-firm tofu in butter; lift out.\n2. Cook onion, garlic, ginger, tomatoes with chilli powder, sugar, salt.\n3. Blend with cashews; add water; simmer 20 minutes.\n4. Finish with butter, garam masala, fenugreek leaves, extra-firm tofu, heavy cream.\nOVEN: none\n",
+      "human": "PASS",
+      "why": "Same-weight tofu for paneer; remaining dairy is allowed by this constraint."
+    },
+    {
+      "qid": "S26",
+      "mode": "ingredient_table_miss",
+      "slice": "flavour_plausibility",
+      "request": "How many grams of green curry paste should I use in the vegan green curry if I substitute a milder paste?",
+      "constraint": "milder vegan curry paste, vegan curry quantities",
+      "substitution": "CONSTRAINT: milder vegan curry paste, vegan curry quantities\nRECIPE: Vegan Thai Green Curry with Tofu (R005)\nSERVINGS: 4\nALLERGEN_WARNING: none\nINGREDIENTS:\n- Extra-firm tofu | 400 | g |\n- Green curry paste | 45 | g | copied from the chicken card\n- Coconut milk | 400 | ml |\n- Coconut cream | 100 | ml |\n- Light soy sauce | 2 | tbsp |\n- White miso paste | 1 | tsp |\n- Palm sugar | 1.5 | tbsp |\n- Thai aubergines | 150 | g |\n- Bamboo shoots | 100 | g |\n- Makrut lime leaves | 4 | leaves |\n- Thai basil | 1 | handful |\n- Vegetable stock | 100 | ml |\n- Neutral oil | 2 | tbsp |\nMETHOD:\n1. Press and sear extra-firm tofu in the oil.\n2. Split coconut cream; fry green curry paste; add white miso paste.\n3. Add coconut milk, vegetable stock, aubergines, bamboo shoots, lime leaves.\n4. Simmer; return extra-firm tofu.\n5. Season with light soy sauce and palm sugar; Thai basil off the heat.\nOVEN: none\n",
+      "human": "FAIL",
+      "why": "45 g is the chicken card's paste weight; the vegan card is 50 g."
+    },
+    {
+      "qid": "S27",
+      "mode": "citation_fullwidth",
+      "slice": "structural_swap",
+      "request": "How do I make the shakshuka vegan?",
+      "constraint": "vegan (no eggs, no feta)",
+      "substitution": "CONSTRAINT: vegan (no eggs, no feta)\nRECIPE: Shakshuka (R006)\nSERVINGS: 4\nALLERGEN_WARNING: none\nINGREDIENTS:\n- chickpeas | 800 | g | two 400 g tins, drained\n- Red bell peppers | 2 | whole |\n- Ripe tomatoes | 600 | g |\n- Onion | 1 | large |\n- Garlic cloves | 4 | cloves |\n- Sweet paprika | 2 | tsp |\n- Ground cumin | 1 | tsp |\n- Caraway seeds | 0.5 | tsp |\n- Cayenne pepper | 0.25 | tsp |\n- Olive oil | 3 | tbsp |\n- Fresh parsley | 1 | handful |\n- Salt | 1 | tsp |\nMETHOD:\n1. Cook onion and peppers in olive oil.\n2. Add garlic, paprika, cumin, caraway, cayenne.\n3. Add tomatoes, salt and chickpeas; simmer 10 minutes. 【R006-B04 | R006】\n4. Finish with parsley.\nOVEN: none\n",
+      "human": "PASS",
+      "why": "Vegan shakshuka: chickpeas, no eggs, no feta."
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+id,class,outcome_pass,looks_right,trajectory_pass,gap,tool_choice_accuracy,failure_modes,tools,stopped_by,laps,tokens,cost_usd,latency_ms,tricked
+W01,scale_only,True,True,True,False,1.0,,search_recipes>scale_recipe,completed,3,4404,0.000536,3935,False
+W02,scale_only,True,True,True,False,1.0,,search_recipes>scale_recipe,completed,3,5422,0.000854,5266,False
+W03,scale_only,True,True,False,True,0.667,wrong_tool,search_recipes>get_allergen_profile>scale_recipe,completed,4,6822,0.001063,20552,False
+W04,scale_only,True,True,True,False,1.0,,search_recipes>scale_recipe,completed,3,5171,0.000817,38194,False
+W05,single_allergen,True,True,True,False,1.0,,search_recipes>get_allergen_profile>scale_recipe,completed,4,6746,0.000947,38601,False
+W06,single_allergen,True,True,True,False,1.0,,search_recipes>get_allergen_profile>scale_recipe,completed,4,6660,0.000946,8876,False
+W07,allergen_cascade,False,True,False,True,1.0,incomplete_cascade,search_recipes>get_allergen_profile>scale_recipe,completed,5,10900,0.001481,52784,False
+W08,allergen_cascade,False,False,False,False,0.833,loop|incomplete_cascade|wrong_tool,search_recipes>get_allergen_profile>scale_recipe>get_allergen_profile>get_allergen_profile>get_allergen_profile,completed,8,19046,0.002585,145863,False
+W09,allergen_cascade,True,True,True,False,1.0,,search_recipes>get_allergen_profile>get_allergen_profile>scale_recipe,completed,6,11083,0.001534,72155,False
+W10,cannot_adapt,True,True,True,False,1.0,,search_recipes>get_allergen_profile>scale_recipe,completed,5,10200,0.001622,59923,False

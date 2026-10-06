@@ -40,5 +40,10 @@ Thumbs.db
 *.swp
 *.swo
 
+# Local talk notes (not product / assignment artifacts)
+TALK.md
+WEEK7-TALK.md
+WEEK8-TALK.md
+
 # Cursor
 .cursor/

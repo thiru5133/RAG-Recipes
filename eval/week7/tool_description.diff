@@ -1,0 +1,11 @@
+--- two tools (search_recipes, scale_recipe)
++++ three tools (+ get_allergen_profile)
+
++ name: get_allergen_profile
++ description: List the ingredients on one recipe that carry a SINGLE named allergen or diet restriction, and the swap the card itself writes if it writes one. Call again with a different enum value if the swap introduces another allergen (see 'introduces' / 'leaves'). Does not search, does not scale quantities, does not rewrite the method.
++ parameters:
++   recipe_id enum: ['R001', 'R002', 'R003', 'R004', 'R005', 'R006']
++   allergen enum:  ['nuts', 'dairy', 'gluten', 'fish', 'shellfish', 'egg', 'meat']
+
+Does not overlap search_recipes (no corpus lookup) or scale_recipe (no quantity math).
+One job: inspect a single allergen class on one card.

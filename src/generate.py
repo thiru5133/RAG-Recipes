@@ -77,7 +77,99 @@ def _client():
         return None
     from groq import Groq
 
-    return Groq(api_key=key)
+    # 90s cap: an unenforced HTTP timeout is how W05 sat for eight hours.
+    return Groq(api_key=key, timeout=90.0)
+
+
+def complete_messages(
+    messages: List[Dict],
+    model: str = GROQ_MODEL,
+    temperature: float = TEMPERATURE,
+    max_tokens: int = MAX_TOKENS,
+    tools: Optional[List[Dict]] = None,
+) -> Dict:
+    """One chat-completions call. The agent loop uses this so every lap's
+    tokens can be summed; `complete()` stays the two-string helper replay needs.
+    """
+    client = _client()
+    if client is None:
+        return {
+            "content": None,
+            "tool_calls": [],
+            "finish_reason": None,
+            "usage": None,
+            "latency_ms": None,
+            "error": "GROQ_API_KEY is not set; no answer generated.",
+        }
+    started = time.perf_counter()
+    kwargs = {
+        "model": model,
+        "temperature": temperature,
+        "max_tokens": max_tokens,
+        "messages": messages,
+    }
+    if tools:
+        kwargs["tools"] = tools
+        kwargs["tool_choice"] = "auto"
+    last_err = None
+    for attempt in range(3):
+        try:
+            resp = client.chat.completions.create(**kwargs)
+            usage = getattr(resp, "usage", None)
+            msg = resp.choices[0].message
+            content = (msg.content or "").strip()
+            if not content:
+                content = (getattr(msg, "reasoning", None) or "").strip()
+            tool_calls = []
+            for tc in getattr(msg, "tool_calls", None) or []:
+                fn = tc.function
+                tool_calls.append(
+                    {
+                        "id": getattr(tc, "id", "") or "",
+                        "name": fn.name,
+                        "arguments": fn.arguments or "{}",
+                    }
+                )
+            return {
+                "content": content,
+                "tool_calls": tool_calls,
+                "finish_reason": resp.choices[0].finish_reason,
+                "usage": None
+                if usage is None
+                else {
+                    "prompt_tokens": usage.prompt_tokens,
+                    "completion_tokens": usage.completion_tokens,
+                },
+                "latency_ms": int((time.perf_counter() - started) * 1000),
+                "error": None,
+                "raw_message": msg,
+            }
+        except Exception as exc:
+            last_err = exc
+            msg = f"{type(exc).__name__}: {exc}"
+            low = msg.lower()
+            retryable = (
+                "429" in msg
+                or "rate" in low
+                or "connect" in low
+                or "timeout" in low
+                or "timed out" in low
+                or "temporarily" in low
+            )
+            if retryable and attempt < 2:
+                wait = 25 if "429" in msg or "rate" in low else 5 * (attempt + 1)
+                time.sleep(wait)
+                continue
+            break
+    return {
+        "content": None,
+        "tool_calls": [],
+        "finish_reason": None,
+        "usage": None,
+        "latency_ms": int((time.perf_counter() - started) * 1000),
+        "error": f"{type(last_err).__name__}: {last_err}" if last_err else "unknown error",
+        "raw_message": None,
+    }
 
 
 def complete(
@@ -109,8 +201,14 @@ def complete(
             ],
         )
         usage = getattr(resp, "usage", None)
+        msg = resp.choices[0].message
+        content = (msg.content or "").strip()
+        if not content:
+            # gpt-oss on Groq often spends the token budget on `reasoning`
+            # and leaves `content` empty. Fall back so a verdict still lands.
+            content = (getattr(msg, "reasoning", None) or "").strip()
         return {
-            "answer": resp.choices[0].message.content.strip(),
+            "answer": content,
             "finish_reason": resp.choices[0].finish_reason,
             "usage": None
             if usage is None

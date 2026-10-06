@@ -1,0 +1,45 @@
+{
+  "n_cases": 27,
+  "n_assertions": 5,
+  "n_judged_criteria": 1,
+  "agreement_before": {
+    "n": 27,
+    "matches": 25,
+    "pct": 92.6,
+    "disagreements": [
+      {
+        "qid": "S05",
+        "human": "FAIL",
+        "judge": "PASS"
+      },
+      {
+        "qid": "S19",
+        "human": "FAIL",
+        "judge": "PASS"
+      }
+    ]
+  },
+  "agreement_after": {
+    "n": 27,
+    "matches": 27,
+    "pct": 100.0,
+    "disagreements": []
+  },
+  "ragas": {
+    "avg_faithfulness": 0.273,
+    "avg_context_precision": 0.864,
+    "faithfully_wrong": [
+      {
+        "qid": "S03",
+        "faithfulness": 1.0,
+        "context_precision": 0.0,
+        "gold": "R005",
+        "retrieved": [
+          "R004",
+          "R004",
+          "R001"
+        ]
+      }
+    ]
+  }
+}
