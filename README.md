@@ -75,6 +75,10 @@ docker compose run --rm rag python scripts/search.py "how much cream in the pane
 | `eval/week6/` | labels, judge prompts, prediction, agreement artefacts |
 | `scripts/run_week7_race.py` | agent vs workflow race; writes `eval/week7/race.csv` |
 | `src/agent/` | three tools, loop with four budgets, fixed workflow |
+| `api.py` | one HTTP API over weeks 1-10 (`uvicorn api:app`) |
+| `src/mcp_lite/`, `src/mcp_servers/`, `third_party/ingredient_db/` | week 9: MCP protocol, recipe server, ingredient server |
+| `src/gateway/` | week 9 bonus: audit and scoped-token gateway |
+| `src/multi/` | week 10: orchestrator and workers |
 | `diff/strategy_b_and_metadata.diff` | the required code diff: strategy B + metadata fields |
 | `results.md` | generated report |
 
@@ -120,6 +124,60 @@ python scripts/run_week8.py --phase trajectory
 python scripts/run_week8.py --phase injection
 python scripts/run_week8.py --phase after
 ```
+
+## Agents (week 9)
+
+Read **`WEEK9.md`**. The agent gets its tools from MCP servers listed in `config/mcp_servers.json`; the ingredient server was added with a config edit and zero agent changes.
+
+```bash
+python scripts/run_week9_agent.py "How many kcal in 100 g of paneer?"
+python scripts/week9_evidence.py
+python scripts/week9_capture_wire.py
+python scripts/week9_gateway_demo.py
+```
+
+## Agents (week 10)
+
+Single MCP agent vs a kitchen squad (planner, substitution worker, allergen worker, synthesis) on the same 10 cases, plus a failure-injection run.
+
+```bash
+python scripts/run_week10_race.py
+python scripts/run_week10_race.py --only failure
+python scripts/week10_report.py
+```
+
+## Run the API (all weeks)
+
+One FastAPI app exposes every part of the project. Run it locally (not in Docker):
+
+```bash
+python -m venv .venv                 # first time only
+.venv\Scripts\activate               # Windows. macOS/Linux: source .venv/bin/activate
+pip install -r requirements.txt
+cp .env.example .env                 # first time only; put GROQ_API_KEY in .env
+python scripts/ingest.py             # first time only; builds the Chroma index for /rag/ask
+uvicorn api:app --reload --port 8000
+```
+
+Open http://127.0.0.1:8000/docs (Swagger UI) to try every endpoint.
+
+| Endpoint | Covers | Model call |
+| --- | --- | --- |
+| `GET /health` | key and index status | no |
+| `POST /rag/ask` | weeks 1-5: retrieval + guarded answer | yes |
+| `POST /agent/ask` | weeks 7-8: three-tool agent, optional guards and injection test | yes |
+| `GET /eval/week8` | week 8: saved baseline / after / injection results | no |
+| `GET /mcp/tools` | week 9: tools discovered across MCP servers | no |
+| `POST /mcp/ask` | week 9: MCP agent, `direct` or `gateway` config | yes |
+| `POST /squad/ask` | week 10: planner + workers + synthesis | yes |
+
+```bash
+curl http://127.0.0.1:8000/health
+curl -X POST http://127.0.0.1:8000/mcp/ask -H "Content-Type: application/json" \
+  -d '{"question": "How many kcal in 100 g of paneer?"}'
+```
+
+Keep real keys in `.env` only, never in `.env.example`.
 
 ## The two strategies
 

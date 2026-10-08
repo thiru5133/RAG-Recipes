@@ -2,12 +2,13 @@ request: W07  Make paneer butter masala vegan AND nut-free for 8. The dairy swap
 max_iters: 2  (race default is 8)
 stopped_by: max_iters
 laps: 2
-tokens: 4204
+tokens: 2429
 
 log:
-LAP 1 tokens_in=828 tokens_out=1200 cumulative=2028
-LAP 2 tokens_in=2047 tokens_out=129 cumulative=4204
-LAP 2 TOOL search_recipes {"query": "paneer butter masala"}
+LAP 1 tokens_in=828 tokens_out=557 cumulative=1385
+LAP 1 TOOL search_recipes {"query": "paneer butter masala"}
+LAP 2 tokens_in=968 tokens_out=76 cumulative=2429
+LAP 2 TOOL get_allergen_profile {"allergen": "nuts", "recipe_id": "R001"}
 BUDGET max_iters cap=2
 
 Clean termination: the loop checked max_iters at the top of the next lap

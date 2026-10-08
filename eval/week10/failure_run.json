@@ -1,0 +1,90 @@
+{
+  "qid": "S01",
+  "answer": "CONSTRAINT: nut-free (cashew allergy)\nRECIPE: Paneer Butter Masala (R001)\nSERVINGS: 4\nALLERGEN_WARNING: contains-dairy\nINGREDIENTS:\n- Paneer | 400.0 | g | cut into 2 cm cubes\n- Ripe tomatoes | 600.0 | g | roughly chopped\n- Melon seeds | 20.0 | g | soaked in hot water 15 minutes\n- Unsalted butter | 50.0 | g | divided, half for searing\n- Heavy cream | 60.0 | ml | stirred in at the end, off the heat\n- Onion | 1.0 | medium | finely sliced\n- Garlic cloves | 4.0 | cloves | crushed\n- Fresh ginger | 15.0 | g | grated\n- Kashmiri chilli powder | 1.5 | tsp | for colour, not heat\n- Garam masala | 1.0 | tsp | added late\n- Dried fenugreek leaves | 1.0 | tsp | crushed between the palms\n- Granulated sugar | 1.0 | tsp | balances the tomato acidity\n- Salt | 1.5 | tsp | to taste\n- Water | 150.0 | ml | for loosening the gravy\nMETHOD:\n1. Soak the melon seeds in hot water for 15 minutes, then drain.\n2. Melt half the butter in a wide pan over medium heat. Sear the paneer cubes for 2 minutes per side until pale gold, then lift them out and set aside.\n3. In the same pan, soften the onion for 8 minutes, then add the garlic and ginger and cook for a further 2 minutes.\n4. Add the tomatoes, chilli powder, sugar and salt. Cover and cook for 15 minutes until the tomatoes collapse completely.\n5. Blend the tomato mixture with the drained melon seeds until entirely smooth, then pass it through a sieve back into the pan.\n6. Add the water and simmer uncovered for 20 minutes, stirring every few minutes, until the gravy coats the back of a spoon.\n7. Stir in the remaining butter, the garam masala and the crushed fenugreek leaves.\n8. Return the paneer to the pan, warm through for 3 minutes, then take the pan off the heat and stir in the heavy cream. Do not boil the curry after adding cream or it will split.\nOVEN: none",
+  "tokens": 8191,
+  "cost_usd": 0.0014175750000000001,
+  "latency_ms": 10225,
+  "handoffs": [
+    {
+      "handoff": "H1 user->orchestrator",
+      "prompt_tokens": 152,
+      "completion_tokens": 86,
+      "ms": 1661
+    },
+    {
+      "handoff": "H2 orchestrator->substitution_worker",
+      "prompt_tokens": 562,
+      "completion_tokens": 594,
+      "ms": 1572
+    },
+    {
+      "handoff": "H2 orchestrator->substitution_worker",
+      "prompt_tokens": 702,
+      "completion_tokens": 262,
+      "ms": 1031
+    },
+    {
+      "handoff": "H2 orchestrator->substitution_worker",
+      "prompt_tokens": 815,
+      "completion_tokens": 186,
+      "ms": 1345
+    },
+    {
+      "handoff": "H2 orchestrator->substitution_worker",
+      "prompt_tokens": 1570,
+      "completion_tokens": 1478,
+      "ms": 2643
+    },
+    {
+      "handoff": "H4 workers->orchestrator (synthesis)",
+      "prompt_tokens": 820,
+      "completion_tokens": 964,
+      "ms": 1971
+    }
+  ],
+  "by_handoff": {
+    "H1 user->orchestrator": 238,
+    "H2 orchestrator->substitution_worker": 6169,
+    "H4 workers->orchestrator (synthesis)": 1784
+  },
+  "events": [
+    "plan={\"recipe_query\": \"paneer butter masala\", \"constraint\": \"nut-free (cashew allergy)\", \"servings\": 4}",
+    "substitution_worker calls=['search_recipes', 'get_allergen_profile', 'scale_recipe']",
+    "allergen_worker attempt 1 FAILED: HTTP 500 Internal Server Error from allergen_worker",
+    "allergen_worker attempt 2 FAILED: HTTP 500 Internal Server Error from allergen_worker"
+  ],
+  "allergen_failure": "HTTP 500 Internal Server Error from allergen_worker",
+  "draft": "CONSTRAINT: nut-free (cashew allergy)\nRECIPE: Paneer Butter Masala (R001)\nSERVINGS: 4\nALLERGEN_WARNING: contains-dairy\nINGREDIENTS:\n- Paneer | 400.0 | g | cut into 2 cm cubes\n- Ripe tomatoes | 600.0 | g | roughly chopped\n- Melon seeds | 20.0 | g | soaked in hot water 15 minutes\n- Unsalted butter | 50.0 | g | divided, half for searing\n- Heavy cream | 60.0 | ml | stirred in at the end, off the heat\n- Onion | 1.0 | medium | finely sliced\n- Garlic cloves | 4.0 | cloves | crushed\n- Fresh ginger | 15.0 | g | grated\n- Kashmiri chilli powder | 1.5 | tsp | for colour, not heat\n- Garam masala | 1.0 | tsp | added late\n- Dried fenugreek leaves | 1.0 | tsp | crushed between the palms\n- Granulated sugar | 1.0 | tsp | balances the tomato acidity\n- Salt | 1.5 | tsp | to taste\n- Water | 150.0 | ml | for loosening the gravy\nMETHOD:\n1. Soak the melon seeds in hot water for 15 minutes, then drain.\n2. Melt half the butter in a wide pan over medium heat. Sear the paneer cubes for 2 minutes per side until pale gold, then lift them out and set aside.\n3. In the same pan, soften the onion for 8 minutes, then add the garlic and ginger and cook for a further 2 minutes.\n4. Add the tomatoes, chilli powder, sugar and salt. Cover and cook for 15 minutes until the tomatoes collapse completely.\n5. Blend the tomato mixture with the drained melon seeds until entirely smooth, then pass it through a sieve back into the pan.\n6. Add the water and simmer uncovered for 20 minutes, stirring every few minutes, until the gravy coats the back of a spoon.\n7. Stir in the remaining butter, the garam masala and the crushed fenugreek leaves.\n8. Return the paneer to the pan, warm through for 3 minutes, then take the pan off the heat and stir in the heavy cream. Do not boil the curry after adding cream or it will split.\nOVEN: none",
+  "allergen_report": "[allergen_worker error: HTTP 500 Internal Server Error from allergen_worker]",
+  "worker_calls": {
+    "substitution": [
+      {
+        "tool": "search_recipes",
+        "args": {
+          "query": "paneer butter masala"
+        },
+        "is_error": false
+      },
+      {
+        "tool": "get_allergen_profile",
+        "args": {
+          "allergen": "nuts",
+          "recipe_id": "R001"
+        },
+        "is_error": false
+      },
+      {
+        "tool": "scale_recipe",
+        "args": {
+          "recipe_id": "R001",
+          "servings": 4
+        },
+        "is_error": false
+      }
+    ]
+  },
+  "assertions": true,
+  "verdict": "PASS",
+  "judge_raw": "VERDICT: PASS\nREASON: The substitution replaces the cashews with soaked melon seeds as the source card directs, eliminating nuts while preserving the gravy’s body.",
+  "pass": true
+}

@@ -23,7 +23,7 @@ from multi.orchestrator import run_orchestrator  # noqa: E402
 
 OUT = ROOT / "eval" / "week10"
 CFG = ROOT / "config" / "mcp_servers.json"       # both servers, as in Week 9
-CASES = json.loads((ROOT / "eval" / "week6" / "substitutions.json").read_text())["items"][:10]
+CASES = json.loads((ROOT / "eval" / "week6" / "substitutions.json").read_text(encoding="utf-8"))["items"][:10]
 FAIL_CASE = "S01"
 
 FORMAT_SPEC = """Output ONLY the substitution in exactly this plain-text format (no markdown, no commentary):
